@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   namespace :api do
     get '/data', to: 'tests#index'
   end
+
+  get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
 end
+
