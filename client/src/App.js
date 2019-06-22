@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 // import activity from "./activity.jsx";
-// import dayActivities from "./dayActivities.jsx";
+import dayActivities from "./dayActivities.jsx";
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
@@ -86,9 +86,9 @@ function adminActivity() {
 }
 
 
-function dayActivities() {
-  return <h2>This is the component for /:day/activities/</h2>;
-}
+// function dayActivities() {
+//   return <h2>This is the component for /:day/activities/</h2>;
+// }
 
 function activity() {
   return <h2>This is the component for /:day/activities/:activityID</h2>;
