@@ -26,3 +26,8 @@ code {
 .navbar_logo {
   width: 70px;
 }
+.navbar_logout {
+  width: 70px;
+  background: lightblue
+}
+
