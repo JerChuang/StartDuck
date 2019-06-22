@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import Nav from './Nav.jsx';
+import { DatePicker, message, Calendar } from 'antd';
+import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
 import dayActivities from "./dayActivities.jsx";
 // import adminActivities from "./adminActivities.jsx";
@@ -13,9 +16,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: 'Click the button to load data!'
+      message: 'Click the button to load data!',
     }
   }
+  
 
   fetchData = () => {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
@@ -33,7 +37,13 @@ class App extends Component {
   render() {
     return (
     <Router> 
-      
+      <div style={{ width: 400, margin: '100px auto' }}>
+        {/* <Calendar /> */}
+        {/* <div style={{ marginTop: 20 }}>
+          Selected Date: {date ? date.format('YYYY-MM-DD') : 'None'}
+        </div> */}
+      </div>
+      <Nav/>
       <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
