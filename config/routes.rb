@@ -3,7 +3,18 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/data', to: 'tests#index'
+ 
+    resources :activities
+    resources :categories
+    resources :userAgendas
+    resources :userActivities
+    resources :users, only: [:create]
+
+    get '/login' => 'sessions#new'
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
   end
+
 
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?

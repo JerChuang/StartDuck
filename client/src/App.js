@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+// import activity from "./activity.jsx";
+// import dayActivities from "./dayActivities.jsx";
+// import adminActivities from "./adminActivities.jsx";
+// import adminActivity from "./adminActivity.jsx";
+// import adminCategories from "./adminCategories.jsx";
+
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -25,14 +32,68 @@ class App extends Component {
 
   render() {
     return (
+    <Router> 
+      
       <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
         </button>        
       </div>
+      <ul>
+          <li>
+            <Link to="06012019/activities/100">06012019/activities/100</Link>
+          </li>
+          <li>
+            <Link to="06052019/activities/">06052019/activities/</Link>
+          </li>
+
+          <li>
+            <Link to="/admin/activities">/admin/activities</Link>
+          </li>
+          <li>
+            <Link to="/admin/activities/:activityID">/admin/activities/105</Link>
+          </li>
+          <li>
+            <Link to="/admin/categories">/admin/categories</Link>
+          </li>
+        </ul>
+        <Switch>
+      <Route path="/:day/activities/:activityID" component={activity} />
+      <Route path="/:day/activities/" component={dayActivities} />
+
+      <Route path="/admin/activities" component={adminActivities} />
+      <Route path="/admin/activities/:activityID" component={adminActivity} />
+      <Route path="/admin/categories" component={adminCategories} />
+      </Switch>
+    </Router> 
     );
   }
 }
+
+function adminActivities() {
+  return <h2>adminActivities</h2>;
+}
+
+function adminActivity() {
+  return <h2>adminActivity</h2>;
+}
+
+function adminCategories() {
+  return <h2>adminCategories</h2>;
+}
+function activity({match}) {
+  return <h2>activity</h2>;
+}
+
+function dayActivities({match}) {
+  return <h2>dayActivities</h2>;
+}
+
+
+
+
+
+
 
 export default App;
