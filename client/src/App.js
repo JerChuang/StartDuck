@@ -42,29 +42,31 @@ class App extends Component {
       </div>
       <ul>
           <li>
-            <Link to="06012019/activities/100">06012019/activities/100</Link>
-          </li>
-          <li>
-            <Link to="06052019/activities/">06052019/activities/</Link>
+            <Link to="/admin/activities" currentPath = '/'>/admin/activities</Link>
           </li>
 
           <li>
-            <Link to="/admin/activities">/admin/activities</Link>
+            <Link to="/admin/categories" currentPath = '/'>/admin/categories</Link>
           </li>
           <li>
-            <Link to="/admin/activities/:activityID">/admin/activities/105</Link>
+            <Link to="/admin/activities/105" currentPath = '/'>/admin/activities/105</Link>
           </li>
           <li>
-            <Link to="/admin/categories">/admin/categories</Link>
+            <Link to="/06052019/activities/" currentPath = '/'>06052019/activities/</Link>
           </li>
+
+          <li>
+            <Link to="/06012019/activities/100" currentPath = '/'>06012019/activities/100</Link>
+          </li>
+
         </ul>
-        <Switch>
-      <Route path="/:day/activities/:activityID" component={activity} />
-      <Route path="/:day/activities/" component={dayActivities} />
+      <Switch>
+        <Route path="/admin/activities/:activityID" component={adminActivity} />
+        <Route path="/admin/activities" component={adminActivities} />
+        <Route path="/admin/categories" component={adminCategories} />
 
-      <Route path="/admin/activities" component={adminActivities} />
-      <Route path="/admin/activities/:activityID" component={adminActivity} />
-      <Route path="/admin/categories" component={adminCategories} />
+        <Route path="/:day/activities/:activityID" component={activity} />
+        <Route path="/:day/activities/" component={dayActivities} />
       </Switch>
     </Router> 
     );
@@ -72,24 +74,25 @@ class App extends Component {
 }
 
 function adminActivities() {
-  return <h2>adminActivities</h2>;
-}
-
-function adminActivity() {
-  return <h2>adminActivity</h2>;
+  return <h2>This is the component for /admin/activities</h2>;
 }
 
 function adminCategories() {
-  return <h2>adminCategories</h2>;
-}
-function activity({match}) {
-  return <h2>activity</h2>;
+  return <h2>This is the component for /admin/categories</h2>;
 }
 
-function dayActivities({match}) {
-  return <h2>dayActivities</h2>;
+function adminActivity() {
+  return <h2>This is the component for /admin/activities/:activityID</h2>;
 }
 
+
+function dayActivities() {
+  return <h2>This is the component for /:day/activities/</h2>;
+}
+
+function activity() {
+  return <h2>This is the component for /:day/activities/:activityID</h2>;
+}
 
 
 
