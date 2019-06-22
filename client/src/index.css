@@ -15,7 +15,6 @@ code {
 
 .navbar {
   background: white;
-  border-bottom: 1px solid black;
   height: 60px;
   left: 0;
   padding: 0 10px;
@@ -24,10 +23,22 @@ code {
   top: 0;
 }
 .navbar_logo {
-  width: 70px;
+  display: flex;
+  padding: 20px;
+  width: 100px;
 }
 .navbar_logout {
-  width: 70px;
-  background: lightblue
+    position: relative;
+    float: right;
+    margin-right: 30px;
+    margin-top: 15px;
+    height: 40px;
+    width: 90px;
+    font-size: 13px;
+    color: white;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    -webkit-border-radius: 5px;
+    background: #10E9FF;
 }
 
