@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
     resources :activities
     resources :categories
-    resources :user_gendas
-    resources :user_ctivities
+    resources :user_agendas
+    resources :user_activities
     resources :users, only: [:create]
+
 
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'

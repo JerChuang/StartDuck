@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity_id: 1
+  user_agenda_id: 1
+  date: 2019-06-22
+  completeness: false
+
+two:
+  activity_id: 1
+  user_agenda_id: 1
+  date: 2019-06-22
+  completeness: false
