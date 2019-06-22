@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import Nav from './Nav.jsx';
 // import activity from "./activity.jsx";
-// import dayActivities from "./dayActivities.jsx";
+import dayActivities from "./dayActivities.jsx";
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
@@ -34,7 +33,7 @@ class App extends Component {
   render() {
     return (
     <Router> 
-      <Nav/>
+      
       <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
@@ -60,14 +59,6 @@ class App extends Component {
             <Link to="/06012019/activities/100" currentPath = '/'>06012019/activities/100</Link>
           </li>
 
-          <li>
-            <Link to="/schedule" currentPath = '/'>Reschedule</Link>
-          </li>
-
-          <li>
-            <Link to="/completed_activities" currentPath = '/'>completed_activities</Link>
-          </li>
-
         </ul>
       <Switch>
         <Route path="/admin/activities/:activityID" component={adminActivity} />
@@ -76,8 +67,6 @@ class App extends Component {
 
         <Route path="/:day/activities/:activityID" component={activity} />
         <Route path="/:day/activities/" component={dayActivities} />
-        <Route path="/schedule" component = {schedule}/>
-        <Route path="/completed_activities" component = {completed_activities}/>
       </Switch>
     </Router> 
     );
@@ -97,20 +86,12 @@ function adminActivity() {
 }
 
 
-function dayActivities() {
-  return <h2>This is the component for /:day/activities/</h2>;
-}
+// function dayActivities() {
+//   return <h2>This is the component for /:day/activities/</h2>;
+// }
 
 function activity() {
   return <h2>This is the component for /:day/activities/:activityID</h2>;
-}
-
-function schedule() {
-  return <h2>This is the component for reschedueling</h2>;
-}
-
-function completed_activities() {
-  return <h2>This is the component for completed_activities</h2>;
 }
 
 
