@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import Nav from './Nav.jsx';
 // import activity from "./activity.jsx";
 // import dayActivities from "./dayActivities.jsx";
 // import adminActivities from "./adminActivities.jsx";
@@ -33,7 +34,7 @@ class App extends Component {
   render() {
     return (
     <Router> 
-      
+      <Nav/>
       <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
