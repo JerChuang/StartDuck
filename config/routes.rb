@@ -4,15 +4,15 @@ Rails.application.routes.draw do
   namespace :api do
     get '/data', to: 'tests#index'
  
-    resources :activities
-    resources :categories
-    resources :userAgendas
-    resources :userActivities
+    # resources :activities
+    # resources :categories
+    # resources :user_agendas
+    # resources :user_activities
     resources :users, only: [:create]
 
-    get '/login' => 'sessions#new'
-    post '/login' => 'sessions#create'
-    get '/logout' => 'sessions#destroy'
+    # get '/login' => 'sessions#new'
+    # post '/login' => 'sessions#create'
+    # get '/logout' => 'sessions#destroy'
   end
 
 
