@@ -25,7 +25,7 @@ code {
 .navbar_logo {
   display: flex;
   padding: 20px;
-  width: 100px;
+  width: 125px;
 }
 .navbar_logout {
     position: relative;
@@ -40,5 +40,8 @@ code {
     font-weight: bold;
     -webkit-border-radius: 5px;
     background: #10E9FF;
+}
+.link {
+  color: gray;
 }
 

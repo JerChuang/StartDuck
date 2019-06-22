@@ -28,19 +28,13 @@ class App extends Component {
       this.setState({
         message: response.data.message
       });
-    }) 
+    })
   }
 
   render() {
     return (
-    <Router> 
+    <Router>
       <Nav/>
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
       <ul>
           <li>
             <Link to="/admin/activities" currentPath = '/'>/admin/activities</Link>
@@ -79,7 +73,7 @@ class App extends Component {
         <Route path="/schedule" component = {schedule}/>
         <Route path="/completed_activities" component = {completed_activities}/>
       </Switch>
-    </Router> 
+    </Router>
     );
   }
 }
