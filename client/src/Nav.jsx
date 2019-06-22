@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 console.log(logo);
 const Nav = (props) =>(
   <nav className="navbar">
-
+   <div className="container-fluid">
     <img className="navbar_logo" src={logo} alt = "logo"/>
-    <Link to="/schedule" currentPath = '/'>Reschedule</Link>
 
-    <Link to="/completed_activities" currentPath = '/'>completed_activities</Link>
+     <Link className="link" to="/schedule" currentPath = '/'>Reschedule</Link>
+     <Link className="link" to="/completed_activities" currentPath = '/'>Completed Activities</Link>
+
     <button className="navbar_logout">Logout</button>
-
-
+   </div>
   </nav>
 )
 

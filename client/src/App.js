@@ -19,7 +19,7 @@ class App extends Component {
       message: 'Click the button to load data!',
     }
   }
-  
+
 
   fetchData = () => {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
@@ -31,12 +31,12 @@ class App extends Component {
       this.setState({
         message: response.data.message
       });
-    }) 
+    })
   }
 
   render() {
     return (
-    <Router> 
+    <Router>
       <div style={{ width: 400, margin: '100px auto' }}>
         {/* <Calendar /> */}
         {/* <div style={{ marginTop: 20 }}>
@@ -44,12 +44,6 @@ class App extends Component {
         </div> */}
       </div>
       <Nav/>
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
       <ul>
           <li>
             <Link to="/admin/activities" currentPath = '/'>/admin/activities</Link>
@@ -78,7 +72,7 @@ class App extends Component {
         <Route path="/:day/activities/:activityID" component={activity} />
         <Route path="/:day/activities/" component={dayActivities} />
       </Switch>
-    </Router> 
+    </Router>
     );
   }
 }
