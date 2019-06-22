@@ -5,9 +5,7 @@ import { Calendar } from 'antd';
 
 
 class dayActivities extends React.Component{
-  constructor(props){
-    super(props);
-  }
+ 
   onPanelChange = (value, mode) => {
     console.log(value, mode);
   }
@@ -15,9 +13,8 @@ class dayActivities extends React.Component{
 
     return(
       <div style={{ width: 300, border: '1px solid #d9d9d9', borderRadius: 4 }}>
-        hello
-      </div>
-
+      <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />
+    </div>
     )
   }
 }
