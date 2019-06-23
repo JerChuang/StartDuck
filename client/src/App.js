@@ -6,10 +6,11 @@ import Nav from './Nav.jsx';
 import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
 import DayActivities from "./dayActivities.jsx";
+import TodayActivity from "./TodayActivity.jsx";
+
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
-
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -65,8 +66,10 @@ class App extends Component {
         <Route path="/admin/activities/:activityID" component={adminActivity} />
         <Route path="/admin/activities" component={adminActivities} />
         <Route path="/admin/categories" component={adminCategories} />
-
-        <Route path="/:day/activities/:activityID" component={activity} />
+        <Route 
+          path="/:day/activities/:activityID" 
+          render = {(props) => <TodayActivity {...props} activities={this.state.activities} categories={this.state.categories}  />}
+        />
         <Route 
           path="/:day/activities/" 
           render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
@@ -94,9 +97,9 @@ function adminActivity() {
 //   return <h2>This is the component for /:day/activities/</h2>;
 // }
 
-function activity() {
-  return <h2>This is the component for /:day/activities/:activityID</h2>;
-}
+// function activity() {
+//   return <h2>This is the component for /:day/activities/:activityID</h2>;
+// }
 
 
 
