@@ -18,7 +18,7 @@ class dayActivities extends React.Component{
         <div className="dayActivities_calendar" >
           <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />    
         </div>
-        <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} />
+        <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />
       </section>
     )
   }

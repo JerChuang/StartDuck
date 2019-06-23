@@ -16,9 +16,9 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
       message: 'Click the button to load data!',
-      activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}]
+      activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}],
+      categories: ["coding", "japanese", "cooking", "swimming"] 
     }
   }
 
@@ -69,7 +69,7 @@ class App extends Component {
         <Route path="/:day/activities/:activityID" component={activity} />
         <Route 
           path="/:day/activities/" 
-          render = {(props) => <DayActivities {...props} activities={this.state.activities}/>}
+          render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
         />
       </Switch>
     </Router>
