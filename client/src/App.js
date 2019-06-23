@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
 import dayActivities from "./dayActivities.jsx";
 import schedule from "./schedule.jsx";
+
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
@@ -17,6 +18,8 @@ class App extends Component {
     super(props)
     this.state = {
       message: 'Click the button to load data!',
+      activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}],
+      categories: ["coding", "japanese", "cooking", "swimming"]
     }
   }
 
@@ -35,27 +38,28 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.activities)
     return (
     <Router>
 
       <Nav/>
       <ul>
           <li>
-            <Link to="/admin/activities" currentPath = '/'>/admin/activities</Link>
+            <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
           </li>
 
           <li>
-            <Link to="/admin/categories" currentPath = '/'>/admin/categories</Link>
+            <Link to="/admin/categories" currentpath = '/'>/admin/categories</Link>
           </li>
           <li>
-            <Link to="/admin/activities/105" currentPath = '/'>/admin/activities/105</Link>
+            <Link to="/admin/activities/105" currentpath = '/'>/admin/activities/105</Link>
           </li>
           <li>
-            <Link to="/06052019/activities/" currentPath = '/'>06052019/activities/</Link>
+            <Link to="/06052019/activities/" currentpath = '/'>06052019/activities/</Link>
           </li>
 
           <li>
-            <Link to="/06012019/activities/100" currentPath = '/'>06012019/activities/100</Link>
+            <Link to="/06012019/activities/100" currentpath = '/'>06012019/activities/100</Link>
           </li>
 
         </ul>
@@ -65,8 +69,13 @@ class App extends Component {
         <Route path="/admin/categories" component={adminCategories} />
 
         <Route path="/:day/activities/:activityID" component={activity} />
-        <Route path="/:day/activities/" component={dayActivities} />
+
         <Route path="/schedule" component={schedule} />
+
+        <Route
+          path="/:day/activities/"
+          render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
+        />
       </Switch>
     </Router>
     );

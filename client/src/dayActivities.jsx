@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import ReactDom from 'react-dom';
+// import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+// import ReactDom from 'react-dom';
 import { Calendar } from 'antd';
+import ActivitiesList from './ActivitiesList.jsx';
+
 
 
 class dayActivities extends React.Component{
@@ -10,11 +12,14 @@ class dayActivities extends React.Component{
     console.log(value, mode);
   }
   render(){
-
+    console.log('this.props for dayActivities', this.props)
     return(
-      <div style={{ width: 300, border: '1px solid #d9d9d9', borderRadius: 4 }}>
-      <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />
-    </div>
+      <section className="dayActivities">
+        <div className="dayActivities_calendar" >
+          <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />    
+        </div>
+        <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />
+      </section>
     )
   }
 }

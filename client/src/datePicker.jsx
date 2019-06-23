@@ -65,7 +65,7 @@ class datePicker extends React.Component {
     return (
       <div>
        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="DatePicker">
+        <Form.Item>
           <DatePicker
             disabledDate={this.disabledStartDate}
             showTime
@@ -76,7 +76,7 @@ class datePicker extends React.Component {
             onOpenChange={this.handleStartOpenChange}
           />
          </Form.Item>
-        <Form.Item label="DatePicker">
+        <Form.Item>
           <DatePicker
             disabledDate={this.disabledEndDate}
             showTime
