@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Nav from './Nav.jsx';
-import { DatePicker, message, Calendar } from 'antd';
+// import { DatePicker, message, Calendar } from 'antd';
 import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
-import dayActivities from "./dayActivities.jsx";
+import DayActivities from "./dayActivities.jsx";
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
@@ -16,7 +16,9 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+
       message: 'Click the button to load data!',
+      activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:60, name:"Japanese 200"}]
     }
   }
 
@@ -35,32 +37,27 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.activities)
     return (
     <Router>
-      <div style={{ width: 400, margin: '100px auto' }}>
-        {/* <Calendar /> */}
-        {/* <div style={{ marginTop: 20 }}>
-          Selected Date: {date ? date.format('YYYY-MM-DD') : 'None'}
-        </div> */}
-      </div>
       <Nav/>
       <ul>
           <li>
-            <Link to="/admin/activities" currentPath = '/'>/admin/activities</Link>
+            <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
           </li>
 
           <li>
-            <Link to="/admin/categories" currentPath = '/'>/admin/categories</Link>
+            <Link to="/admin/categories" currentpath = '/'>/admin/categories</Link>
           </li>
           <li>
-            <Link to="/admin/activities/105" currentPath = '/'>/admin/activities/105</Link>
+            <Link to="/admin/activities/105" currentpath = '/'>/admin/activities/105</Link>
           </li>
           <li>
-            <Link to="/06052019/activities/" currentPath = '/'>06052019/activities/</Link>
+            <Link to="/06052019/activities/" currentpath = '/'>06052019/activities/</Link>
           </li>
 
           <li>
-            <Link to="/06012019/activities/100" currentPath = '/'>06012019/activities/100</Link>
+            <Link to="/06012019/activities/100" currentpath = '/'>06012019/activities/100</Link>
           </li>
 
         </ul>
@@ -70,7 +67,10 @@ class App extends Component {
         <Route path="/admin/categories" component={adminCategories} />
 
         <Route path="/:day/activities/:activityID" component={activity} />
-        <Route path="/:day/activities/" component={dayActivities} />
+        <Route 
+          path="/:day/activities/" 
+          render = {(props) => <DayActivities {...props} activities={this.state.activities}/>}
+        />
       </Switch>
     </Router>
     );
