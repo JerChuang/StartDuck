@@ -24,7 +24,7 @@ class dayActivities extends React.Component{
         <div>
           <div className = "dayActivities_categories">
             {categories}
-            <botton className = "dayActivities_categoriesButtons">edit</botton>
+            <botton className = "dayActivities_edit">edit</botton>
           </div>
           <h2>Activities</h2>
           <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />

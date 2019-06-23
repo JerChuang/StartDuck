@@ -59,6 +59,14 @@ code {
   margin-left: 1vw;
 }
 
+.dayActivities_edit{
+  margin: 3px;
+  background-color: rgb(100, 9, 100);
+  color: white;
+  border-radius: 5px;
+
+}
+
 .dayActivities_categoriesButtons{
   margin: 3px;
   background-color: rgb(100, 9, 100);
