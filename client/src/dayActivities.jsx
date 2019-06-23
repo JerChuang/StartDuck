@@ -15,8 +15,8 @@ class dayActivities extends React.Component{
     console.log('this.props for dayActivities', this.props)
     return(
       <section className="dayActivities">
-        <div style={{ width: 300, border: '1px solid #d9d9d9', borderRadius: 4 }}>
-          <Calendar className="dayActivities_calendar" fullscreen={false} onPanelChange={this.onPanelChange} />
+        <div className="dayActivities_calendar" >
+          <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />    
         </div>
         <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} />
       </section>
