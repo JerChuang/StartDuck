@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Nav from './Nav.jsx';
-import { DatePicker, message, Calendar } from 'antd';
 import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
 import dayActivities from "./dayActivities.jsx";
+import schedule from "./schedule.jsx";
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
@@ -37,12 +37,7 @@ class App extends Component {
   render() {
     return (
     <Router>
-      <div style={{ width: 400, margin: '100px auto' }}>
-        {/* <Calendar /> */}
-        {/* <div style={{ marginTop: 20 }}>
-          Selected Date: {date ? date.format('YYYY-MM-DD') : 'None'}
-        </div> */}
-      </div>
+
       <Nav/>
       <ul>
           <li>
@@ -71,6 +66,7 @@ class App extends Component {
 
         <Route path="/:day/activities/:activityID" component={activity} />
         <Route path="/:day/activities/" component={dayActivities} />
+        <Route path="/schedule" component={schedule} />
       </Switch>
     </Router>
     );
@@ -90,14 +86,9 @@ function adminActivity() {
 }
 
 
-// function dayActivities() {
-//   return <h2>This is the component for /:day/activities/</h2>;
-// }
-
 function activity() {
   return <h2>This is the component for /:day/activities/:activityID</h2>;
 }
-
 
 
 
