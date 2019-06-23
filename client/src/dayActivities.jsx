@@ -13,12 +13,22 @@ class dayActivities extends React.Component{
   }
   render(){
     console.log('this.props for dayActivities', this.props)
+    const categories = this.props.categories.map(category => {
+      return <button className = "dayActivities_categoriesButtons">{category}</button>    
+    })
     return(
       <section className="dayActivities">
         <div className="dayActivities_calendar" >
           <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />    
         </div>
-        <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />
+        <div>
+          <div className = "dayActivities_categories">
+            {categories}
+            <botton className = "dayActivities_categoriesButtons">edit</botton>
+          </div>
+          <h2>Activities</h2>
+          <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />
+        </div>
       </section>
     )
   }

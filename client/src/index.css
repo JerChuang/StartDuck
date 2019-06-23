@@ -54,7 +54,7 @@ code {
   display: flex;
   flex-direction: column;
 }
-.dayActivities_activitiesList h2{
+.dayActivities h2{
   color: rgb(100, 9, 100);
   margin-left: 1vw;
 }
