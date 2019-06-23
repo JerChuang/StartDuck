@@ -20,6 +20,7 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"]
+
     }
   }
 
