@@ -2,9 +2,9 @@ import React from 'react';
 
 const ActivityItem = (props) => {
     return (
-        <div className="activityItem">
-          <span className="activityItem_duration">{props.duration}</span>
-          <span className="activityItem_name">{props.name}</span>          
+        <div className="dayActivities_activityItem">
+          <span className="dayActivities_itemDuration">{props.duration} m</span>
+          <span className="dayActivities_itemName">{props.name}</span>          
         </div>   
     );
 }

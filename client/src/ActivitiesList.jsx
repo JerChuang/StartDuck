@@ -7,12 +7,9 @@ class ActivitiesList extends Component {
     const activities = this.props.activities.map(activity => {
       return <ActivityItem key = {activity.id} color = {this.props.color} {...activity } />    
     })
-    // console.log(activities)
-    // console.log('this.props for activitieslist', this.props)
-   
 
     return (
-      <main className="activities_list">
+      <main className="dayActivities_activitiesList">
         {activities}
       </main>      
     );
