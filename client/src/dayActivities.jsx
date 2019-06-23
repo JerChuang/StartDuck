@@ -12,7 +12,6 @@ class dayActivities extends React.Component{
     console.log(value, mode);
   }
   render(){
-    console.log('this.props for dayActivities', this.props)
     const categories = this.props.categories.map(category => {
       return <button className = "dayActivities_categoriesButtons">{category}</button>    
     })
@@ -24,7 +23,7 @@ class dayActivities extends React.Component{
         <div>
           <div className = "dayActivities_categories">
             {categories}
-            <botton className = "dayActivities_edit">edit</botton>
+            <button className = "dayActivities_edit">edit</button>
           </div>
           <h2>Activities</h2>
           <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />
