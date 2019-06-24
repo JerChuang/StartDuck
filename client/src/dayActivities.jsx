@@ -3,16 +3,45 @@ import React from 'react';
 // import ReactDom from 'react-dom';
 import { Calendar } from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
-
-
+import axios from 'axios';
 
 class dayActivities extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      activities: [],
+      categories: [],
+      email: this.props.email
+    }
+  }
+
+  componentDidMount() {
+    console.log(this.props.params)
+    axios.get('/api/user_activities', {
+      params:{
+        email: this.state.email,
+        date: this.props.params
+      }
+    }) // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      console.log(response.data) // The entire response from the Rails API
+
+      this.setState({
+        activities: response.data.activities,
+        categories: response.data.categories
+      });
+    })
+  }
+
  
   onPanelChange = (value, mode) => {
     console.log(value, mode);
   }
   render(){
-    const categories = this.props.categories.map(category => {
+    console.log('this.props from dayActivities', this.props)
+    console.log('this.state from dayActivities', this.state)
+    const categories = this.state.categories.map(category => {
       return <button className = "dayActivities_categoriesButtons">{category}</button>    
     })
     return(
@@ -26,7 +55,7 @@ class dayActivities extends React.Component{
             <button className = "dayActivities_edit">edit</button>
           </div>
           <h2>Activities</h2>
-          <ActivitiesList className="dayActivities_activitiesList" activities = {this.props.activities} categories = {this.props.categories} />
+          <ActivitiesList className="dayActivities_activitiesList" activities = {this.state.activities}/>
         </div>
       </section>
     )

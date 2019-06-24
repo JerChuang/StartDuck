@@ -25,7 +25,7 @@ class App extends Component {
 
 
   fetchData = () => {
-    axios.get('/api/user_agendas', {
+    axios.get('/api/user_activities', {
       params:{
         email: this.state.email,
         date: "2019-06-22"
@@ -74,15 +74,15 @@ class App extends Component {
         <Route path="/:day/activities/:activityID" component={activity} />
         <Route 
           path="/:day/activities/" 
-          render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
+          render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params} />}
         />
       </Switch>
-      <div className="App">
+      {/* <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
         </button>        
-      </div>
+      </div> */}
     </Router>
     );
   }
