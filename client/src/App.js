@@ -19,27 +19,27 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"] ,
+      email: "bob@dee.com"
     }
   }
 
 
   fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+    axios.get('/api/user_agendas') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
       console.log(response.data) // The entire response from the Rails API
 
-      console.log(response.data.message) // Just the message
+      console.log(response.data.hours_per_day) // Just the message
       this.setState({
-        message: response.data.message
+        message: response.data.hours_per_day
       });
     })
   }
 
   render() {
-    console.log(this.state.activities)
     return (
-    <Router>
+      <Router>
       <Nav/>
       <ul>
           <li>
@@ -72,6 +72,12 @@ class App extends Component {
           render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
         />
       </Switch>
+      <div className="App">
+        <h1>{ this.state.message }</h1>
+        <button onClick={this.fetchData} >
+          Fetch Data
+        </button>        
+      </div>
     </Router>
     );
   }
