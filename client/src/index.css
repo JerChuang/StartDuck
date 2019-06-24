@@ -46,6 +46,7 @@ code {
 }
 .dayActivities {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -61,12 +62,18 @@ code {
 
 .dayActivities_edit{
   margin: 3px;
+  padding: 5px;
+  margin-left: auto;
   background-color: rgb(100, 9, 100);
   color: white;
   border-radius: 5px;
 
+
 }
 
+.dayActivities_categories{
+  display:flex;
+}
 .dayActivities_categoriesButtons{
   margin: 3px;
   background-color: rgb(100, 9, 100);
