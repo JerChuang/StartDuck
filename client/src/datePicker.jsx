@@ -71,7 +71,7 @@ class datePicker extends React.Component {
        <Form.Item >
         <Schedule/>
        </Form.Item>
-       <p>How many hours per day</p>
+       <p className="text_schedule_form">How many hours per day</p>
        <Form.Item>
         <TimePicker123/>
        </Form.Item>
@@ -79,7 +79,7 @@ class datePicker extends React.Component {
           <DatePicker
             disabledDate={this.disabledStartDate}
             showTime
-            format="YYYY-MM-DD HH:mm:ss"
+            format="YYYY-MM-DD"
             value={startValue}
             placeholder="Star Date"
             onChange={this.onStartChange}
@@ -90,7 +90,7 @@ class datePicker extends React.Component {
           <DatePicker
             disabledDate={this.disabledEndDate}
             showTime
-            format="YYYY-MM-DD HH:mm:ss"
+            format="YYYY-MM-DD"
             value={endValue}
             placeholder="End Date"
             onChange={this.onEndChange}

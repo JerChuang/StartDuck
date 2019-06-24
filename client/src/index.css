@@ -119,6 +119,8 @@ code {
   padding: 1rem;
   background-color: #F9B50F;
   border-radius: 10px;
+  width: 450px;
+  height: 80px;
 }
 
 .number {
@@ -131,6 +133,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10%;
 }
 
 button.ant-btn.datePicker_button {
@@ -138,9 +141,8 @@ button.ant-btn.datePicker_button {
     border-color: #10E9FF;
     color: white;
     font-weight: bold;
-    width: 80px;
-    /*float: left;
-    margin-left: 7%;*/
+    width: 100px;
+    height: 35px;
 }
 
 input.ant-input.hours_form {
@@ -169,12 +171,17 @@ div.ant-col.ant-form-item-control-wrapper.ant-col-xs-24.ant-col-sm-16 {
     flex-direction: column;
     align-items: center;
 }
-/*.per_hours {
-  float:left;
-  margin-left: 40%;
-}*/
-/*.container_form {
+
+.radio_style {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}*/
+  flex-wrap: wrap-reverse;
+}
+
+.ant-radio-wrapper{
+  color: white;
+  font-weight: bold;
+}
+.text_schedule_form{
+  color: #4E2E7A;
+  font-size: 20px;
+}

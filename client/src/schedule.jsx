@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactDom from 'react-dom';
-import { Input } from 'antd';
+import { Input, Radio } from 'antd';
 import SlideToggle from "react-slide-toggle";
 
 
@@ -21,16 +21,11 @@ const schedule = () => (
               transform: `translateY(${Math.round(20 * (-1 + progress))}px)`
             }}
           >
-            <p>
-              Collapsible content, you can reverse the toggle before it has
-              finished.
-            </p>
-            <a
-              href="https://github.com/kunukn/react-slide-toggle"
-              target="_blank"
-            >
-              react slide toggle - github
-            </a>
+            <div className="radio_style">
+              <Radio>Cooking</Radio>
+              <Radio>Japanese</Radio>
+              <Radio>Coding</Radio>
+            </div>
           </div>
         </div>
       </div>
