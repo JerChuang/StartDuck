@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TodaySchedule from './TodaySchedule.jsx';
 
-class TodayActivityCalender extends Component {
+class TodayActivityCalendar extends Component {
     render() {
       const activities = this.props.activities.map(activity => {
         return <TodaySchedule key = {activity.id} color = {this.props.color} {...activity } />    
@@ -15,4 +15,4 @@ class TodayActivityCalender extends Component {
     }
   }
 
-export default TodayActivityCalender
+export default TodayActivityCalendar
