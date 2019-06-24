@@ -68,7 +68,7 @@ class App extends Component {
         <Route path="/admin/categories" component={adminCategories} />
         <Route 
           path="/:day/activities/:activityID" 
-          render = {(props) => <TodayActivity {...props} activities={this.state.activities} categories={this.state.categories}  />}
+          render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
         />
         <Route 
           path="/:day/activities/" 
