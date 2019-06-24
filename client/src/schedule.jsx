@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactDom from 'react-dom';
 import { Input } from 'antd';
 import SlideToggle from "react-slide-toggle";
-import DatePicker123 from './datePicker.jsx';
 
 
 
@@ -34,7 +33,6 @@ const schedule = () => (
             </a>
           </div>
         </div>
-           <DatePicker123/>
       </div>
     )}
   />

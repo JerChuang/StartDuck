@@ -14,7 +14,7 @@ class TimePicker extends React.Component {
 
   render() {
     return(
-    <Select defaultValue="lucy" style={{ width: 200 }} onChange={this.handleChange}>
+    <Select defaultValue="choose a time" style={{ width: 200 }} onChange={this.handleChange}>
         <Option value="1">1 hour</Option>
         <Option value="2">2 hours</Option>
         <Option value="3">3 hours</Option>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactDom from 'react-dom';
 import { Form, DatePicker, Button } from 'antd';
 import TimePicker123 from './TimePicker.jsx';
+import Schedule from './schedule.jsx';
 
 class datePicker extends React.Component {
   state = {
@@ -67,6 +68,9 @@ class datePicker extends React.Component {
     return (
       <div className="datePicker_form">
        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+       <Form.Item >
+        <Schedule/>
+       </Form.Item>
        <p>How many hours per day</p>
        <Form.Item>
         <TimePicker123/>

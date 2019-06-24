@@ -5,7 +5,7 @@ import Nav from './Nav.jsx';
 import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
 import DayActivities from "./dayActivities.jsx";
-import schedule from "./schedule.jsx";
+import datePicker from "./datePicker.jsx";
 
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
@@ -72,7 +72,7 @@ class App extends Component {
 
         <Route path="/:day/activities/:activityID" component={activity} />
 
-        <Route path="/schedule" component={schedule} />
+        <Route path="/schedule" component={datePicker} />
 
         <Route
           path="/:day/activities/"
