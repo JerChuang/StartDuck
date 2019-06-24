@@ -17,22 +17,27 @@ class App extends Component {
     super(props)
     this.state = {
       message: 'Click the button to load data!',
-      activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}],
-      categories: ["coding", "japanese", "cooking", "swimming"] ,
-      email: "bob@dee.com"
+      activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
+      categories: ["coding", "japanese", "cooking", "swimming"],
+      email: "bob@Dee.com"
     }
   }
 
 
   fetchData = () => {
-    axios.get('/api/user_agendas') // You can simply make your requests to "/api/whatever you want"
+    axios.get('/api/user_agendas', {
+      params:{
+        email: this.state.email,
+        date: "2019-06-22"
+      }
+    }) // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
       console.log(response.data) // The entire response from the Rails API
 
-      console.log(response.data.hours_per_day) // Just the message
       this.setState({
-        message: response.data.hours_per_day
+        activities: response.data.activities,
+        categories: response.data.categories
       });
     })
   }
