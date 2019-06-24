@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 const TodayActivityBox = (props) => {
 
     return (
-        <div className="dayActivities_activityItem">
-            <span className="todayActivityTitle">{props.activities[0].name}</span>     
+        <div className="todayActivityBox">
+            <span className="todayActivityTitle">{props.activities[0].name}</span>
+                 
             <span className="todayActivityDuration">{props.activities[0].duration} m</span>
         </div>
     )

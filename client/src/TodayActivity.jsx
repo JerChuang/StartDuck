@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import TodayActivityBox from './TodayActivityBox.jsx';
 import TodayActivityCalender from './TodayActivityCalender.jsx';
-// const x = todayActivityBox
-
+import { Icon } from 'antd';
 
 class TodayActivity extends Component {
+    handleClick = () => {
+        console.log('this is', this);
+    }
     render() {
         console.log('this is the props', this.props.activities)
         // const activity = this.props.activities
@@ -12,6 +14,9 @@ class TodayActivity extends Component {
             // <TodayActivityBox />                
 
             <section className="Actvity">
+                <div className="todayActivityIcon">
+                    <Icon type="schedule" onClick={this.handleClick}/>
+                </div>
                 <div className="TodayActivityBox">
                     <h2>Activity</h2>
                     <TodayActivityBox activities={this.props.activities} />                
