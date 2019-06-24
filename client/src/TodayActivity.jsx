@@ -16,10 +16,10 @@ class TodayActivity extends Component {
                     <h2>Activity</h2>
                     <TodayActivityBox activities={this.props.activities} />                
                 </div>
-                {/* <div>
+                <div>
                     <h2>Calender</h2>
                     <TodayActivityCalender activities={this.props.activities}/>
-                </div> */}
+                </div>
             </section>
         )
     }
