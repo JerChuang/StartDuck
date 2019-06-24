@@ -97,3 +97,66 @@ code {
   align-items: center;
 }
 
+
+.my-collapsible__toggle {
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  width: 15%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: 0px 2px 2px gray;
+  background: #F9B50F;
+  margin-bottom: 20px;
+  margin-left: 40%;
+  border-radius: 5px;
+}
+.my-collapsible__content {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.my-collapsible__content-inner {
+  padding: 1rem;
+  min-height: 20rem;
+  background-color: #F9B50F;
+  width: 35%;
+  margin-left: 30%;
+  border-radius: 10px;
+}
+
+.number {
+  font-variant-numeric: tabular-nums;
+  min-width: 3em;
+  display: inline-block;
+  text-align: left;
+}
+.datePicker_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button.ant-btn.datePicker_button {
+    background-color: #10E9FF;
+    border-color: #10E9FF;
+    color: white;
+    font-weight: bold;
+    /*float: left;
+    margin-left: 7%;*/
+}
+
+input.ant-input.hours_form {
+    width: 60%;
+}
+
+/*.per_hours {
+  float:left;
+  margin-left: 40%;
+}*/
+/*.container_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}*/

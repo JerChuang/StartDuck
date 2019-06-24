@@ -4,7 +4,7 @@ import './App.css';
 import Nav from './Nav.jsx';
 import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
-import dayActivities from "./dayActivities.jsx";
+import DayActivities from "./dayActivities.jsx";
 import schedule from "./schedule.jsx";
 
 // import adminActivities from "./adminActivities.jsx";
@@ -19,6 +19,7 @@ class App extends Component {
     this.state = {
       message: 'Click the button to load data!',
       activities: [{duration:30, name:"Japanese 100"}, {duration:60, name:"Japanese 200"}, {duration:120, name:"Japanese 300"}],
+
       categories: ["coding", "japanese", "cooking", "swimming"]
 
     }

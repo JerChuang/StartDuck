@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactDom from 'react-dom';
 import { Form, DatePicker, Button } from 'antd';
+import TimePicker123 from './TimePicker.jsx';
 
 class datePicker extends React.Component {
   state = {
@@ -50,6 +51,7 @@ class datePicker extends React.Component {
     this.setState({ endOpen: open });
   };
 
+
   render() {
     const { startValue, endValue, endOpen } = this.state;
     const formItemLayout = {
@@ -63,8 +65,12 @@ class datePicker extends React.Component {
       },
     };
     return (
-      <div>
+      <div className="datePicker_form">
        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+       <p>How many hours per day</p>
+       <Form.Item>
+        <TimePicker123/>
+       </Form.Item>
         <Form.Item>
           <DatePicker
             disabledDate={this.disabledStartDate}
@@ -88,16 +94,9 @@ class datePicker extends React.Component {
             onOpenChange={this.handleEndOpenChange}
           />
          </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            xs: { span: 24, offset: 0 },
-            sm: { span: 16, offset: 8 },
-          }}
-        >
-          <Button type="primary" htmlType="submit">
+         <Button className="datePicker_button" >
             Submit
           </Button>
-        </Form.Item>
       </Form>
       </div>
     );
