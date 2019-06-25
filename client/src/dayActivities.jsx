@@ -16,7 +16,7 @@ class DayActivities extends React.Component{
   }
 
   componentDidMount() {
-    console.log(this.props.params)
+    console.log('this.props',this.props)
     axios.get('/api/user_activities', {
       params:{
         email: this.state.email,

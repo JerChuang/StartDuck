@@ -79,7 +79,7 @@ class App extends Component {
         <Route path="/schedule" component={datePicker} />
         <Route 
           path="/:day/activities/" 
-          render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
+          render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
         />
       </Switch>
       {/* <div className="App">
