@@ -48,6 +48,7 @@ code {
 }
 .dayActivities {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -63,12 +64,18 @@ code {
 
 .dayActivities_edit{
   margin: 3px;
+  padding: 5px;
+  margin-left: auto;
   background-color: rgb(100, 9, 100);
   color: white;
   border-radius: 5px;
 
+
 }
 
+.dayActivities_categories{
+  display:flex;
+}
 .dayActivities_categoriesButtons{
   margin: 3px;
   background-color: rgb(100, 9, 100);
@@ -99,3 +106,91 @@ code {
   align-items: center;
 }
 
+
+.my-collapsible__toggle {
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 2px 2px gray;
+  background: #F9B50F;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  min-width: 200px;
+
+}
+.my-collapsible__content {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.my-collapsible__content-inner {
+  padding: 1rem;
+  background-color: #F9B50F;
+  border-radius: 10px;
+  width: 450px;
+  height: 80px;
+}
+
+.number {
+  font-variant-numeric: tabular-nums;
+  min-width: 3em;
+  display: inline-block;
+  text-align: left;
+}
+.datePicker_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+button.ant-btn.datePicker_button {
+    background-color: #10E9FF;
+    border-color: #10E9FF;
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    height: 35px;
+}
+
+input.ant-input.hours_form {
+    width: 60%;
+}
+
+
+.my-collapsible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+div.ant-col.ant-form-item-control-wrapper.ant-col-xs-24.ant-col-sm-16 {
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+.ant-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio_style {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.ant-radio-wrapper{
+  color: white;
+  font-weight: bold;
+}
+.text_schedule_form{
+  color: #4E2E7A;
+  font-size: 20px;
+}

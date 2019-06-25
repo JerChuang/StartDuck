@@ -1,4 +1,4 @@
 class Activity < ApplicationRecord
-  has_many :user_activities
+  has_one :user_activity
   belongs_to :category
 end
