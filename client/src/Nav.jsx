@@ -7,8 +7,8 @@ const Nav = (props) =>(
    <div className="container-fluid">
     <img className="navbar_logo" src={logo} alt = "logo"/>
 
-     <Link className="link" to="/schedule" currentPath = '/'>Reschedule</Link>
-     <Link className="link" to="/completed_activities" currentPath = '/'>Completed Activities</Link>
+     <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
+     <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
 
     <button className="navbar_logout">Logout</button>
    </div>
