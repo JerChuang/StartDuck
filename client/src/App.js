@@ -6,11 +6,12 @@ import 'antd/dist/antd.css';
 // import activity from "./activity.jsx";
 import DayActivities from "./dayActivities.jsx";
 import datePicker from "./datePicker.jsx";
+import TodayActivity from "./TodayActivity.jsx";
+
 
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
-
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -71,14 +72,14 @@ class App extends Component {
         <Route path="/admin/activities/:activityID" component={adminActivity} />
         <Route path="/admin/activities" component={adminActivities} />
         <Route path="/admin/categories" component={adminCategories} />
-
-        <Route path="/:day/activities/:activityID" component={activity} />
-
+        <Route 
+          path="/:day/activities/:activityID" 
+          render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
+        />
         <Route path="/schedule" component={datePicker} />
-
-        <Route
-          path="/:day/activities/"
-          render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params} />}
+        <Route 
+          path="/:day/activities/" 
+          render = {(props) => <DayActivities {...props} activities={this.state.activities} categories={this.state.categories}  />}
         />
       </Switch>
       {/* <div className="App">
@@ -105,9 +106,13 @@ function adminActivity() {
 }
 
 
-function activity() {
-  return <h2>This is the component for /:day/activities/:activityID</h2>;
-}
+// function dayActivities() {
+//   return <h2>This is the component for /:day/activities/</h2>;
+// }
+
+// function activity() {
+//   return <h2>This is the component for /:day/activities/:activityID</h2>;
+// }
 
 
 

@@ -44,13 +44,13 @@ class dayActivities extends React.Component{
     const categories = this.state.categories.map(category => {
       return <button className = "dayActivities_categoriesButtons">{category}</button>    
     })
-    return(
+    return (
       <section className="dayActivities">
         <div className="dayActivities_calendar" >
-          <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />    
+          <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />
         </div>
         <div>
-          <div className = "dayActivities_categories">
+          <div className="dayActivities_categories">
             {categories}
             <button className = "dayActivities_edit">edit</button>
           </div>
