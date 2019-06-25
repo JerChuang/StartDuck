@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TodayActivityBox from './TodayActivityBox.jsx';
 import TodayActivityCalendar from './TodayActivityCalendar.jsx';
 import { Icon } from 'antd';
@@ -8,7 +8,7 @@ class TodayActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: true,
+            active: false,
         };
     }
     handleClick = () => {
@@ -19,35 +19,50 @@ class TodayActivity extends Component {
 
     render() {
         return (
-            <section className="Actvity">
-                <h3>Monday July 2</h3>
-                <div className="todayActivityIcon">
-                    <Icon type="schedule" onClick={this.handleClick}/>
-                    {this.state.active && <Calendar fullscreen={false} className="dayActivities_calendar"/>}
+            <section className="dayActivity">
+                <div className="sideBarSchedule">
+                    <h3 className="dayHeading">Monday July 2
+                    <div className="todayActivityIcon">
+                        <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
+                    </div>
+                    </h3>
+                    {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
+
+                    <div className="TodayActivityCalendar">
+                        <TodayActivityCalendar activities={this.props.activities} />
+                    </div>
                 </div>
-                <div className="TodayActivityBox">
-                    <h2>Activity</h2>
-                    <TodayActivityBox activities={this.props.activities} />                
+
+                <div className="TodayTask">
+
+                    <div className="TodayActivityBox">
+                        <TodayActivityBox activities={this.props.activities} />
+                    </div>
+                    <div className="Completeness">
+                        <span>Status: Incomplete</span>
+                    </div>
+                    <div className="TodayContent">
+                        <p>
+                            This is some hardcoded content!
+                            eklfjalekfalwkefnawifnweafnewa
+                        </p>
+                        <p>
+                            oifnawefnaweofinawefoiawnefoia
+                            wnefoiawenfawoiefnawoeifawoeifn
+                            awoiefnwoeifnawe
+                            fnawoefiawieonfaoi
+                        </p>
+                        <p>
+                            oifnawefnaweofinawefoiawnefoia
+                            wnefoiojioefmwakmfalwkfnaownf
+                            fwaepfjaiwefjj2093ie19idmeiawm
+                            iawenfawoiefnawoeifawoeifn
+                            awoiefnwoeifnawe
+                            fnawoefiawieonfaoi
+                        </p>
+                    </div>
                 </div>
-                <div className="TodayActivityCalendar">
-                    <h2>Calendar</h2>
-                    <TodayActivityCalendar activities={this.props.activities}/>
-                </div>
-                <div className="Completeness">
-                    <span>Status: Incomplete</span>
-                </div>
-                <div className="TodayContent">
-                    <p>
-                        This is some hardcoded content!
-                        eklfjalekfalwkefnawifnweafnewa
-                    </p>
-                    <p>
-                        oifnawefnaweofinawefoiawnefoia
-                        wnefoiawenfawoiefnawoeifawoeifn
-                        awoiefnwoeifnawe
-                        fnawoefiawieonfaoi
-                    </p>
-                </div>
+
             </section>
         )
     }

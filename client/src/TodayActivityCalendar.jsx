@@ -8,7 +8,7 @@ class TodayActivityCalendar extends Component {
       })
   
       return (
-        <main className="dayActivities_activitiesList">
+        <main className="todayActivityList">
           {activities}
         </main>      
       );
