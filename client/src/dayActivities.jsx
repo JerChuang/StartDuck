@@ -5,7 +5,7 @@ import { Calendar } from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
 import axios from 'axios';
 
-class dayActivities extends React.Component{
+class DayActivities extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -61,4 +61,4 @@ class dayActivities extends React.Component{
     )
   }
 }
-export default dayActivities;
+export default DayActivities;
