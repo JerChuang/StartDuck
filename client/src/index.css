@@ -25,10 +25,33 @@ code {
 }
 .navbar_logo {
   padding: 20px;
-  width: 125px;
+  min-width: 125px;
+  width: 12vw;
 }
 .navbar_logout {
     margin-right: 30px;
+    margin-top: 15px;
+    height: 40px;
+    width: 90px;
+    font-size: 13px;
+    color: white;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    -webkit-border-radius: 5px;
+    background: #10E9FF;
+}
+
+.login-page {
+  display: flex;
+  align-items: center;
+}
+
+.main_image{
+  width: 60vw;
+  min-width: 300px;
+}
+.login-page_login-button {
+  margin-right: 30px;
     margin-top: 15px;
     height: 40px;
     width: 90px;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import Nav from './Nav.jsx';
 import 'antd/dist/antd.css';
+
+import Nav from './Nav.jsx';
+import Login from './Login.jsx'
 // import activity from "./activity.jsx";
 import DayActivities from "./dayActivities.jsx";
 import datePicker from "./datePicker.jsx";
@@ -70,6 +72,7 @@ class App extends Component {
         </ul> */}
       <main className = "main-container">
         <Switch>
+          <Route path="/" component={Login} />
           <Route path="/admin/activities/:activityID" component={adminActivity} />
           <Route path="/admin/activities" component={adminActivities} />
           <Route path="/admin/categories" component={adminCategories} />
