@@ -9,6 +9,7 @@ class datePicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      time: 0,
       categories: [],
       startValue: null,
       endValue: null,
@@ -61,6 +62,11 @@ class datePicker extends React.Component {
     this.setState({ categories: topics });
   };
 
+  setTime = time => {
+    console.log("this is timeeeeee", time)
+    this.setState({ time: time });
+  };
+
   render() {
     const { startValue, endValue, endOpen } = this.state;
     const formItemLayout = {
@@ -83,7 +89,9 @@ class datePicker extends React.Component {
        </Form.Item>
        <p className="text_schedule_form">How many hours per day</p>
        <Form.Item>
-        <TimePicker123/>
+        <TimePicker123
+        onSelectedTime = { this.setTime }
+        />
        </Form.Item>
         <Form.Item>
           <DatePicker
