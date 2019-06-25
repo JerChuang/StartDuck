@@ -26,17 +26,6 @@ class App extends Component {
 
 
 
-   fetchData = () => {
-    axios.get('/api/categories') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data.categories) // The entire response from the Rails API
-
-      this.setState({
-        messages: response.data.categories
-      });
-    })
-  }
 
   fetchData = () => {
     axios.get('/api/user_activities', {

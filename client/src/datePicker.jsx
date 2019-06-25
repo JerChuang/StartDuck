@@ -57,7 +57,7 @@ class datePicker extends React.Component {
   };
 
   setCategories = topics => {
-    console.log(topics)
+    console.log("this is topicsssss", topics)
     this.setState({ categories: topics });
   };
 

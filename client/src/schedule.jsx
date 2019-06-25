@@ -26,14 +26,14 @@ class schedule extends React.Component{
         })
       }
 
-    sendSelectedCategories(e) {
-      console.log(e.target.value)
+    sendSelectedCategories = e => {
       this.props.onSelectedCategories(e.target.value)
     }
 
     render() {
       const categories = this.state.categories.map(category =>{
         return( <Checkbox
+                 key={ category.id }
                  value={ category.name }
                  onChange={ this.sendSelectedCategories }
                  >
