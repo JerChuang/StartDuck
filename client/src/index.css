@@ -150,6 +150,7 @@ button.ant-btn.datePicker_button {
     font-weight: bold;
     width: 100px;
     height: 35px;
+    box-shadow: 0px 2px 2px grey;
 }
 
 input.ant-input.hours_form {

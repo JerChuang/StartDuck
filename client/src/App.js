@@ -38,6 +38,24 @@ class App extends Component {
     })
   }
 
+  fetchData = () => {
+    axios.get('/api/user_activities', {
+      params:{
+        email: this.state.email,
+        date: "2019-06-22"
+      }
+    }) // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      console.log(response.data) // The entire response from the Rails API
+
+      this.setState({
+        activities: response.data.activities,
+        categories: response.data.categories
+      });
+    })
+  }
+
   render() {
     return (
       <Router>

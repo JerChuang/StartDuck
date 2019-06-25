@@ -6,10 +6,14 @@ import TimePicker123 from './TimePicker.jsx';
 import Schedule from './schedule.jsx';
 
 class datePicker extends React.Component {
-  state = {
-    startValue: null,
-    endValue: null,
-    endOpen: false,
+  constructor(props) {
+    super(props)
+    this.state = {
+      categories: [],
+      startValue: null,
+      endValue: null,
+      endOpen: false,
+    }
   };
 
   disabledStartDate = startValue => {
@@ -52,6 +56,10 @@ class datePicker extends React.Component {
     this.setState({ endOpen: open });
   };
 
+  setCategories = topics => {
+    console.log(topics)
+    this.setState({ categories: topics });
+  };
 
   render() {
     const { startValue, endValue, endOpen } = this.state;
@@ -69,7 +77,9 @@ class datePicker extends React.Component {
       <div className="datePicker_form">
        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
        <Form.Item >
-        <Schedule/>
+        <Schedule
+         onSelectedCategories = { this.setCategories }
+        />
        </Form.Item>
        <p className="text_schedule_form">How many hours per day</p>
        <Form.Item>
