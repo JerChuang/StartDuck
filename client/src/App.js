@@ -48,7 +48,7 @@ class App extends Component {
     return (
       <Router>
       <Nav/>
-      <ul>
+      {/* <ul>
           <li>
             <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
           </li>
@@ -67,21 +67,25 @@ class App extends Component {
             <Link to="/06012019/activities/100" currentpath = '/'>06012019/activities/100</Link>
           </li>
 
-        </ul>
-      <Switch>
-        <Route path="/admin/activities/:activityID" component={adminActivity} />
-        <Route path="/admin/activities" component={adminActivities} />
-        <Route path="/admin/categories" component={adminCategories} />
-        <Route 
-          path="/:day/activities/:activityID" 
-          render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
-        />
-        <Route path="/schedule" component={datePicker} />
-        <Route 
-          path="/:day/activities/" 
-          render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
-        />
-      </Switch>
+        </ul> */}
+      <main className = "main-container">
+        <Switch>
+          <Route path="/admin/activities/:activityID" component={adminActivity} />
+          <Route path="/admin/activities" component={adminActivities} />
+          <Route path="/admin/categories" component={adminCategories} />
+          <Route 
+            path="/:day/activities/:activityID" 
+            render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
+          />
+          <Route path="/schedule" component={datePicker} />
+
+          <Route 
+            path="/:day/activities/" 
+            render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
+          />
+        </Switch>
+      </main>
+
       {/* <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >

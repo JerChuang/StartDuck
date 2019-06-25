@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './images/logo.png';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import {Link} from "react-router-dom";
 console.log(logo);
 const Nav = (props) =>(
   <nav className="navbar">

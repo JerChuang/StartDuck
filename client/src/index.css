@@ -16,22 +16,18 @@ code {
 }
 
 .navbar {
+  width: 100%;
   background: white;
-  height: 60px;
-  left: 0;
   padding: 0 10px;
-  position: fixed;
-  right: 0;
+  position: fixed; 
   top: 0;
+  z-index:2;
 }
 .navbar_logo {
-  display: flex;
   padding: 20px;
   width: 125px;
 }
 .navbar_logout {
-    position: relative;
-    float: right;
     margin-right: 30px;
     margin-top: 15px;
     height: 40px;
@@ -43,6 +39,11 @@ code {
     -webkit-border-radius: 5px;
     background: #10E9FF;
 }
+
+.main-container{
+  margin-top: 200px;
+}
+
 .link {
   color: gray;
 }
