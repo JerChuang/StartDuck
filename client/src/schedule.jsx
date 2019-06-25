@@ -16,10 +16,6 @@ class schedule extends React.Component{
     }
   }
 
-    // onChange = checkedValues =>{
-    //   console.log('checked = ', checkedValues);
-    // }
-
     componentDidMount() {
         // console.log(this.props.params)
         axios.get('/api/categories')
@@ -31,19 +27,18 @@ class schedule extends React.Component{
       }
 
     sendSelectedCategories(e) {
-      console.log("event value", e.target.value)
+      console.log(e.target.value)
       this.props.onSelectedCategories(e.target.value)
     }
 
     render() {
       const categories = this.state.categories.map(category =>{
-        return( <Radio
+        return( <Checkbox
                  value={ category.name }
-                 key={ category.id }
-                 onClick={this.sendSelectedCategories}
+                 onChange={ this.sendSelectedCategories }
                  >
                  { category.name }
-                 </Radio> )
+                 </Checkbox> )
     })
 
       return(
