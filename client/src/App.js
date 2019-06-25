@@ -25,20 +25,15 @@ class App extends Component {
   }
 
 
-  fetchData = () => {
-    axios.get('/api/user_activities', {
-      params:{
-        email: this.state.email,
-        date: "2019-06-22"
-      }
-    }) // You can simply make your requests to "/api/whatever you want"
+
+   fetchData = () => {
+    axios.get('/api/categories') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
-      console.log(response.data) // The entire response from the Rails API
+      console.log(response.data.categories) // The entire response from the Rails API
 
       this.setState({
-        activities: response.data.activities,
-        categories: response.data.categories
+        messages: response.data.categories
       });
     })
   }
@@ -81,12 +76,12 @@ class App extends Component {
           render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params} />}
         />
       </Switch>
-      {/* <div className="App">
+       <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
         </button>
-      </div> */}
+      </div>
     </Router>
     );
   }
