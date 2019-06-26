@@ -22,11 +22,9 @@ class Api::UserActivitiesController < ApplicationController
     # @activities = @user_activities.map{|user_activity|user_activity.activity}
     @categories = @user_activities.map {|user_activity|user_activity.activity.category.name}.uniq
     # byebug
-    # @activity = @activities.where(id: '1') 
     render :json => {
       activities: @activities,
       categories: @categories,
-      # activity: @activity
     }
   end
 

@@ -31,7 +31,7 @@ class TodayActivity extends Component {
                 const activity = response.data.activities.find(element => {
                     console.log(element.id, 'element id');
                     console.log(this.props.params.activityID, 'activity id')
-                    return element.id == this.props.params.activityID; 
+                    return element.id == this.props.params.activityID;
                 })
                 this.setState({
                     activities: response.data.activities,
@@ -40,8 +40,8 @@ class TodayActivity extends Component {
                 });
             })
     }
-    
-    
+
+
     handleClick = () => {
         this.setState({
             active: !this.state.active
@@ -53,10 +53,10 @@ class TodayActivity extends Component {
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
-                    <h3 className="dayHeading">Monday July 2
+                    <h3 className="dayHeading">{this.props.params.day}
                     <div className="todayActivityIcon">
-                        <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
-                    </div>
+                            <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
+                        </div>
                     </h3>
                     {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
 
@@ -71,7 +71,7 @@ class TodayActivity extends Component {
                         <TodayActivityBox activity={this.state.activity} />
                     </div>
                     <div className="Completeness">
-                        <span>Status: {this.state.activity.completeness +  ""}</span>
+                        <span>Status: {this.state.activity.completeness + ""}</span>
                     </div>
                     <div className="TodayContent">
                         <p>{this.state.activity.content} </p>
