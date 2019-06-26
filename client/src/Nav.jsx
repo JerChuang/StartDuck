@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { ReactComponent as Logo } from './images/logo.svg';
 import Logo from './images/logo.png'
 import {Link} from "react-router-dom";
+import * as moment from 'moment';
 
 class Nav extends Component {
 
@@ -12,6 +13,7 @@ class Nav extends Component {
     this.props.setUser('')
   };
   render(){
+    console.log(moment().format('YYYY-MM-DD'))
     if (this.props.cookies.get('email')){
     return(
     <nav className="navbar">
