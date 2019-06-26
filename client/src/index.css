@@ -1,3 +1,5 @@
+@import "Activitypage.css";
+
 body {
   margin: 0;
   padding: 0;
@@ -14,22 +16,19 @@ code {
 }
 
 .navbar {
+  width: 100%;
   background: white;
-  height: 60px;
-  left: 0;
   padding: 0 10px;
-  position: fixed;
-  right: 0;
+  position: fixed; 
   top: 0;
+  z-index:2;
 }
 .navbar_logo {
-  display: flex;
   padding: 20px;
-  width: 125px;
+  min-width: 125px;
+  width: 12vw;
 }
 .navbar_logout {
-    position: relative;
-    float: right;
     margin-right: 30px;
     margin-top: 15px;
     height: 40px;
@@ -41,6 +40,30 @@ code {
     -webkit-border-radius: 5px;
     background: #10E9FF;
 }
+
+.login-page {
+  display: flex;
+  align-items: center;
+}
+
+.main_image{
+  width: 60vw;
+  min-width: 300px;
+}
+.ant-btn.login-page_login-button {
+  margin-right: 30px;
+  height: 40px;
+  width: 90px;
+  color: white;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  background: #10E9FF;
+}
+
+.main-container{
+  margin-top: 200px;
+}
+
 .link {
   color: gray;
 }

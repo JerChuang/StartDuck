@@ -5,7 +5,7 @@ import { Calendar } from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
 import axios from 'axios';
 
-class dayActivities extends React.Component{
+class DayActivities extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -16,7 +16,7 @@ class dayActivities extends React.Component{
   }
 
   componentDidMount() {
-    console.log(this.props.params)
+    console.log('this.props',this.props)
     axios.get('/api/user_activities', {
       params:{
         email: this.state.email,
@@ -44,13 +44,13 @@ class dayActivities extends React.Component{
     const categories = this.state.categories.map(category => {
       return <button className = "dayActivities_categoriesButtons">{category}</button>    
     })
-    return(
+    return (
       <section className="dayActivities">
         <div className="dayActivities_calendar" >
-          <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />    
+          <Calendar fullscreen={false} onPanelChange={this.onPanelChange} />
         </div>
         <div>
-          <div className = "dayActivities_categories">
+          <div className="dayActivities_categories">
             {categories}
             <button className = "dayActivities_edit">edit</button>
           </div>
@@ -61,4 +61,4 @@ class dayActivities extends React.Component{
     )
   }
 }
-export default dayActivities;
+export default DayActivities;
