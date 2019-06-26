@@ -4,6 +4,8 @@ import ReactDom from 'react-dom';
 import { Form, DatePicker, Button } from 'antd';
 import TimePicker123 from './TimePicker.jsx';
 import Schedule from './schedule.jsx';
+import axios from 'axios';
+import { Redirect } from 'react-router'
 
 class datePicker extends React.Component {
   constructor(props) {
@@ -14,6 +16,7 @@ class datePicker extends React.Component {
       startValue: null,
       endValue: null,
       endOpen: false,
+      redirect: false
     }
   };
 
@@ -34,8 +37,7 @@ class datePicker extends React.Component {
   };
 
   onChange = (field, value) => {
-    console.log(field)
-    console.log("this is specific date", value)
+    // console.log(value.format('YYYY-MM-DD'))
     this.setState({
       [field]: value,
     });
@@ -73,7 +75,20 @@ class datePicker extends React.Component {
     this.setState({ time: time });
   };
 
+  handleSubmit = () => {
+    axios.post('/api/user_agendas',
+        {
+        email: "bob@Dee.com",
+        startValue: this.state.startValue.format('YYYY-MM-DD'),
+        endValue: this.state.endValue.format('YYYY-MM-DD'),
+        categories: this.state.categories,
+        time: this.state.time
+      }).then(() => this.setState({ redirect: true }));
+    console.log("cfjdijcdijcidi", this.state.startValue.format('YYYY-MM-DD'))
+  }
+
   render() {
+    const { redirect } = this.state;
     const { startValue, endValue, endOpen } = this.state;
     const formItemLayout = {
       labelCol: {
@@ -85,6 +100,11 @@ class datePicker extends React.Component {
         sm: { span: 16 },
       },
     };
+
+     if (redirect) {
+       return <Redirect to='/2019-06-22/activities/'/>;
+     }
+
     return (
       <div className="datePicker_form">
        <Form {...formItemLayout} >
