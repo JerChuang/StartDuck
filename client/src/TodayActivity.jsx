@@ -11,6 +11,7 @@ class TodayActivity extends Component {
         this.state = {
             active: false,
             activities: [],
+            activity: {},
             categories: [],
             email: this.props.email
         };
@@ -19,21 +20,27 @@ class TodayActivity extends Component {
     componentDidMount() {
         console.log('this is working!', this.props.params)
         axios.get('/api/user_activities/:id', {
-          params:{
-            email: this.state.email,
-            date: this.props.params
-          }
+            params: {
+                email: this.state.email,
+                date: this.props.params
+            }
         }) // You can simply make your requests to "/api/whatever you want"
-        .then((response) => {
-          // handle success
-          console.log(response.data, 'working ???') // The entire response from the Rails API
+            .then((response) => {
+                // handle success
+                console.log(response.data, 'working!!! ???') // The entire response from the Rails API
+                const activity = response.data.activities.find(element => {
+                    console.log(element.id, 'element id');
+                    console.log(this.props.params.activityID, 'activity id')
+                    return element.id == this.props.params.activityID; 
+                })
+                this.setState({
+                    activities: response.data.activities,
+                    categories: response.data.categories,
+                    activity: activity
+                });
+            })
+    }
     
-          this.setState({
-            activities: response.data.activities,
-            categories: response.data.categories
-          });
-        })
-      }
     
     handleClick = () => {
         this.setState({
@@ -42,6 +49,7 @@ class TodayActivity extends Component {
     }
 
     render() {
+        console.log(this.props.params, 'heree')
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
@@ -60,30 +68,13 @@ class TodayActivity extends Component {
                 <div className="TodayTask">
 
                     <div className="TodayActivityBox">
-                        <TodayActivityBox activities={this.props.activities} />
+                        <TodayActivityBox activity={this.state.activity} />
                     </div>
                     <div className="Completeness">
-                        <span>Status: Incomplete</span>
+                        <span>Status: {this.state.activity.completeness +  ""}</span>
                     </div>
                     <div className="TodayContent">
-                        <p>
-                            This is some hardcoded content!
-                            eklfjalekfalwkefnawifnweafnewa
-                        </p>
-                        <p>
-                            oifnawefnaweofinawefoiawnefoia
-                            wnefoiawenfawoiefnawoeifawoeifn
-                            awoiefnwoeifnawe
-                            fnawoefiawieonfaoi
-                        </p>
-                        <p>
-                            oifnawefnaweofinawefoiawnefoia
-                            wnefoiojioefmwakmfalwkfnaownf
-                            fwaepfjaiwefjj2093ie19idmeiawm
-                            iawenfawoiefnawoeifawoeifn
-                            awoiefnwoeifnawe
-                            fnawoefiawieonfaoi
-                        </p>
+                        <p>{this.state.activity.content} </p>
                     </div>
                 </div>
 

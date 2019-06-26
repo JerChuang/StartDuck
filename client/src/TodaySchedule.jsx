@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 const TodaySchedule = (props) => {
+  console.log(props,' from todayschedule');
     return (
         <div className="todayActivityItem">
           <span className="dayActivities_itemName">{props.name}</span>     
