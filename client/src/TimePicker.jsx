@@ -9,7 +9,7 @@ class TimePicker extends React.Component {
 
 
   handleChange = value => {
-    console.log(`selected ${value}`);
+    this.props.onSelectedTime(value)
   }
 
   render() {

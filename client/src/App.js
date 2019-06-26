@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import Nav from './Nav.jsx';
 import 'antd/dist/antd.css';
+
+import Nav from './Nav.jsx';
+import Login from './Login.jsx'
 // import activity from "./activity.jsx";
 import DayActivities from "./dayActivities.jsx";
-import datePicker from "./datePicker.jsx";
+import DatePicker from "./datePicker.jsx";
 import TodayActivity from "./TodayActivity.jsx";
 
 
@@ -21,9 +23,11 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"],
-      email: "bob@Dee.com"
+      email: ""
     }
   }
+
+
 
 
   fetchData = () => {
@@ -44,29 +48,16 @@ class App extends Component {
     })
   }
 
-  // fetchDayActivity = () => {
-  //   axios.get('/api/user_activities/:id', {
-  //     params:{
-  //       email: this.state.email,
-  //       date: "2019-06-22"
-  //     }
-  //   }) // You can simply make your requests to "/api/whatever you want"
-  //   .then((response) => {
-  //     // handle success
-  //     console.log(response.data) // The entire response from the Rails API
-
-  //     this.setState({
-  //       activities: response.data.activities,
-  //       categories: response.data.categories
-  //     });
-  //   })
-  // }
+  setUser = (email) => {
+    this.setState({email: email}, ()=> console.log('current state after setting user', this.state))
+    // console.log('current state after setting user', this.state)
+  }
 
   render() {
     return (
       <Router>
-      <Nav/>
-      <ul>
+      <Nav email={this.state.email}/>
+      {/* <ul>
           <li>
             <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
           </li>
@@ -85,27 +76,31 @@ class App extends Component {
             <Link to="/06012019/activities/100" currentpath = '/'>06012019/activities/100</Link>
           </li>
 
-        </ul>
-      <Switch>
-        <Route path="/admin/activities/:activityID" component={adminActivity} />
-        <Route path="/admin/activities" component={adminActivities} />
-        <Route path="/admin/categories" component={adminCategories} />
-        <Route 
-          path="/:day/activities/:activityID" 
-          render = {(props) => <TodayActivity {...props} email={this.state.email} activities={this.state.activities} params={props.match.params} />}
-        />
-        <Route path="/schedule" component={datePicker} />
-        <Route 
-          path="/:day/activities/" 
-          render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
-        />
-      </Switch>
-      {/* <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>
-      </div> */}
+        </ul> */}
+      <main className = "main-container">
+        <Switch>
+          <Route path="/admin/activities/:activityID" component={adminActivity} />
+          <Route path="/admin/activities" component={adminActivities} />
+          <Route path="/admin/categories" component={adminCategories} />
+          <Route
+            path="/:day/activities/:activityID"
+            render = {(props) => <TodayActivity {...props} email={this.state.email} activities={this.state.activities} params={props.match.params} />}
+            />
+          <Route
+            path="/schedule"
+            render ={(props) => <DatePicker {...props} state={this.state}/>}
+          />
+
+          <Route
+            path="/:day/activities/"
+            render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
+          />
+          <Route
+            path="/"
+            render = {(props) => <Login {...props} selectUser={this.setUser}  />}
+          />
+        </Switch>
+      </main>
     </Router>
     );
   }
