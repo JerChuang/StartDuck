@@ -173,6 +173,7 @@ button.ant-btn.datePicker_button {
     font-weight: bold;
     width: 100px;
     height: 35px;
+    box-shadow: 0px 2px 2px grey;
 }
 
 input.ant-input.hours_form {
@@ -207,7 +208,7 @@ div.ant-col.ant-form-item-control-wrapper.ant-col-xs-24.ant-col-sm-16 {
   flex-wrap: wrap-reverse;
 }
 
-.ant-radio-wrapper{
+.ant-checkbox-wrapper{
   color: white;
   font-weight: bold;
 }
