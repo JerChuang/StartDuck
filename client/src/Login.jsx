@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { ReactComponent as MainImage } from './images/main.svg';
+// import { ReactComponent as MainImage } from './images/main.svg';
+import main from './images/main.png'
 import { Form, Icon, Input, Button} from 'antd';
+import axios from 'axios';
 class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -8,6 +10,27 @@ class Login extends Component {
       if (!err) {
         console.log('Received values of form: ', values);
         this.props.selectUser(values.email)
+
+        // axios({
+        //   method: 'post', 
+        //   url: `/`, 
+        //   data: {
+        //     wishlist: { 
+        //       name: 'My New Wishlist'
+        //     }
+        //   },
+        //   headers: {'Authorization': token }
+        // })
+        // .then(response => {
+        //   console.log(response)
+        //   this.setState({
+        //     wishlists: [response.data, ...this.state.wishlists],
+        //     currentWishlistId: response.data.id
+        //   })
+        // })
+        // .catch(error => {
+        //   console.log(error)
+        // })
       }
     });
   };
@@ -17,7 +40,7 @@ class Login extends Component {
     return (
       <section className="login-page">
         <div>
-          <MainImage className="main_image" />
+          <img href={main} alt ="Main-page"className="main_image" />
         </div>
         <Form onSubmit={this.handleSubmit} className="login-form">
         <h1>Manage your time with us!</h1>
