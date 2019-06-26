@@ -9,7 +9,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8",
-    "react-slide-toggle": "^0.2.5"
+    "react-slide-toggle": "^0.2.5",
+    "universal-cookie": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
