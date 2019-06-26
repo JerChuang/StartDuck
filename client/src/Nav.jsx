@@ -30,7 +30,8 @@ const Nav = (props) => {
     return(
       <nav className="navbar">
         <div className="container-fluid">
-          <Logo className="navbar_logo" />  
+          {/* <Logo className="navbar_logo" />  */}
+          <img src={Logo} alt ="Logo"className="navbar_logo" /> 
         </div>
       </nav>
 
