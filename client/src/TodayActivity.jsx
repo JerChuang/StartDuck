@@ -53,7 +53,7 @@ class TodayActivity extends Component {
                     {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
-                        <TodayActivityCalendar activities={this.props.activities} />
+                        <TodayActivityCalendar activities={this.state.activities} />
                     </div>
                 </div>
 
