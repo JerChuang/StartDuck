@@ -34,6 +34,8 @@ class datePicker extends React.Component {
   };
 
   onChange = (field, value) => {
+    console.log(field)
+    console.log("this is specific date", value)
     this.setState({
       [field]: value,
     });
@@ -58,8 +60,12 @@ class datePicker extends React.Component {
   };
 
   setCategories = topics => {
-    console.log("this is topicsssss", topics)
-    this.setState({ categories: topics });
+    var category1 = this.state.categories
+    category1.push(topics)
+    this.setState({
+      categories: category1
+    });
+    console.log("this is topicsssss", this.state.categories)
   };
 
   setTime = time => {
@@ -81,7 +87,7 @@ class datePicker extends React.Component {
     };
     return (
       <div className="datePicker_form">
-       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+       <Form {...formItemLayout} >
        <Form.Item >
         <Schedule
          onSelectedCategories = { this.setCategories }
@@ -116,7 +122,7 @@ class datePicker extends React.Component {
             onOpenChange={this.handleEndOpenChange}
           />
          </Form.Item>
-         <Button className="datePicker_button" >
+          <Button className="datePicker_button" onClick={this.handleSubmit}>
             Submit
           </Button>
       </Form>
@@ -124,7 +130,6 @@ class datePicker extends React.Component {
     );
   }
 }
-
 
 export default datePicker;
 
