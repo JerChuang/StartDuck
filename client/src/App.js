@@ -44,6 +44,24 @@ class App extends Component {
     })
   }
 
+  // fetchDayActivity = () => {
+  //   axios.get('/api/user_activities/:id', {
+  //     params:{
+  //       email: this.state.email,
+  //       date: "2019-06-22"
+  //     }
+  //   }) // You can simply make your requests to "/api/whatever you want"
+  //   .then((response) => {
+  //     // handle success
+  //     console.log(response.data) // The entire response from the Rails API
+
+  //     this.setState({
+  //       activities: response.data.activities,
+  //       categories: response.data.categories
+  //     });
+  //   })
+  // }
+
   render() {
     return (
       <Router>
@@ -74,7 +92,7 @@ class App extends Component {
         <Route path="/admin/categories" component={adminCategories} />
         <Route 
           path="/:day/activities/:activityID" 
-          render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
+          render = {(props) => <TodayActivity {...props} activities={this.state.activities} params={props.match.params} />}
         />
         <Route path="/schedule" component={datePicker} />
         <Route 
