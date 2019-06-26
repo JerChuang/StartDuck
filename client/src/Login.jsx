@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { ReactComponent as MainImage } from './images/main.svg';
-import {Link} from "react-router-dom";
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button} from 'antd';
 class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.selectUser(values.email)
       }
     });
   };
@@ -43,7 +43,7 @@ class Login extends Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button className="login-page_login-button" type="submit">
+            <Button htmlType="submit" className="login-page_login-button">
               Log in
             </Button>     
           </Form.Item>

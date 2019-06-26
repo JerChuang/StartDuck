@@ -7,7 +7,7 @@ import Nav from './Nav.jsx';
 import Login from './Login.jsx'
 // import activity from "./activity.jsx";
 import DayActivities from "./dayActivities.jsx";
-import datePicker from "./datePicker.jsx";
+import DatePicker from "./datePicker.jsx";
 import TodayActivity from "./TodayActivity.jsx";
 
 
@@ -23,7 +23,7 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"],
-      email: "bob@Dee.com"
+      email: ""
     }
   }
 
@@ -46,10 +46,15 @@ class App extends Component {
     })
   }
 
+  setUser = (email) => {
+    this.setState({email: email}, ()=> console.log('current state after setting user', this.state))
+    // console.log('current state after setting user', this.state)
+  }
+
   render() {
     return (
       <Router>
-      <Nav/>
+      <Nav email={this.state.email}/>
       {/* <ul>
           <li>
             <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
@@ -72,7 +77,6 @@ class App extends Component {
         </ul> */}
       <main className = "main-container">
         <Switch>
-          <Route path="/" component={Login} />
           <Route path="/admin/activities/:activityID" component={adminActivity} />
           <Route path="/admin/activities" component={adminActivities} />
           <Route path="/admin/categories" component={adminCategories} />
@@ -80,11 +84,18 @@ class App extends Component {
             path="/:day/activities/:activityID" 
             render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
           />
-          <Route path="/schedule" component={datePicker} />
+          <Route 
+            path="/schedule" 
+            render ={(props) => <DatePicker {...props} state={this.state}/>}
+          />
 
           <Route 
             path="/:day/activities/" 
             render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
+          />
+          <Route 
+            path="/" 
+            render = {(props) => <Login {...props} selectUser={this.setUser}  />}
           />
         </Switch>
       </main>
