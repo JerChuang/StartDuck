@@ -2,35 +2,16 @@ import React, { Component } from 'react';
 // import { ReactComponent as MainImage } from './images/main.svg';
 import main from './images/main.png'
 import { Form, Icon, Input, Button} from 'antd';
-import axios from 'axios';
+
 class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.selectUser(values.email)
-
-        // axios({
-        //   method: 'post', 
-        //   url: `/`, 
-        //   data: {
-        //     wishlist: { 
-        //       name: 'My New Wishlist'
-        //     }
-        //   },
-        //   headers: {'Authorization': token }
-        // })
-        // .then(response => {
-        //   console.log(response)
-        //   this.setState({
-        //     wishlists: [response.data, ...this.state.wishlists],
-        //     currentWishlistId: response.data.id
-        //   })
-        // })
-        // .catch(error => {
-        //   console.log(error)
-        // })
+        this.props.cookies.set("email", values.email)
+        this.props.setUser(this.props.cookies.get('email'))
+        // console.log(this.props.cookies.get('email'))
       }
     });
   };

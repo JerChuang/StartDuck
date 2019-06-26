@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import 'antd/dist/antd.css';
+import Cookies from 'universal-cookie';
 
 import Nav from './Nav.jsx';
 import Login from './Login.jsx'
@@ -16,6 +17,8 @@ import TodayActivity from "./TodayActivity.jsx";
 // import adminCategories from "./adminCategories.jsx";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
+const cookies = new Cookies()
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -23,38 +26,38 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"],
-      email: ""
+      email: cookies.get('email')
     }
   }
 
 
-  fetchData = () => {
-    axios.get('/api/user_activities', {
-      params:{
-        email: this.state.email,
-        date: "2019-06-22"
-      }
-    }) // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+  // fetchData = () => {
+  //   axios.get('/api/user_activities', {
+  //     params:{
+  //       email: this.state.email,
+  //       date: "2019-06-22"
+  //     }
+  //   }) // You can simply make your requests to "/api/whatever you want"
+  //   .then((response) => {
+  //     // handle success
+  //     console.log(response.data) // The entire response from the Rails API
 
-      this.setState({
-        activities: response.data.activities,
-        categories: response.data.categories
-      });
-    })
-  }
+  //     this.setState({
+  //       activities: response.data.activities,
+  //       categories: response.data.categories
+  //     });
+  //   })
+  // }
 
   setUser = (email) => {
     this.setState({email: email}, ()=> console.log('current state after setting user', this.state))
-    // console.log('current state after setting user', this.state)
+    console.log('current state after setting user', this.state)
   }
 
   render() {
     return (
       <Router>
-      <Nav email={this.state.email}/>
+      <Nav cookies={cookies} setUser={this.setUser} />
       {/* <ul>
           <li>
             <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
@@ -95,17 +98,10 @@ class App extends Component {
           />
           <Route 
             path="/" 
-            render = {(props) => <Login {...props} selectUser={this.setUser}  />}
+            render = {(props) => <Login {...props} setUser={this.setUser} cookies={cookies} />}
           />
         </Switch>
       </main>
-
-      {/* <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>
-      </div> */}
     </Router>
     );
   }
