@@ -40,7 +40,7 @@ class Login extends Component {
     return (
       <section className="login-page">
         <div>
-          <img href={main} alt ="Main-page"className="main_image" />
+          <img src={main} alt ="Main-page"className="main_image" />
         </div>
         <Form onSubmit={this.handleSubmit} className="login-form">
         <h1>Manage your time with us!</h1>
