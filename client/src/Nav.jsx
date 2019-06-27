@@ -1,38 +1,55 @@
-import React from 'react';
-import { ReactComponent as Logo } from './images/logo.svg';
-import {Link} from "react-router-dom";
-function handleClick (e) {
-  e.preventDefault();
-  this.props.form.validateFields((err, values) => {
-    if (!err) {
-      console.log('Received values of form: ', values);
-      this.props.selectUser(values.email)
-    }
-  });
-};
+import React, { Component } from 'react';
+// import { ReactComponent as Logo } from './images/logo.svg';
+import Logo from './images/logo.png'
+import {Link, Redirect} from "react-router-dom";
 
-const Nav = (props) => {
 
-  if (props.email){
-  return(
-  <nav className="navbar">
-   <div className="container-fluid">
-    <Logo className="navbar_logo" />
+class Nav extends Component {
+  state = {
+    redirect: false
+  }
+
+  handleClick = (e) =>{
+    e.preventDefault();
+    console.log('this.props.cookies from nav bar', this.props)
+    this.props.cookies.remove('email',  { path: '/' })
+    this.props.setUser('')
+    this.setState({redirect:true})
+  };
+ 
+  render(){
     
-    <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
-    <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
-    <button className="navbar_logout">Logout</button>
-   </div>
-  </nav>
-  )} else{
-    return(
-      <nav className="navbar">
-        <div className="container-fluid">
-          <Logo className="navbar_logo" />  
-        </div>
-      </nav>
+  
+    if(this.state.redirect){
+      this.setState({redirect:false})
+      return (
+          <Redirect to='/'/>
+      )
+    } 
 
-    )
+    if (this.props.cookies.get('email')){
+    return(
+    <nav className="navbar">
+    <div className="container-fluid">
+      {/* <Logo className="navbar_logo" /> */}
+      <img src={Logo} alt ="Logo"className="navbar_logo" />
+      
+      <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
+      <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
+      <button className="navbar_logout" onClick={this.handleClick}>Logout</button>
+    </div>
+    </nav>
+    )} else{
+      return(
+        <nav className="navbar">
+          <div className="container-fluid">
+            {/* <Logo className="navbar_logo" />  */}
+            <img src={Logo} alt ="Logo"className="navbar_logo" /> 
+          </div>
+        </nav>
+
+      )
+    }
   }
 }
 

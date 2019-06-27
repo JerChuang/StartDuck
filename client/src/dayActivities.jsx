@@ -11,12 +11,12 @@ class DayActivities extends React.Component{
     this.state = {
       activities: [],
       categories: [],
-      email: this.props.email
+      email: this.props.cookies.get('email')
     }
   }
 
   componentDidMount() {
-    console.log('this.props',this.props)
+    // console.log('this.props',this.props)
     axios.get('/api/user_activities', {
       params:{
         email: this.state.email,
@@ -25,7 +25,7 @@ class DayActivities extends React.Component{
     }) // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
-      console.log(response.data) // The entire response from the Rails API
+      // console.log(response.data) // The entire response from the Rails API
 
       this.setState({
         activities: response.data.activities,
@@ -39,8 +39,8 @@ class DayActivities extends React.Component{
     console.log(value, mode);
   }
   render(){
-    console.log('this.props from dayActivities', this.props)
-    console.log('this.state from dayActivities', this.state)
+    // console.log('this.props from dayActivities', this.props)
+    // console.log('this.state from dayActivities', this.state)
     const categories = this.state.categories.map(category => {
       return <button className = "dayActivities_categoriesButtons">{category}</button>    
     })
