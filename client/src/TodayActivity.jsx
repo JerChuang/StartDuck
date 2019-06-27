@@ -49,7 +49,7 @@ class TodayActivity extends Component {
     }
 
     render() {
-        console.log(this.props.params, 'heree')
+        console.log(this.state.activities, 'this is state activities;')
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
@@ -61,7 +61,7 @@ class TodayActivity extends Component {
                     {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
-                        <TodayActivityCalendar activities={this.state.activities} />
+                        <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
                     </div>
                 </div>
 
