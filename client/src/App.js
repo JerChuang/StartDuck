@@ -66,7 +66,7 @@ class App extends Component {
             <Route path="/admin/categories" component={adminCategories} />
             <Route 
               path="/:day/activities/:activityID" 
-              render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
+              render = {(props) => <TodayActivity {...props} email={this.state.email} activities={this.state.activities} params={props.match.params} />}
             />
             <Route 
               path="/schedule" 
