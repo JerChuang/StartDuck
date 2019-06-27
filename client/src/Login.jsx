@@ -9,7 +9,7 @@ class Login extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.cookies.set("email", values.email)
+        this.props.cookies.set("email", values.email, { path: '/' })
         this.props.setUser(this.props.cookies.get('email'))
         // console.log(this.props.cookies.get('email'))
       }
@@ -21,6 +21,7 @@ class Login extends Component {
     return (
       <section className="login-page">
         <div>
+    
           <img src={main} alt ="Main-page"className="main_image" />
         </div>
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -59,14 +60,3 @@ class Login extends Component {
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
 
 export default WrappedNormalLoginForm;
-
-
-
-// class NormalLoginForm extends React.Component {
-  
-
-  
-// }
-
-
-// ReactDOM.render(<WrappedNormalLoginForm />, mountNode);

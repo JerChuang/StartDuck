@@ -26,7 +26,8 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"],
-      email: cookies.get('email')
+      email: cookies.get('email'),
+      loginRedirect: false,
     }
   }
 
@@ -51,59 +52,56 @@ class App extends Component {
 
   setUser = (email) => {
     this.setState({email: email}, ()=> console.log('current state after setting user', this.state))
-    console.log('current state after setting user', this.state)
+  }
+  setRedirect = (boolean) => {
+    this.setState({loginRedirect: boolean}, ()=> console.log('current state after setting redirect', this.state))
   }
 
   render() {
-    return (
-      <Router>
-      <Nav cookies={cookies} setUser={this.setUser} />
-      {/* <ul>
-          <li>
-            <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
-          </li>
+    if (cookies.get('email')){
+      return (
+        <Router>
+        <Nav cookies={cookies} setUser={this.setUser} setRedirect={this.setRedirect}/>
+    
+        <main className = "main-container">
+          <Switch>
+            <Route path="/admin/activities/:activityID" component={adminActivity} />
+            <Route path="/admin/activities" component={adminActivities} />
+            <Route path="/admin/categories" component={adminCategories} />
+            <Route 
+              path="/:day/activities/:activityID" 
+              render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
+            />
+            <Route 
+              path="/schedule" 
+              render ={(props) => <DatePicker {...props} state={this.state}/>}
+            />
 
-          <li>
-            <Link to="/admin/categories" currentpath = '/'>/admin/categories</Link>
-          </li>
-          <li>
-            <Link to="/admin/activities/105" currentpath = '/'>/admin/activities/105</Link>
-          </li>
-          <li>
-            <Link to="/06052019/activities/" currentpath = '/'>06052019/activities/</Link>
-          </li>
-
-          <li>
-            <Link to="/06012019/activities/100" currentpath = '/'>06012019/activities/100</Link>
-          </li>
-
-        </ul> */}
-      <main className = "main-container">
-        <Switch>
-          <Route path="/admin/activities/:activityID" component={adminActivity} />
-          <Route path="/admin/activities" component={adminActivities} />
-          <Route path="/admin/categories" component={adminCategories} />
-          <Route 
-            path="/:day/activities/:activityID" 
-            render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
-          />
-          <Route 
-            path="/schedule" 
-            render ={(props) => <DatePicker {...props} state={this.state}/>}
-          />
-
-          <Route 
-            path="/:day/activities/" 
-            render = {(props) => <DayActivities {...props} email={this.state.email} params={props.match.params}/>}
-          />
-          <Route 
+            <Route 
+              path="/:day/activities/" 
+              render = {(props) => <DayActivities {...props} cookies={cookies}  params={props.match.params}/>}
+            />
+            <Route 
+              path="/" 
+              render = {(props) => <Login {...props} setUser={this.setUser} cookies={cookies} />}
+            />
+          </Switch>
+        </main>
+      </Router>
+      );
+    } else {
+      return(
+        <Router>
+          <Nav cookies={cookies} setUser={this.setUser} setRedirect={this.setRedirect}/>
+          <main className = "main-container">
+            <Route 
             path="/" 
             render = {(props) => <Login {...props} setUser={this.setUser} cookies={cookies} />}
-          />
-        </Switch>
-      </main>
-    </Router>
-    );
+            />
+          </main>
+        </Router>
+      )
+    }
   }
 }
 
@@ -127,9 +125,26 @@ function adminActivity() {
 // function activity() {
 //   return <h2>This is the component for /:day/activities/:activityID</h2>;
 // }
+//  {/* <ul>
+//         <li>
+//           <Link to="/admin/activities" currentpath = '/'>/admin/activities</Link>
+//         </li>
 
+//         <li>
+//           <Link to="/admin/categories" currentpath = '/'>/admin/categories</Link>
+//         </li>
+//         <li>
+//           <Link to="/admin/activities/105" currentpath = '/'>/admin/activities/105</Link>
+//         </li>
+//         <li>
+//           <Link to="/06052019/activities/" currentpath = '/'>06052019/activities/</Link>
+//         </li>
 
+//         <li>
+//           <Link to="/06012019/activities/100" currentpath = '/'>06012019/activities/100</Link>
+//         </li>
 
+//       </ul> */}
 
 
 export default App;
