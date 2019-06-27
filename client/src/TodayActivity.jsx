@@ -31,7 +31,7 @@ class TodayActivity extends Component {
                 const activity = response.data.activities.find(element => {
                     console.log(element.id, 'element id');
                     console.log(this.props.params.activityID, 'activity id')
-                    return element.id == this.props.params.activityID;
+                    return element.id === this.props.params.activityID;
                 })
                 this.setState({
                     activities: response.data.activities,

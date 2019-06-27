@@ -1,6 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import ReactDom from 'react-dom';
 import { Select } from 'antd';
 
 const { Option } = Select;
