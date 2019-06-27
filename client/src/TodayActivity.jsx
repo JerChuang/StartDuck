@@ -13,12 +13,13 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-            email: this.props.email
+            email: this.props.cookies.get('email')
         };
     }
 
     componentDidMount() {
         console.log('this is working!', this.props.params)
+        console.log(this.state.email, 'this email is working')
         axios.get('/api/user_activities/:id', {
             params: {
                 email: this.state.email,
