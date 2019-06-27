@@ -11,29 +11,29 @@ class datePicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      time: 0,
+      hours_per_day: 0,
       categories: [],
-      startValue: null,
-      endValue: null,
+      start_date: null,
+      end_date: null,
       endOpen: false,
       redirect: false
     }
   };
 
-  disabledStartDate = startValue => {
-    const { endValue } = this.state;
-    if (!startValue || !endValue) {
+  disabledStartDate = start_date => {
+    const { end_date } = this.state;
+    if (!start_date || !end_date) {
       return false;
     }
-    return startValue.valueOf() > endValue.valueOf();
+    return start_date.valueOf() > end_date.valueOf();
   };
 
-  disabledEndDate = endValue => {
-    const { startValue } = this.state;
-    if (!endValue || !startValue) {
+  disabledEndDate = end_date => {
+    const { start_date } = this.state;
+    if (!end_date || !start_date) {
       return false;
     }
-    return endValue.valueOf() <= startValue.valueOf();
+    return end_date.valueOf() <= start_date.valueOf();
   };
 
   onChange = (field, value) => {
@@ -44,11 +44,11 @@ class datePicker extends React.Component {
   };
 
   onStartChange = value => {
-    this.onChange('startValue', value);
+    this.onChange('start_date', value);
   };
 
   onEndChange = value => {
-    this.onChange('endValue', value);
+    this.onChange('end_date', value);
   };
 
   handleStartOpenChange = open => {
@@ -70,26 +70,27 @@ class datePicker extends React.Component {
     console.log("this is topicsssss", this.state.categories)
   };
 
-  setTime = time => {
-    console.log("this is timeeeeee", time)
-    this.setState({ time: time });
+  setTime = hours_per_day => {
+    console.log("this is timeeeeee", hours_per_day)
+    this.setState({ hours_per_day: hours_per_day });
   };
 
   handleSubmit = () => {
     axios.post('/api/user_agendas',
         {
         email: "bob@Dee.com",
-        startValue: this.state.startValue.format('YYYY-MM-DD'),
-        endValue: this.state.endValue.format('YYYY-MM-DD'),
+        start_date: this.state.start_date.format('YYYY-MM-DD'),
+        end_date: this.state.end_date.format('YYYY-MM-DD'),
         categories: this.state.categories,
-        time: this.state.time
+        hours_per_day: this.state.hours_per_day
       }).then(() => this.setState({ redirect: true }));
-    console.log("cfjdijcdijcidi", this.state.startValue.format('YYYY-MM-DD'))
+    console.log("this is start_date", this.state.start_date.format('YYYY-MM-DD'))
+    console.log("this is end_date", this.state.end_date.format('YYYY-MM-DD'))
   }
 
   render() {
     const { redirect } = this.state;
-    const { startValue, endValue, endOpen } = this.state;
+    const { start_date, end_date, endOpen } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -124,7 +125,7 @@ class datePicker extends React.Component {
             disabledDate={this.disabledStartDate}
             showTime
             format="YYYY-MM-DD"
-            value={startValue}
+            value={start_date}
             placeholder="Star Date"
             onChange={this.onStartChange}
             onOpenChange={this.handleStartOpenChange}
@@ -135,7 +136,7 @@ class datePicker extends React.Component {
             disabledDate={this.disabledEndDate}
             showTime
             format="YYYY-MM-DD"
-            value={endValue}
+            value={end_date}
             placeholder="End Date"
             onChange={this.onEndChange}
             open={endOpen}
