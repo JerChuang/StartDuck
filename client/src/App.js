@@ -27,7 +27,6 @@ class App extends Component {
       activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"],
       email: cookies.get('email'),
-      loginRedirect: false,
     }
   }
 
@@ -53,12 +52,9 @@ class App extends Component {
   setUser = (email) => {
     this.setState({email: email}, ()=> console.log('current state after setting user', this.state))
   }
-  setRedirect = (boolean) => {
-    this.setState({loginRedirect: boolean}, ()=> console.log('current state after setting redirect', this.state))
-  }
-
+  
   render() {
-    if (cookies.get('email')){
+  
       return (
         <Router>
         <Nav cookies={cookies} setUser={this.setUser} setRedirect={this.setRedirect}/>
@@ -89,19 +85,7 @@ class App extends Component {
         </main>
       </Router>
       );
-    } else {
-      return(
-        <Router>
-          <Nav cookies={cookies} setUser={this.setUser} setRedirect={this.setRedirect}/>
-          <main className = "main-container">
-            <Route 
-            path="/" 
-            render = {(props) => <Login {...props} setUser={this.setUser} cookies={cookies} />}
-            />
-          </main>
-        </Router>
-      )
-    }
+   
   }
 }
 

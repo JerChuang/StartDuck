@@ -2,28 +2,30 @@ import React, { Component } from 'react';
 // import { ReactComponent as Logo } from './images/logo.svg';
 import Logo from './images/logo.png'
 import {Link, Redirect} from "react-router-dom";
-import * as moment from 'moment';
+
 
 class Nav extends Component {
-  // state = {
-  //   redirect: false
-  // }
+  state = {
+    redirect: false
+  }
 
   handleClick = (e) =>{
     e.preventDefault();
     console.log('this.props.cookies from nav bar', this.props)
     this.props.cookies.remove('email',  { path: '/' })
     this.props.setUser('')
-    this.props.setRedirect(true)
-    // this.setState({redirect:true})
+    this.setState({redirect:true})
   };
+ 
   render(){
     
-    // console.log(moment().format('YYYY-MM-DD'))
-    // if(this.state.redirect){
-    //   console.log('triggered redirect')
-    //   return <Redirect to='/'/>
-    // } 
+  
+    if(this.state.redirect){
+      this.setState({redirect:false})
+      return (
+          <Redirect to='/'/>
+      )
+    } 
 
     if (this.props.cookies.get('email')){
     return(

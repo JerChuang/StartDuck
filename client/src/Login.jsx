@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 // import { ReactComponent as MainImage } from './images/main.svg';
 import main from './images/main.png'
 import { Form, Icon, Input, Button} from 'antd';
+import {Redirect} from "react-router-dom";
+import * as moment from 'moment';
 
 class Login extends Component {
+
+  state = {
+    redirect: false
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -12,11 +19,19 @@ class Login extends Component {
         this.props.cookies.set("email", values.email, { path: '/' })
         this.props.setUser(this.props.cookies.get('email'))
         // console.log(this.props.cookies.get('email'))
+        this.setState({redirect:true})
       }
     });
   };
 
   render() {
+    // console.log(moment().format('YYYY-MM-DD'))
+    if(this.state.redirect){
+      this.setState({redirect:false})
+      return (
+          <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
+      )
+    } 
     const { getFieldDecorator } = this.props.form;
     return (
       <section className="login-page">
