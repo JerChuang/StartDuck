@@ -18,19 +18,16 @@ class TodayActivity extends Component {
     }
 
     componentDidMount() {
-        console.log('this is mounting!', this.props.params)
-        console.log(this.state.email, 'this email is working')
         this.fetchActivity(this.props.params.activityID)
     }
 
     componentDidUpdate (prevProps) {
-        console.log("this is updating", this.state.activity)
         const activityID = this.props.params.activityID
         if (prevProps.params.activityID !== activityID) {
             this.fetchActivity(activityID);
         }
     } 
-    
+
     fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
             params: {
@@ -40,7 +37,6 @@ class TodayActivity extends Component {
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
                 // handle success
-                console.log(response.data, 'working!!! ???') // The entire response from the Rails API
                 const activity = response.data.activities.find(element => {
                     return element.id == this.props.params.activityID;
                 })
@@ -50,10 +46,8 @@ class TodayActivity extends Component {
                     activity: activity
                 });
             })
-
     }
-
-
+    // toggle calender
     handleClick = () => {
         this.setState({
             active: !this.state.active
@@ -61,8 +55,6 @@ class TodayActivity extends Component {
     }
 
     render() {
-        console.log(this.state.activities, 'this is state activities;')
-        console.log("this.state.activity", this.state.activity)
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
