@@ -18,8 +18,20 @@ class TodayActivity extends Component {
     }
 
     componentDidMount() {
-        console.log('this is working!', this.props.params)
+        console.log('this is mounting!', this.props.params)
         console.log(this.state.email, 'this email is working')
+        this.fetchActivity(this.props.params.activityID)
+    }
+
+    componentDidUpdate (prevProps) {
+        console.log("this is updating", this.state.activity)
+        const activityID = this.props.params.activityID
+        if (prevProps.params.activityID !== activityID) {
+            this.fetchActivity(activityID);
+        }
+    } 
+    
+    fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
             params: {
                 email: this.state.email,
@@ -30,8 +42,6 @@ class TodayActivity extends Component {
                 // handle success
                 console.log(response.data, 'working!!! ???') // The entire response from the Rails API
                 const activity = response.data.activities.find(element => {
-                    console.log(element.id, 'element id');
-                    console.log(this.props.params.activityID, 'activity id')
                     return element.id == this.props.params.activityID;
                 })
                 this.setState({
@@ -40,6 +50,7 @@ class TodayActivity extends Component {
                     activity: activity
                 });
             })
+
     }
 
 
@@ -51,6 +62,7 @@ class TodayActivity extends Component {
 
     render() {
         console.log(this.state.activities, 'this is state activities;')
+        console.log("this.state.activity", this.state.activity)
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
