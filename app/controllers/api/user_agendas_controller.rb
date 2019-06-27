@@ -7,9 +7,12 @@ class Api::UserAgendasController < ApplicationController
     @agenda.user_id = @user_id
     @agenda.save
 
+    @days = (@agenda.start_date..@agenda.end_date).map(&:to_s)
+
+
     @category_id = Category.where(name: params[:categories]).pluck(:id)
     @activities = Activity.where(category_id: @category_id)
-
+    # byebug
     @activities.each do |activity|
       UserActivity.create!(
         activity: activity,
