@@ -23,7 +23,7 @@ class App extends Component {
       message: 'Click the button to load data!',
       activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
       categories: ["coding", "japanese", "cooking", "swimming"],
-      email: ""
+      email: "bob@Dee.com"
     }
   }
 
@@ -84,8 +84,8 @@ class App extends Component {
           <Route path="/admin/categories" component={adminCategories} />
           <Route
             path="/:day/activities/:activityID"
-            render = {(props) => <TodayActivity {...props} activities={this.state.activities}  />}
-          />
+            render = {(props) => <TodayActivity {...props} email={this.state.email} activities={this.state.activities} params={props.match.params} />}
+            />
           <Route
             path="/schedule"
             render ={(props) => <DatePicker {...props} state={this.state}/>}
