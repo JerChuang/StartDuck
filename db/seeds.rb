@@ -12,13 +12,13 @@ puts "Seeding Data ..."
 def open_asset(file_name)
     File.open(Rails.root.join('db', file_name))
   end
-  
+
   # Only run on development (local) instances not on production, etc.
   # unless Rails.env.development?
   #   puts "Development seeds only (for now)!"
   #   exit 0
   # end
-  
+
   # Let's do this ...
 
   ## USERS
@@ -37,8 +37,8 @@ user = User.create! ({
 puts "Finding or Creating Categories ..."
 Category.destroy_all
 
-cat1 = Category.find_or_create_by! name: 'Cooking'
-cat2 = Category.find_or_create_by! name: 'Japanese'
+cat1 = Category.find_or_create_by! name: 'Japanese'
+cat2 = Category.find_or_create_by! name: 'Cooking'
 cat3 = Category.find_or_create_by! name: 'Coding'
 
 ## ACTIVITIES
