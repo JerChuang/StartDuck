@@ -16,12 +16,16 @@ class Nav extends Component {
     this.props.setUser('')
     this.setState({redirect:true})
   };
+
+  componentDidUpdate(){
+    if (this.state.redirect){
+      this.setState({redirect:false})
+    }
+  }
  
   render(){
     
-  
     if(this.state.redirect){
-      this.setState({redirect:false})
       return (
           <Redirect to='/'/>
       )
