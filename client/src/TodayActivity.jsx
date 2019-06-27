@@ -13,12 +13,22 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-            email: this.props.email
+            email: this.props.cookies.get('email')
         };
     }
 
     componentDidMount() {
-        console.log('this is working!', this.props.params)
+        this.fetchActivity(this.props.params.activityID)
+    }
+
+    componentDidUpdate (prevProps) {
+        const activityID = this.props.params.activityID
+        if (prevProps.params.activityID !== activityID) {
+            this.fetchActivity(activityID);
+        }
+    } 
+
+    fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
             params: {
                 email: this.state.email,
@@ -27,11 +37,8 @@ class TodayActivity extends Component {
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
                 // handle success
-                console.log(response.data, 'working!!! ???') // The entire response from the Rails API
                 const activity = response.data.activities.find(element => {
-                    console.log(element.id, 'element id');
-                    console.log(this.props.params.activityID, 'activity id')
-                    return element.id === this.props.params.activityID;
+                    return element.id == this.props.params.activityID;
                 })
                 this.setState({
                     activities: response.data.activities,
@@ -40,8 +47,7 @@ class TodayActivity extends Component {
                 });
             })
     }
-
-
+    // toggle calender
     handleClick = () => {
         this.setState({
             active: !this.state.active
@@ -49,7 +55,6 @@ class TodayActivity extends Component {
     }
 
     render() {
-        console.log(this.props.params, 'heree')
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
@@ -61,7 +66,7 @@ class TodayActivity extends Component {
                     {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
-                        <TodayActivityCalendar activities={this.state.activities} />
+                        <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
                     </div>
                 </div>
 
