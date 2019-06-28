@@ -33,9 +33,9 @@ class Nav extends Component {
       )
     }
 
-     if(this.state.redirect1){
+    if(this.state.redirect1){
       return (
-          <Redirect to='/'/>
+          <Redirect to='/:day/activities/'/>
       )
     }
 
@@ -44,7 +44,7 @@ class Nav extends Component {
     <nav className="navbar">
     <div className="container-fluid">
       {/* <Logo className="navbar_logo" /> */}
-      <img src={Logo} alt ="Logo"className="navbar_logo" />
+      <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
 
       <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
       <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
@@ -56,7 +56,7 @@ class Nav extends Component {
         <nav className="navbar">
           <div className="container-fluid">
             {/* <Logo className="navbar_logo" />  */}
-            <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
+            <img src={Logo} alt ="Logo"className="navbar_logo" />
           </div>
         </nav>
 
