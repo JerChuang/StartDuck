@@ -15,7 +15,7 @@ class DayActivities extends React.Component{
       email: this.props.cookies.get('email'),
       date: '',
       redirect: false,
-      agenda: ['2019-06-01','2019-06-02','2019-06-03'],
+      agenda: [],
     }
   }
 
@@ -46,25 +46,10 @@ class DayActivities extends React.Component{
       this.setState({
         activities: response.data.activities,
         categories: response.data.categories,
+        agenda: response.data.agenda
       });
     })
   }
-
-  // getAgenda(){
-  //   axios.get('/api/user_agendas', {
-  //     params:{
-  //       email: this.state.email,
-  //       date: this.props.params
-  //     }
-  //   }) 
-  //   .then((response) => {
-  //     console.log('response from getagenda request', response)
-  //     // this.setState({
-  //     //   activities: response.data.activities,
-  //     //   categories: response.data.categories,
-  //     // });
-  //   })
-  // }
 
   onSelect = (value) => {
     this.setState({
@@ -72,19 +57,6 @@ class DayActivities extends React.Component{
       redirect: true,
     });
   }
-
-  // dateCellRender= (value) => {
-  //   const listData = this.getListData(value);
-  //   return (
-  //     <ul className="events">
-  //       {listData.map(item => (
-  //         <li key={item.content}>
-  //           <Badge status={item.type} text={item.content} />
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
 
   onFullRender = (value) => {
     // console.log(value.format('YYYY-MM-DD'))
