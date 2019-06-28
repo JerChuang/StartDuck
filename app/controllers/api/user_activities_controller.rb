@@ -6,7 +6,7 @@ class Api::UserActivitiesController < ApplicationController
     @activities = @user_activities.select('user_activities.*, activities.*').joins("INNER JOIN activities ON user_activities.activity_id = activities.id")
     # @activities = @user_activities.map{|user_activity|user_activity.activity}
     @categories = @user_activities.map {|user_activity|user_activity.activity.category.name}.uniq
-  
+ 
     render :json => {
       activities: @activities,
       categories: @categories

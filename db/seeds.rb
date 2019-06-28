@@ -58,7 +58,39 @@ activitybaking = cat2.activities.create!({
 
 activity1 = cat1.activities.create!({
   name:  'Welcome',
-  content: 'Welcome to Japanese 101. There\'s no content yet :)',
+  content: "# react-markdown
+
+  Renders Markdown as pure React components.
+  
+  [![npm version](https://img.shields.io/npm/v/react-markdown.svg?style=flat-square)](https://www.npmjs.com/package/react-markdown)[![Build Status](https://img.shields.io/travis/rexxars/react-markdown/master.svg?style=flat-square)](https://travis-ci.org/rexxars/react-markdown)
+  
+  Demo available at https://rexxars.github.io/react-markdown/
+  
+  ---
+  
+  react-markdown is proudly sponsored by
+  
+
+  
+  ---
+  
+  ## Installing
+  
+  ```
+  npm install --save react-markdown
+  ```
+  
+  ## Basic usage
+  
+  ```js
+  const React = require('react')
+  const ReactDOM = require('react-dom')
+  const ReactMarkdown = require('react-markdown')
+  
+  const input = '# This is a header\n\nAnd this is a paragraph'
+  
+  ReactDOM.render(<ReactMarkdown source={input} />, document.getElementById('container'))
+  ```",
   duration: 30,
   before_activity_id: nil,
   after_activity_id: nil,

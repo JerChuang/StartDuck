@@ -10,6 +10,11 @@ class Login extends Component {
   state = {
     redirect: false
   }
+  componentDidUpdate(){
+    if (this.state.redirect){
+      this.setState({redirect:false})
+    }
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -27,7 +32,6 @@ class Login extends Component {
   render() {
     // console.log(moment().format('YYYY-MM-DD'))
     if(this.state.redirect){
-      this.setState({redirect:false})
       return (
           <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
       )

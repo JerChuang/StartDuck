@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import TodayActivityBox from './TodayActivityBox.jsx';
 import TodayActivityCalendar from './TodayActivityCalendar.jsx';
+import { Redirect } from "react-router-dom";
 import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import WelcomeMd from './Welcome.md'
 
 class TodayActivity extends Component {
     constructor(props) {
@@ -16,14 +16,13 @@ class TodayActivity extends Component {
             activity: {},
             categories: [],
 			email: this.props.cookies.get('email'),
-			markdown: ''
         };
     }
 
     componentDidMount() {
-		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
+		
     }
 
     componentDidUpdate (prevProps) {
@@ -32,7 +31,10 @@ class TodayActivity extends Component {
 			this.fetchActivity(activityID);
 			this.checkCompleteness();
         }
-    }
+        if (this.state.redirect){
+            this.setState({redirect:false})
+        }
+    } 
 
     fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
@@ -42,7 +44,7 @@ class TodayActivity extends Component {
             }
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
-                console.log('response from today activity axios', response)
+				console.log('this is response',response)
                 // handle success
                 const activity = response.data.activities.find(element => {
                     console.log('elementid',element.id)
@@ -64,7 +66,12 @@ class TodayActivity extends Component {
             active: !this.state.active
         });
 	}
-
+    onSelect = (value) => {
+        this.setState({
+            date: value.format('YYYY-MM-DD'),
+            redirect: true,
+        });
+    }
 	checkCompleteness = () => {
 		if (this.state.activity.completeness) {
 			this.setState({
@@ -80,14 +87,11 @@ class TodayActivity extends Component {
 
 
     render() {
-        // const output;
-        // if(this.state.found){
-        //     output = //component;
-        // } else {
-        //      output = //conmpo
-
-        // }
-
+        if(this.state.redirect){
+            return (
+                <Redirect to={`/${this.state.date}/activities`}/>
+            )
+          }
 		console.log('this is markdown',this.state.markdown)
 
 		console.log('this is state.completenesss', this.state.completeness)
@@ -100,7 +104,7 @@ class TodayActivity extends Component {
                             <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
                         </div>
                     </h3>
-                    {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
+                    {this.state.active && <Calendar onSelect={this.onSelect} fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
                         <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
@@ -111,13 +115,12 @@ class TodayActivity extends Component {
 
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
-						<ReactMarkdown source={this.state.markdown} />
                     </div>
                     <div className="Completeness">
                         <span>Status: {this.state.completeness}	</span>
                     </div>
                     <div className="TodayContent">
-                        <p>{this.state.activity.content} </p>
+						<ReactMarkdown source={this.state.activity.content} />
                     </div>
                 </div>
 

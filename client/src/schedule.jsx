@@ -1,7 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import ReactDom from 'react-dom';
-import { Input, Checkbox } from 'antd';
+import { Checkbox } from 'antd';
 import SlideToggle from "react-slide-toggle";
 import axios from 'axios';
 

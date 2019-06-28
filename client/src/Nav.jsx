@@ -17,6 +17,13 @@ class Nav extends Component {
     this.props.setUser('')
     this.setState({redirect:true})
   };
+
+  componentDidUpdate(){
+    if (this.state.redirect){
+      this.setState({redirect:false})
+    }
+  }
+    
   handleClick1 = (e) =>{
     e.preventDefault();
     this.setState({redirect1:true})
@@ -27,7 +34,6 @@ class Nav extends Component {
 
 
     if(this.state.redirect){
-      this.setState({redirect:false})
       return (
           <Redirect to='/'/>
       )

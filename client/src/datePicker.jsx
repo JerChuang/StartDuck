@@ -1,6 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import ReactDom from 'react-dom';
 import { Form, DatePicker, Button } from 'antd';
 import TimePicker123 from './TimePicker.jsx';
 import Schedule from './schedule.jsx';
