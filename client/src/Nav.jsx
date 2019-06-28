@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { ReactComponent as Logo } from './images/logo.svg';
 import Logo from './images/logo.png'
 import {Link, Redirect} from "react-router-dom";
+import * as moment from 'moment';
 
 
 class Nav extends Component {
@@ -22,8 +23,11 @@ class Nav extends Component {
     if (this.state.redirect){
       this.setState({redirect:false})
     }
+    if (this.state.redirect1){
+      this.setState({redirect1:false})
+    }
   }
-    
+
   handleClick1 = (e) =>{
     e.preventDefault();
     this.setState({redirect1:true})
@@ -41,7 +45,7 @@ class Nav extends Component {
 
     if(this.state.redirect1){
       return (
-          <Redirect to='/:day/activities/'/>
+          <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
       )
     }
 
