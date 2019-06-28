@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import ActivityItem from './ActivityItem.jsx'
+import {Link} from "react-router-dom";
+
 
 class ActivitiesList extends Component {
   render() {
+    console.log('this.props from activities list:', this.props)
     const activities = this.props.activities.map(activity => {
-      return <ActivityItem key = {activity.id} {...activity } />    
+      return <Link to={`/${activity.date}/activities/${activity.id}`} >
+                <ActivityItem key = {activity.id} {...activity } />  
+             </Link>  
     })
 
     return (

@@ -55,7 +55,6 @@ class DayActivities extends React.Component{
     // console.log('this.props from dayActivities', this.props)
     // console.log('this.state from dayActivities', this.state)
     if(this.state.redirect){
-   
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
       )

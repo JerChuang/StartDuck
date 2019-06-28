@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodayActivityBox from './TodayActivityBox.jsx';
 import TodayActivityCalendar from './TodayActivityCalendar.jsx';
+import { Redirect } from "react-router-dom";
 import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
@@ -13,11 +14,14 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-            email: this.props.cookies.get('email')
+            email: this.props.cookies.get('email'),
+            date: '',
+            redirect: false,
         };
     }
 
     componentDidMount() {
+        console.log(this.props.params)
         this.fetchActivity(this.props.params.activityID)
     }
 
@@ -25,6 +29,9 @@ class TodayActivity extends Component {
         const activityID = this.props.params.activityID
         if (prevProps.params.activityID !== activityID) {
             this.fetchActivity(activityID);
+        }
+        if (this.state.redirect){
+            this.setState({redirect:false})
         }
     } 
 
@@ -53,8 +60,19 @@ class TodayActivity extends Component {
             active: !this.state.active
         });
     }
+    onSelect = (value) => {
+        this.setState({
+            date: value.format('YYYY-MM-DD'),
+            redirect: true,
+        });
+    }
 
     render() {
+        if(this.state.redirect){
+            return (
+                <Redirect to={`/${this.state.date}/activities`}/>
+            )
+          } 
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
@@ -63,7 +81,7 @@ class TodayActivity extends Component {
                             <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
                         </div>
                     </h3>
-                    {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
+                    {this.state.active && <Calendar onSelect={this.onSelect} fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
                         <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
