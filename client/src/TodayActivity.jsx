@@ -32,7 +32,7 @@ class TodayActivity extends Component {
 			this.fetchActivity(activityID);
 			this.checkCompleteness();
         }
-    } 
+    }
 
     fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
@@ -50,7 +50,7 @@ class TodayActivity extends Component {
                     activities: response.data.activities,
                     categories: response.data.categories,
 					activity: activity
-		
+
                 });
             })
     }
@@ -60,7 +60,7 @@ class TodayActivity extends Component {
             active: !this.state.active
         });
 	}
-	
+
 	checkCompleteness = () => {
 		if (this.state.activity.completeness) {
 			this.setState({
@@ -71,12 +71,12 @@ class TodayActivity extends Component {
 			this.setState({
 				completeness: "Incomplete"
 			})
-		}		
+		}
 	}
 
 
     render() {
-		
+
 		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
