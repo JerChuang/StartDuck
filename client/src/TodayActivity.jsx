@@ -4,6 +4,8 @@ import TodayActivityCalendar from './TodayActivityCalendar.jsx';
 import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+import WelcomeMd from './Welcome.md'
 
 class TodayActivity extends Component {
     constructor(props) {
@@ -13,12 +15,26 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-            email: this.props.email
+			email: this.props.cookies.get('email'),
+			markdown: ''
         };
     }
 
     componentDidMount() {
-        console.log('this is working!', this.props.params)
+		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
+		this.fetchActivity(this.props.params.activityID);
+		this.checkCompleteness();
+    }
+
+    componentDidUpdate (prevProps) {
+        const activityID = this.props.params.activityID
+        if (prevProps.params.activityID !== activityID) {
+			this.fetchActivity(activityID);
+			this.checkCompleteness();
+        }
+    }
+
+    fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
             params: {
                 email: this.state.email,
@@ -26,32 +42,58 @@ class TodayActivity extends Component {
             }
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
+                console.log('response from today activity axios', response)
                 // handle success
-                console.log(response.data, 'working!!! ???') // The entire response from the Rails API
                 const activity = response.data.activities.find(element => {
-                    console.log(element.id, 'element id');
-                    console.log(this.props.params.activityID, 'activity id')
+                    console.log('elementid',element.id)
+                    console.log('activityid', element.activity_id)
                     return element.id == this.props.params.activityID;
                 })
+                console.log('activity', this.props.params)
                 this.setState({
                     activities: response.data.activities,
                     categories: response.data.categories,
-                    activity: activity
+					activity: activity
+
                 });
             })
     }
-
-
+    // toggle calender
     handleClick = () => {
         this.setState({
             active: !this.state.active
         });
-    }
+	}
+
+	checkCompleteness = () => {
+		if (this.state.activity.completeness) {
+			this.setState({
+				completeness: "Completed"
+			})
+		}
+		else {
+			this.setState({
+				completeness: "Incomplete"
+			})
+		}
+	}
+
 
     render() {
-        console.log(this.props.params, 'heree')
+        // const output;
+        // if(this.state.found){
+        //     output = //component;
+        // } else {
+        //      output = //conmpo
+
+        // }
+
+		console.log('this is markdown',this.state.markdown)
+
+		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
+
                 <div className="sideBarSchedule">
                     <h3 className="dayHeading">{this.props.params.day}
                     <div className="todayActivityIcon">
@@ -61,7 +103,7 @@ class TodayActivity extends Component {
                     {this.state.active && <Calendar fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
-                        <TodayActivityCalendar activities={this.state.activities} />
+                        <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
                     </div>
                 </div>
 
@@ -69,9 +111,10 @@ class TodayActivity extends Component {
 
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
+						<ReactMarkdown source={this.state.markdown} />
                     </div>
                     <div className="Completeness">
-                        <span>Status: {this.state.activity.completeness + ""}</span>
+                        <span>Status: {this.state.completeness}	</span>
                     </div>
                     <div className="TodayContent">
                         <p>{this.state.activity.content} </p>

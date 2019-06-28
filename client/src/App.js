@@ -10,7 +10,7 @@ import Login from './Login.jsx'
 import DayActivities from "./dayActivities.jsx";
 import DatePicker from "./datePicker.jsx";
 import TodayActivity from "./TodayActivity.jsx";
-
+import CompletedActivities from './CompletedActivities.jsx'
 
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
@@ -24,7 +24,7 @@ class App extends Component {
     super(props)
     this.state = {
       message: 'Click the button to load data!',
-      activities: [{duration:60, name:"Japanese 100"}, {duration:120, name:"Japanese 200"}, {duration:30, name:"Japanese 300"}],
+      activities: [{ duration: 60, name: "Japanese 100" }, { duration: 120, name: "Japanese 200" }, { duration: 30, name: "Japanese 300" }],
       categories: ["coding", "japanese", "cooking", "swimming"],
       email: cookies.get('email'),
     }
@@ -50,42 +50,52 @@ class App extends Component {
   // }
 
   setUser = (email) => {
-    this.setState({email: email}, ()=> console.log('current state after setting user', this.state))
+    this.setState({ email: email }, () => console.log('current state after setting user', this.state))
   }
-  
+
   render() {
-  
-      return (
-        <Router>
-        <Nav cookies={cookies} setUser={this.setUser} setRedirect={this.setRedirect}/>
-    
-        <main className = "main-container">
+
+    return (
+      <Router>
+        <Nav cookies={cookies} setUser={this.setUser} setRedirect={this.setRedirect} />
+
+        <main className="main-container">
           <Switch>
             <Route path="/admin/activities/:activityID" component={adminActivity} />
             <Route path="/admin/activities" component={adminActivities} />
             <Route path="/admin/categories" component={adminCategories} />
-            <Route 
-              path="/:day/activities/:activityID" 
-              render = {(props) => <TodayActivity {...props} email={this.state.email} activities={this.state.activities} params={props.match.params} />}
-            />
-            <Route 
-              path="/schedule" 
-              render ={(props) => <DatePicker {...props} state={this.state}/>}
+            <Route
+              path="/:day/activities/:activityID"
+              render={(props) => {
+                console.log('KV', props)
+                return <TodayActivity {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />
+              }
+              } />
+            <Route
+              path="/schedule"
+              render={(props) => <DatePicker {...props} state={this.state} />}
             />
 
-            <Route 
-              path="/:day/activities/" 
-              render = {(props) => <DayActivities {...props} cookies={cookies}  params={props.match.params}/>}
+            <Route
+              path="/:day/activities/"
+              render={(props) => <DayActivities {...props} cookies={cookies} params={props.match.params} />}
             />
-            <Route 
-              path="/" 
-              render = {(props) => <Login {...props} setUser={this.setUser} cookies={cookies} />}
+            <Route
+              path="/completed_activities"
+              render={(props) => {
+                console.log('this is from appjs', props)
+              return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
+              
+              }/>
+            <Route
+              path="/"
+              render={(props) => <Login {...props} setUser={this.setUser} cookies={cookies} />}
             />
           </Switch>
         </main>
       </Router>
-      );
-   
+    );
+
   }
 }
 
