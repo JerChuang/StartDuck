@@ -201,15 +201,15 @@ activity = agenda.user_activities.create!({
 activity = agenda.user_activities.create!({
   activity: activity8,
   date: DateTime.new(2019, 6, 22),
-  completeness: false,
+  completeness: true,
 })
 activity = agenda.user_activities.create!({
   activity: activity9,
   date: DateTime.new(2019, 6, 22),
-  completeness: false,
+  completeness: true,
 })
 activity = agenda.user_activities.create!({
-  activity: activity10,
+  activity: activity1,
   date: DateTime.new(2019, 6, 22),
   completeness: false,
 })
