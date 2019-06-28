@@ -4,6 +4,9 @@ import TodayActivityCalendar from './TodayActivityCalendar.jsx';
 import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+
+console.log(ReactMarkdown);
 
 class TodayActivity extends Component {
     constructor(props) {
