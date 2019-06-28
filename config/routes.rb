@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :user_agendas
     resources :user_activities
-    resources :users, only: [:create]
+    resources :users
 
     namespace :admin do
       resources :products
