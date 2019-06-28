@@ -6,7 +6,8 @@ import {Link, Redirect} from "react-router-dom";
 
 class Nav extends Component {
   state = {
-    redirect: false
+    redirect: false,
+    redirect1: false
   }
 
   handleClick = (e) =>{
@@ -16,16 +17,27 @@ class Nav extends Component {
     this.props.setUser('')
     this.setState({redirect:true})
   };
- 
+  handleClick1 = (e) =>{
+    e.preventDefault();
+    this.setState({redirect1:true})
+  };
+
+
   render(){
-    
-  
+
+
     if(this.state.redirect){
       this.setState({redirect:false})
       return (
           <Redirect to='/'/>
       )
-    } 
+    }
+
+     if(this.state.redirect1){
+      return (
+          <Redirect to='/'/>
+      )
+    }
 
     if (this.props.cookies.get('email')){
     return(
@@ -33,7 +45,7 @@ class Nav extends Component {
     <div className="container-fluid">
       {/* <Logo className="navbar_logo" /> */}
       <img src={Logo} alt ="Logo"className="navbar_logo" />
-      
+
       <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
       <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
       <button className="navbar_logout" onClick={this.handleClick}>Logout</button>
@@ -44,7 +56,7 @@ class Nav extends Component {
         <nav className="navbar">
           <div className="container-fluid">
             {/* <Logo className="navbar_logo" />  */}
-            <img src={Logo} alt ="Logo"className="navbar_logo" /> 
+            <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
           </div>
         </nav>
 
