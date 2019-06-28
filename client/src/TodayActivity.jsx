@@ -5,7 +5,7 @@ import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-
+import WelcomeMd
 console.log(ReactMarkdown);
 
 class TodayActivity extends Component {
@@ -16,7 +16,8 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-			email: this.props.cookies.get('email')
+			email: this.props.cookies.get('email'),
+			markdown: ''
         };
     }
 
