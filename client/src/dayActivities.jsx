@@ -40,7 +40,7 @@ class DayActivities extends React.Component{
         email: this.state.email,
         date: this.props.params
       }
-    }) 
+    })
     .then((response) => {
       console.log('response from getActivities',response)
       this.setState({
@@ -50,21 +50,6 @@ class DayActivities extends React.Component{
     })
   }
 
-  // getAgenda(){
-  //   axios.get('/api/user_agendas', {
-  //     params:{
-  //       email: this.state.email,
-  //       date: this.props.params
-  //     }
-  //   }) 
-  //   .then((response) => {
-  //     console.log('response from getagenda request', response)
-  //     // this.setState({
-  //     //   activities: response.data.activities,
-  //     //   categories: response.data.categories,
-  //     // });
-  //   })
-  // }
 
   onSelect = (value) => {
     this.setState({
@@ -73,18 +58,7 @@ class DayActivities extends React.Component{
     });
   }
 
-  // dateCellRender= (value) => {
-  //   const listData = this.getListData(value);
-  //   return (
-  //     <ul className="events">
-  //       {listData.map(item => (
-  //         <li key={item.content}>
-  //           <Badge status={item.type} text={item.content} />
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+
 
   onFullRender = (value) => {
     // console.log(value.format('YYYY-MM-DD'))
@@ -92,8 +66,8 @@ class DayActivities extends React.Component{
     let style ={
       paddingLeft:"3px",
       opacity:0.5};
-    for (let assigned of this.state.agenda){ 
-      // console.log(assigned) 
+    for (let assigned of this.state.agenda){
+      // console.log(assigned)
       if(date === assigned) {
         style = {
             background: "lightskyblue",
@@ -113,11 +87,11 @@ class DayActivities extends React.Component{
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
       )
-    } 
+    }
     const categories = this.state.categories.map(category => {
-      return <button className = "dayActivities_categoriesButtons">{category}</button>    
+      return <button className = "dayActivities_categoriesButtons">{category}</button>
     })
-    
+
     return (
       <section className="dayActivities">
         <div className="dayActivities_calendar" >
