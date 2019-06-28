@@ -42,10 +42,14 @@ class TodayActivity extends Component {
             }
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
+                console.log('response from today activity axios', response)
                 // handle success
                 const activity = response.data.activities.find(element => {
+                    console.log('elementid',element.id)
+                    console.log('activityid', element.activity_id)
                     return element.id == this.props.params.activityID;
                 })
+                console.log('activity', this.props.params)
                 this.setState({
                     activities: response.data.activities,
                     categories: response.data.categories,
@@ -76,12 +80,20 @@ class TodayActivity extends Component {
 
 
     render() {
+        // const output;
+        // if(this.state.found){
+        //     output = //component;
+        // } else {
+        //      output = //conmpo
+
+        // }
 
 		console.log('this is markdown',this.state.markdown)
 
 		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
+
                 <div className="sideBarSchedule">
                     <h3 className="dayHeading">{this.props.params.day}
                     <div className="todayActivityIcon">

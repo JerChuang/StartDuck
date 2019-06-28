@@ -22,7 +22,6 @@ class Api::UserAgendasController < ApplicationController
     end
 
     @recommended_activities.each do |activity|
-
       UserActivity.create!(
         activity_id: activity[:activity_id],
         date: activity[:date],
