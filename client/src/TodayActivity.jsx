@@ -5,8 +5,7 @@ import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import WelcomeMd
-console.log(ReactMarkdown);
+import WelcomeMd from './Welcome.md'
 
 class TodayActivity extends Component {
     constructor(props) {
@@ -22,6 +21,7 @@ class TodayActivity extends Component {
     }
 
     componentDidMount() {
+		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
     }
@@ -61,6 +61,7 @@ class TodayActivity extends Component {
         });
 	}
 	
+	// change boolean to completeness
 	checkCompleteness = () => {
 		if (this.state.activity.completeness) {
 			this.setState({
@@ -76,7 +77,7 @@ class TodayActivity extends Component {
 
 
     render() {
-		
+		console.log('this is markdown',this.state.markdown)
 		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
@@ -97,6 +98,7 @@ class TodayActivity extends Component {
 
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
+						<ReactMarkdown source={this.state.markdown} />
                     </div>
                     <div className="Completeness">
                         <span>Status: {this.state.completeness}	</span>

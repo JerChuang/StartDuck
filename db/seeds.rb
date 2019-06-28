@@ -209,7 +209,7 @@ activity = agenda.user_activities.create!({
   completeness: true,
 })
 activity = agenda.user_activities.create!({
-  activity: activity1,
+  activity: activity10,
   date: DateTime.new(2019, 6, 22),
   completeness: false,
 })
