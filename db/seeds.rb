@@ -47,6 +47,15 @@ puts "Re-creating Activities ..."
 
 Activity.destroy_all
 
+
+activitybaking = cat2.activities.create!({
+  name:  'Baking 101',
+  content: 'Welcome to Japanese 101. There\'s no content yet :)',
+  duration: 30,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
+
 activity1 = cat1.activities.create!({
   name:  'Welcome',
   content: 'Welcome to Japanese 101. There\'s no content yet :)',
@@ -71,29 +80,63 @@ activity3 = cat1.activities.create!({
   after_activity_id: nil,
 })
 
-cat2.activities.create!({
-  name:  'Cooking 101',
+activity4 = cat1.activities.create!({
+  name:  'Class 4 Japanese',
   content: 'How to Bake',
   duration: 120,
   before_activity_id: nil,
   after_activity_id: nil,
 })
 
-cat2.activities.create!({
-  name:  'Cooking 102',
+activity5 = cat1.activities.create!({
+  name:  'Class 5 Japanese',
+  content: 'How to Bake',
+  duration: 30,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
+
+activity6 = cat1.activities.create!({
+  name:  'This is the sixth lesson of Japanese',
+  content: 'How to Bake',
+  duration: 60,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
+
+activity7 = cat1.activities.create!({
+  name:  'Is this needed for Japanese learning?',
+  content: 'How to Bake',
+  duration: 30,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
+
+activity8 = cat1.activities.create!({
+  name:  'Katagana Japanese',
+  content: 'How to Bake',
+  duration: 60,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
+
+activity9 = cat1.activities.create!({
+  name:  'Japanese 101',
   content: 'How to Bake',
   duration: 120,
   before_activity_id: nil,
   after_activity_id: nil,
 })
 
-cat2.activities.create!({
-  name:  'Cooking 103',
+activity10 = cat1.activities.create!({
+  name:  'Hiragana Japanese',
   content: 'How to Bake',
-  duration: 120,
+  duration: 30,
   before_activity_id: nil,
   after_activity_id: nil,
 })
+
+
 
 ## User Agenda
 
@@ -127,6 +170,46 @@ activity = agenda.user_activities.create!({
 
 activity = agenda.user_activities.create!({
   activity: activity3,
+  date: DateTime.new(2019, 6, 22),
+  completeness: false,
+})
+
+activity = agenda.user_activities.create!({
+  activity: activity4,
+  date: DateTime.new(2019, 6, 22),
+  completeness: false,
+})
+
+activity = agenda.user_activities.create!({
+  activity: activity5,
+  date: DateTime.new(2019, 6, 22),
+  completeness: false,
+})
+
+activity = agenda.user_activities.create!({
+  activity: activity6,
+  date: DateTime.new(2019, 6, 22),
+  completeness: false,
+})
+
+activity = agenda.user_activities.create!({
+  activity: activity7,
+  date: DateTime.new(2019, 6, 22),
+  completeness: false,
+})
+
+activity = agenda.user_activities.create!({
+  activity: activity8,
+  date: DateTime.new(2019, 6, 22),
+  completeness: true,
+})
+activity = agenda.user_activities.create!({
+  activity: activity9,
+  date: DateTime.new(2019, 6, 22),
+  completeness: true,
+})
+activity = agenda.user_activities.create!({
+  activity: activity1,
   date: DateTime.new(2019, 6, 22),
   completeness: false,
 })
