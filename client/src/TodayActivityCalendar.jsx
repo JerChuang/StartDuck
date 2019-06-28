@@ -9,14 +9,14 @@ class TodayActivityCalendar extends Component {
     console.log(this.props.params.activityID, 'this is from calendarractivityID');
     console.log(this.props.params.day, 'this is from calendarrdate');
     const activities = this.props.activities.map(activity => {
-        return <Link to={`/${activity.date}/activities/${activity.id}`} ><TodaySchedule key = {activity.id} {...activity } /> </Link>
-        
+        return <Link to={`/${activity.date}/activities/${activity.id}`} ><TodaySchedule key = {activity.id} {...activity} /> </Link>
+
       })
-  
+
       return (
         <main className="todayActivityList">
           {activities}
-        </main>      
+        </main>
       );
     }
   }
