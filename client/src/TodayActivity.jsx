@@ -24,6 +24,7 @@ class TodayActivity extends Component {
 		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
+		
     }
 
     componentDidUpdate (prevProps) {
@@ -42,6 +43,7 @@ class TodayActivity extends Component {
             }
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
+				console.log('this is response',response)
                 // handle success
                 const activity = response.data.activities.find(element => {
                     return element.id == this.props.params.activityID;
@@ -98,13 +100,12 @@ class TodayActivity extends Component {
 
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
-						<ReactMarkdown source={this.state.markdown} />
                     </div>
                     <div className="Completeness">
                         <span>Status: {this.state.completeness}	</span>
                     </div>
                     <div className="TodayContent">
-                        <p>{this.state.activity.content} </p>
+						<ReactMarkdown source={this.state.activity.content} />
                     </div>
                 </div>
 
