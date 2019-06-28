@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
-  def index
+  def show
+    @completed_activities = User.find_by(email:params['email']).user_activities.where(completeness: true)
     render :json => {
-      message: "hello! from user"
+      completed: @completed_activities
     }
   end
 end

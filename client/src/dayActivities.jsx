@@ -15,7 +15,7 @@ class DayActivities extends React.Component{
       email: this.props.cookies.get('email'),
       date: '',
       redirect: false,
-      agenda: ['2019-06-01','2019-06-02','2019-06-03'],
+      agenda: [],
     }
   }
 
@@ -46,6 +46,7 @@ class DayActivities extends React.Component{
       this.setState({
         activities: response.data.activities,
         categories: response.data.categories,
+        agenda: response.data.agenda
       });
     })
   }
@@ -57,7 +58,6 @@ class DayActivities extends React.Component{
       redirect: true,
     });
   }
-
 
 
   onFullRender = (value) => {
