@@ -5,6 +5,8 @@ import { Redirect } from "react-router-dom";
 import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+import WelcomeMd from './Welcome.md'
 
 class TodayActivity extends Component {
     constructor(props) {
@@ -17,10 +19,12 @@ class TodayActivity extends Component {
             email: this.props.cookies.get('email'),
             date: '',
             redirect: false,
+            markdown: ''
         };
     }
 
     componentDidMount() {
+		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
     }
@@ -88,6 +92,7 @@ class TodayActivity extends Component {
                 <Redirect to={`/${this.state.date}/activities`}/>
             )
           }
+		console.log('this is markdown',this.state.markdown)
 		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
@@ -108,6 +113,7 @@ class TodayActivity extends Component {
 
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
+						<ReactMarkdown source={this.state.markdown} />
                     </div>
                     <div className="Completeness">
                         <span>Status: {this.state.completeness}	</span>
