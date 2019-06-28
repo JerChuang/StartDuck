@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, withRouter } from "react-router-dom";
 // import ReactDom from 'react-dom';
-import { Calendar } from 'antd';
+import { Calendar, Badge } from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
 import axios from 'axios';
 
@@ -51,6 +51,53 @@ class DayActivities extends React.Component{
       redirect: true,
     });
   }
+
+  getListData(value) {
+    let listData;
+    // switch (value.date()) {
+    //   case 8:
+    //     listData = [
+    //       { type: 'warning', content: 'This is warning event.' },
+    //     ];
+    //     break;
+    //   case 10:
+    //     listData = [
+    //       { type: 'warning', content: 'This is warning event.' },
+    //     ];
+    //     break;
+    //   case 15:
+    //     listData = [
+    //       { type: 'warning', content: 'This is warning event' },     
+    //     ];
+    //     break;
+    //   default:
+    // }
+    return listData || [];
+  }
+
+  dateCellRender= (value) => {
+    const listData = this.getListData(value);
+    return (
+      <ul className="events">
+        {listData.map(item => (
+          <li key={item.content}>
+            <Badge status={item.type} text={item.content} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  onFullRender(value){
+    console.log(value.format('YYYY-MM-DD'))
+    const date = value.format('YYYY-MM-DD');
+    let style;
+    if(date === '2019-06-22') {
+     style = { background: "blue"};
+    }
+    return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
+  }
+
   render(){
     // console.log('this.props from dayActivities', this.props)
     // console.log('this.state from dayActivities', this.state)
@@ -62,10 +109,11 @@ class DayActivities extends React.Component{
     const categories = this.state.categories.map(category => {
       return <button className = "dayActivities_categoriesButtons">{category}</button>    
     })
+    
     return (
       <section className="dayActivities">
         <div className="dayActivities_calendar" >
-          <Calendar onSelect={this.onSelect} fullscreen={false}/>
+          <Calendar onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
         </div>
         <div>
           <div className="dayActivities_categories">
