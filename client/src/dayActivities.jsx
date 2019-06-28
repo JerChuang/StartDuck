@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect, withRouter } from "react-router-dom";
 // import ReactDom from 'react-dom';
-import { Calendar, Badge } from 'antd';
+import { Calendar} from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
 import axios from 'axios';
+import * as moment from 'moment';
 
 class DayActivities extends React.Component{
   constructor(props) {
@@ -14,23 +15,26 @@ class DayActivities extends React.Component{
       email: this.props.cookies.get('email'),
       date: '',
       redirect: false,
+      agenda: ['2019-06-01','2019-06-02','2019-06-03'],
     }
   }
 
   componentDidMount() {
-    this.getData();
+    this.getActivities();
   }
+
   componentDidUpdate(prevProps){
     if(this.props.params !== prevProps.params){
       console.log('this.props.params:', this.props.params)
       console.log('prevProps.params:', prevProps.params)
-      this.getData();
+      this.getActivities();
     }
     if (this.state.redirect){
       this.setState({redirect:false})
     }
   }
-  getData(){
+
+  getActivities(){
     axios.get('/api/user_activities', {
       params:{
         email: this.state.email,
@@ -38,12 +42,29 @@ class DayActivities extends React.Component{
       }
     }) 
     .then((response) => {
+      console.log('response from getActivities',response)
       this.setState({
         activities: response.data.activities,
         categories: response.data.categories,
       });
     })
   }
+
+  // getAgenda(){
+  //   axios.get('/api/user_agendas', {
+  //     params:{
+  //       email: this.state.email,
+  //       date: this.props.params
+  //     }
+  //   }) 
+  //   .then((response) => {
+  //     console.log('response from getagenda request', response)
+  //     // this.setState({
+  //     //   activities: response.data.activities,
+  //     //   categories: response.data.categories,
+  //     // });
+  //   })
+  // }
 
   onSelect = (value) => {
     this.setState({
@@ -52,54 +73,41 @@ class DayActivities extends React.Component{
     });
   }
 
-  getListData(value) {
-    let listData;
-    // switch (value.date()) {
-    //   case 8:
-    //     listData = [
-    //       { type: 'warning', content: 'This is warning event.' },
-    //     ];
-    //     break;
-    //   case 10:
-    //     listData = [
-    //       { type: 'warning', content: 'This is warning event.' },
-    //     ];
-    //     break;
-    //   case 15:
-    //     listData = [
-    //       { type: 'warning', content: 'This is warning event' },     
-    //     ];
-    //     break;
-    //   default:
-    // }
-    return listData || [];
-  }
+  // dateCellRender= (value) => {
+  //   const listData = this.getListData(value);
+  //   return (
+  //     <ul className="events">
+  //       {listData.map(item => (
+  //         <li key={item.content}>
+  //           <Badge status={item.type} text={item.content} />
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
-  dateCellRender= (value) => {
-    const listData = this.getListData(value);
-    return (
-      <ul className="events">
-        {listData.map(item => (
-          <li key={item.content}>
-            <Badge status={item.type} text={item.content} />
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-  onFullRender(value){
-    console.log(value.format('YYYY-MM-DD'))
+  onFullRender = (value) => {
+    // console.log(value.format('YYYY-MM-DD'))
     const date = value.format('YYYY-MM-DD');
-    let style;
-    if(date === '2019-06-22') {
-     style = { background: "blue"};
+    let style ={
+      paddingLeft:"3px",
+      opacity:0.5};
+    for (let assigned of this.state.agenda){ 
+      // console.log(assigned) 
+      if(date === assigned) {
+        style = {
+            background: "lightskyblue",
+            border: "1px solid lightcyan",
+            fontStyle: "italic",
+            fontWeight: "bold",
+            paddingLeft: "3px"};
+        }
     }
     return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
   }
 
   render(){
-    // console.log('this.props from dayActivities', this.props)
+    console.log('this.props.params from dayActivities', this.props.params)
     // console.log('this.state from dayActivities', this.state)
     if(this.state.redirect){
       return (
@@ -113,7 +121,7 @@ class DayActivities extends React.Component{
     return (
       <section className="dayActivities">
         <div className="dayActivities_calendar" >
-          <Calendar onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
+          <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
         </div>
         <div>
           <div className="dayActivities_categories">
@@ -128,3 +136,4 @@ class DayActivities extends React.Component{
   }
 }
 export default withRouter(DayActivities);
+
