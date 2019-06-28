@@ -5,7 +5,6 @@ import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import WelcomeMd from './Welcome.md'
 
 class TodayActivity extends Component {
     constructor(props) {
@@ -16,12 +15,10 @@ class TodayActivity extends Component {
             activity: {},
             categories: [],
 			email: this.props.cookies.get('email'),
-			markdown: ''
         };
     }
 
     componentDidMount() {
-		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
 		
