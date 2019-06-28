@@ -6,7 +6,6 @@ import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import WelcomeMd from './Welcome.md'
 
 class TodayActivity extends Component {
     constructor(props) {
@@ -16,17 +15,14 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-            email: this.props.cookies.get('email'),
-            date: '',
-            redirect: false,
-            markdown: ''
+			email: this.props.cookies.get('email'),
         };
     }
 
     componentDidMount() {
-		fetch(WelcomeMd).then(res => res.text()).then(text => this.setState({ markdown: text }));
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
+		
     }
 
     componentDidUpdate (prevProps) {
@@ -48,7 +44,7 @@ class TodayActivity extends Component {
             }
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
-                console.log('response from today activity axios', response)
+				console.log('this is response',response)
                 // handle success
                 const activity = response.data.activities.find(element => {
                     console.log('elementid',element.id)
@@ -119,13 +115,12 @@ class TodayActivity extends Component {
 
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
-						<ReactMarkdown source={this.state.markdown} />
                     </div>
                     <div className="Completeness">
                         <span>Status: {this.state.completeness}	</span>
                     </div>
                     <div className="TodayContent">
-                        <p>{this.state.activity.content} </p>
+						<ReactMarkdown source={this.state.activity.content} />
                     </div>
                 </div>
 
