@@ -21,14 +21,15 @@ class TodayActivity extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.params)
-        this.fetchActivity(this.props.params.activityID)
+		this.fetchActivity(this.props.params.activityID);
+		this.checkCompleteness();
     }
 
     componentDidUpdate (prevProps) {
         const activityID = this.props.params.activityID
         if (prevProps.params.activityID !== activityID) {
-            this.fetchActivity(activityID);
+			this.fetchActivity(activityID);
+			this.checkCompleteness();
         }
         if (this.state.redirect){
             this.setState({redirect:false})
@@ -50,7 +51,8 @@ class TodayActivity extends Component {
                 this.setState({
                     activities: response.data.activities,
                     categories: response.data.categories,
-                    activity: activity
+					activity: activity
+		
                 });
             })
     }
@@ -59,20 +61,34 @@ class TodayActivity extends Component {
         this.setState({
             active: !this.state.active
         });
-    }
+	}
     onSelect = (value) => {
         this.setState({
             date: value.format('YYYY-MM-DD'),
             redirect: true,
         });
     }
+	checkCompleteness = () => {
+		if (this.state.activity.completeness) {
+			this.setState({
+				completeness: "Completed"
+			})
+		}
+		else {
+			this.setState({
+				completeness: "Incomplete"
+			})
+		}		
+	}
+
 
     render() {
         if(this.state.redirect){
             return (
                 <Redirect to={`/${this.state.date}/activities`}/>
             )
-          } 
+          }
+		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
                 <div className="sideBarSchedule">
@@ -94,7 +110,7 @@ class TodayActivity extends Component {
                         <TodayActivityBox activity={this.state.activity} />
                     </div>
                     <div className="Completeness">
-                        <span>Status: {this.state.activity.completeness + ""}</span>
+                        <span>Status: {this.state.completeness}	</span>
                     </div>
                     <div className="TodayContent">
                         <p>{this.state.activity.content} </p>
