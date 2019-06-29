@@ -21,7 +21,7 @@ class CompletedActivities extends Component {
           }
         })
         .then((response) => {
-            console.log("response.data", response.data.categories)
+            console.log("response.dataaaa", response.data.completed)
           this.setState({
             categories: response.data.categories,
             activities: response.data.activities
