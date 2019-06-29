@@ -24,7 +24,7 @@ class CompletedActivities extends Component {
         }
       }
 
-      getActivities(){
+      getActivities() {
         axios.get('/api/users/:id', {
           params:{
             email: this.state.email,

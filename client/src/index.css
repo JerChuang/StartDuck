@@ -19,7 +19,7 @@ code {
   width: 100%;
   background: white;
   padding: 0 10px;
-  position: fixed; 
+  position: fixed;
   top: 0;
   z-index:2;
 }
@@ -125,6 +125,22 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.dayActivities_listBlock {
+  display: flex;
+}
+
+.dayActivities_deleteButton {
+  display: flex;
+  margin-top: 42px;
+  color: red;
+}
+
+.dayActivities_addButton {
+  display: flex;
+  margin-top: 42px;
+  color: green;
 }
 
 
