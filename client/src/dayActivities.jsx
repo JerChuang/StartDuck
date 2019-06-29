@@ -17,6 +17,7 @@ class DayActivities extends React.Component{
       date: '',
       redirect: false,
       agenda: [],
+      shown: true,
     }
   }
 
@@ -96,8 +97,14 @@ class DayActivities extends React.Component{
     })
   }
 
+  toggle() {
+    this.setState({
+      shown: !this.state.shown
+    });
+  }
 
   render(){
+
     if(this.state.redirect){
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
@@ -116,10 +123,10 @@ class DayActivities extends React.Component{
           <div>
             <div className="dayActivities_categories">
               {categories} <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
-              <button className = "dayActivities_edit">edit</button>
+              <button className = "dayActivities_edit" onClick={this.toggle.bind(this)}>edit</button>
             </div>
             <h2>Activities</h2>
-            <ActivitiesList className="dayActivities_activitiesList" activities = {this.state.filterActivities}/>
+            <ActivitiesList className="dayActivities_activitiesList" shown = {this.state.shown} activities = {this.state.filterActivities}/>
           </div>
         </section>
       )
