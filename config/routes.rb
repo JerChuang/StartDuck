@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :user_activities
     resources :users
 
+    namespace :admin do
+      resources :products
+      resources :categories
+    end
+  
   end
 
 
