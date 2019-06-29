@@ -11,6 +11,7 @@ import DayActivities from "./dayActivities.jsx";
 import DatePicker from "./datePicker.jsx";
 import TodayActivity from "./TodayActivity.jsx";
 import CompletedActivities from './CompletedActivities.jsx'
+import CompletedActivityContent from './CompletedActivityContent.jsx'
 
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";

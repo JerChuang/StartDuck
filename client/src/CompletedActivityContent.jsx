@@ -5,6 +5,7 @@ import { Icon } from 'antd';
 import { Calendar } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
+import TodayActivityCalendar from './TodayActivityCalendar.jsx';
 
 class CompletedActivityContent extends Component {
     constructor(props) {
