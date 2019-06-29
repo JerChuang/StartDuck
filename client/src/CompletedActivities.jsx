@@ -21,23 +21,23 @@ class CompletedActivities extends Component {
           }
         })
         .then((response) => {
-            console.log("response.dataaaa", response.data.completed)
+            console.log("response.dataaaa", response.data.activities)
           this.setState({
-            categories: response.data.categories,
+            // categories: response.data.categories,
             activities: response.data.activities
           });
         })
     }
 
     render () {
-        const categories = this.state.categories.map(category => {
-          return <button className = "dayActivities_categoriesButtons">{category}</button>
-        })
+        // const categories = this.state.categories.map(category => {
+        //   return <button className = "dayActivities_categoriesButtons">{category}</button>
+        // })
         return (
          <section className="dayActivities">
          <div>
           <div className="dayActivities_categories">
-            {categories}
+
           </div>
           <h2>Completed Activities</h2>
           <CompletedActivitiesList className="dayActivities_activitiesList" activities = {this.state.activities}/>

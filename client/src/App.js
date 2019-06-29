@@ -91,7 +91,7 @@ class App extends Component {
               path="/completed_activities/:id"
               render={(props) => {
                 console.log('this is from appjs', props)
-                return <CompletedActivities {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />}
+                return <CompletedActivityContent {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />}
               }/>
 
             <Route

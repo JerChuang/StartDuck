@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TodayActivityBox from './TodayActivityBox.jsx';
-import TodayActivityCalendar from './TodayActivityCalendar.jsx';
 import { Redirect } from "react-router-dom";
 import { Icon } from 'antd';
 import { Calendar } from 'antd';
