@@ -61,7 +61,11 @@ class App extends Component {
         <main className="main-container">
           <Switch>
             <Route path="/admin/activities/:activityID" component={adminActivity} />
-            <Route path="/admin/activities" component={adminActivities} />
+            
+            <Route 
+            path="/admin/activities" 
+              render={(props) => <AdminActivities {...props} activities={this.state.activities} />}
+            />
             
             <Route
               path="/admin/categories"
@@ -102,9 +106,9 @@ class App extends Component {
   }
 }
 
-function adminActivities() {
-  return <h2>This is the component for /admin/activities</h2>;
-}
+// function adminActivities() {
+//   return <h2>This is the component for /admin/activities</h2>;
+// }
 
 // function adminCategories() {
 //   return <h2>This is the component for /admin/categories</h2>;
