@@ -18,6 +18,7 @@ class DayActivities extends React.Component{
       redirect: false,
       agenda: [],
       shown: true,
+      user_activities_id: []
     }
   }
 
@@ -44,13 +45,14 @@ class DayActivities extends React.Component{
       }
     })
     .then((response) => {
-      // console.log('response.data.activities', response.data.activities)
-      // console.log('response.data.categories', response.data.categories)
+      console.log('response.data.activities', response.data.activities)
+
       this.setState({
         activities: response.data.activities,
         filterActivities: response.data.activities,
         categories: response.data.categories,
         agenda: response.data.agenda,
+        user_activities_id: response.data.user_activities_id
 
       });
     })
