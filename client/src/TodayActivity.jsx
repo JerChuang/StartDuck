@@ -22,7 +22,6 @@ class TodayActivity extends Component {
     componentDidMount() {
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
-		
     }
 
     componentDidUpdate (prevProps) {
