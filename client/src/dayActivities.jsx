@@ -109,7 +109,7 @@ class DayActivities extends React.Component{
     } else {
       return (
         <section className="dayActivities">
->>>>>>> 91c6d24daf18f3ee56c7be6259ab39c3856862a6
+
         <div className="dayActivities_calendar" >
           <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
         </div>

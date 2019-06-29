@@ -14,30 +14,40 @@ class CompletedActivities extends Component {
         };
     }
 
-    componentDidMount() {
-        axios.get('api/users/:id', {
+      componentDidMount() {
+        this.getActivities();
+      }
+
+      componentDidUpdate(prevProps){
+        if(this.props.params !== prevProps.params){
+          this.getActivities();
+        }
+      }
+
+      getActivities(){
+        axios.get('/api/users/:id', {
           params:{
-            email: this.state.email
+            email: this.state.email,
           }
         })
         .then((response) => {
-            console.log("response.dataaaa", response.data.activities)
           this.setState({
-            // categories: response.data.categories,
-            activities: response.data.activities
+            activities: response.data.activities,
+            categories: response.data.categories
           });
         })
-    }
+      }
 
     render () {
-        // const categories = this.state.categories.map(category => {
-        //   return <button className = "dayActivities_categoriesButtons">{category}</button>
-        // })
+      console.log('this.state.categories', this.state.categories)
+        const categories = this.state.categories.map(category => {
+          return <button className = "dayActivities_categoriesButtons">{category}</button>
+        })
         return (
          <section className="dayActivities">
          <div>
           <div className="dayActivities_categories">
-
+          {categories}
           </div>
           <h2>Completed Activities</h2>
           <CompletedActivitiesList className="dayActivities_activitiesList" activities = {this.state.activities}/>
