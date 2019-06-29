@@ -13,7 +13,7 @@ import TodayActivity from "./TodayActivity.jsx";
 import CompletedActivities from './CompletedActivities.jsx'
 import AdminCategories from "./AdminCategories.jsx";
 import AdminActivities from "./AdminActivities.jsx";
-// import adminActivity from "./adminActivity.jsx";
+import AdminActivity from "./AdminActivity.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const cookies = new Cookies()
@@ -60,11 +60,15 @@ class App extends Component {
 
         <main className="main-container">
           <Switch>
-            <Route path="/admin/activities/:activityID" component={adminActivity} />
-            
+
+            <Route 
+            path="/admin/activities/:id" 
+            render={(props) => <AdminActivity {...props} activity={this.state.activity} params={props.match.params}/>}
+            />
+
             <Route 
             path="/admin/activities" 
-              render={(props) => <AdminActivities {...props} activities={this.state.activities} />}
+            render={(props) => <AdminActivities {...props} activities={this.state.activities} />}
             />
             
             <Route
@@ -114,9 +118,9 @@ class App extends Component {
 //   return <h2>This is the component for /admin/categories</h2>;
 // }
 
-function adminActivity() {
-  return <h2>This is the component for /admin/activities/:activityID</h2>;
-}
+// function adminActivity() {
+//   return <h2>This is the component for /admin/activities/:activityID</h2>;
+// }
 
 
 // function dayActivities() {
