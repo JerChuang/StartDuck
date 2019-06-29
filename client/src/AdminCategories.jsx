@@ -1,57 +1,95 @@
 import React, { Component } from 'react';
-import { Icon } from 'antd';
 import axios from 'axios';
+import { Icon, Form, Input, Button } from 'antd';
+
+
+function hasErrors(fieldsError) {
+    return Object.keys(fieldsError).some(field => fieldsError[field]);
+  }
+  
+  
 class AdminCategories extends Component {
-    state = {
-        categories: [],
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            categories: [],
+            active: false,
+
+        }
     }
-    
-    componentDidMount () {
-        this.fetchCategories()
+
+
+    componentDidMount() {
+        this.fetchCategories();
+        this.props.form.validateFields();
+
     }
-    
+
     fetchCategories = () => {
         axios.get('/api/admin/categories', {})
             .then((response) => {
-                console.log('responsedata',response.data.categories)
+                console.log('responsedata', response.data.categories)
                 this.setState({
                     categories: response.data.categories
                 })
-        
-            })
-        }
 
-    onDelete = (event) => {
-        axios.delete(`/api/admin/categories/${event.currentTarget.id}`, {})
-            .then((response) => {
-                console.log('this is from delete',event.currentTarget.id)
             })
     }
 
-    onAdd = () => {
+    // delete an existing category by clicking trash button
+    onDelete = (event) => {
+        axios.delete(`/api/admin/categories/${event.currentTarget.id}`, {})
+            .then((response) => {
+                console.log('this is from delete', event.currentTarget.id)
+            })
+    }
+
+    // create new category and saves in db
+    onCreate = () => {
         axios.post('/api/admin/categories', {})
+            // console.log('is this reading??')
             .then((response) => {
                 console.log('this is added', response)
             })
     }
 
+    // toggles new category form
+    onAddButton = () => {
+        this.setState({
+            active: !this.state.active
+        });
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    };
+
     render() {
-        console.log('this is from params',this.props.params)
+
         const categories = this.state.categories.map(category => {
-        return <tr>
-        {category.name} 
-        <Icon type="edit" /> 
-        <Icon id={category.id} type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
-        </tr>   
+            return <tr>
+                {category.name}
+                <Icon type="edit" />
+                <Icon id={category.id} type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
+            </tr>
         })
+
+        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
+        const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
             <div className="adminCategories">
-            <Icon type="plus-square" className="categoryAddIcon" onClick={this.onAdd} />
+                <Icon type="plus-square" className="categoryAddIcon" onClick={this.onAddButton} />
 
                 <table className="tableAdminCategories">
                     <thead>
                         <tr>
-                        <th colSpan="2">Category</th>
+                            <th colSpan="2">Category</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,10 +97,33 @@ class AdminCategories extends Component {
                     </tbody>
                 </table>
 
+                <Form layout="inline" onSubmit={this.handleSubmit}>
+                    <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
+                        {getFieldDecorator('category', {
+                            rules: [{ required: true, message: 'Please input category!' }],
+                        })(
+                            <Input
+                                prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="New Category"
+                            />,
+                        )}
+                    </Form.Item>
+
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit" onClick={this.onCreate} disabled={hasErrors(getFieldsError())}>
+                            Create
+                        </Button>
+                    </Form.Item>
+                </Form>
             </div>
         )
     }
 }
+const WrappedHorizontalLoginForm = Form.create({ name: 'creating_category' })(AdminCategories);
 
-export default AdminCategories
+
+export default WrappedHorizontalLoginForm
+
+
+
 

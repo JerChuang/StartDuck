@@ -63,7 +63,8 @@ class TodayActivity extends Component {
         this.setState({
             active: !this.state.active
         });
-	}
+    }
+    
     onSelect = (value) => {
         this.setState({
             date: value.format('YYYY-MM-DD'),

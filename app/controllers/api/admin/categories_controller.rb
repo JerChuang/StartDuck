@@ -14,8 +14,8 @@ class Api::Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.create(category_params)
-    # @category.save
+    @category = Category.new(category_params)
+    @category.save
   end
 
   private
