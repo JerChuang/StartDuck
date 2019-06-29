@@ -4,6 +4,7 @@ import TimePicker123 from './TimePicker.jsx';
 import Schedule from './schedule.jsx';
 import axios from 'axios';
 import { Redirect } from 'react-router'
+import * as moment from 'moment';
 
 class datePicker extends React.Component {
   constructor(props) {
@@ -101,7 +102,7 @@ class datePicker extends React.Component {
     };
 
      if (redirect) {
-       return <Redirect to='/2019-06-22/activities/'/>;
+       return <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>;
      }
 
     return (

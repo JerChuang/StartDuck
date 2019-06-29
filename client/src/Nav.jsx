@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { ReactComponent as Logo } from './images/logo.svg';
 import Logo from './images/logo.png'
 import {Link, Redirect} from "react-router-dom";
+import * as moment from 'moment';
 
 
 class Nav extends Component {
@@ -22,8 +23,11 @@ class Nav extends Component {
     if (this.state.redirect){
       this.setState({redirect:false})
     }
+    if (this.state.redirect1){
+      this.setState({redirect1:false})
+    }
   }
-    
+
   handleClick1 = (e) =>{
     e.preventDefault();
     this.setState({redirect1:true})
@@ -39,9 +43,9 @@ class Nav extends Component {
       )
     }
 
-     if(this.state.redirect1){
+    if(this.state.redirect1){
       return (
-          <Redirect to='/'/>
+          <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
       )
     }
 
@@ -50,7 +54,7 @@ class Nav extends Component {
     <nav className="navbar">
     <div className="container-fluid">
       {/* <Logo className="navbar_logo" /> */}
-      <img src={Logo} alt ="Logo"className="navbar_logo" />
+      <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
 
       <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
       <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
@@ -62,7 +66,7 @@ class Nav extends Component {
         <nav className="navbar">
           <div className="container-fluid">
             {/* <Logo className="navbar_logo" />  */}
-            <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
+            <img src={Logo} alt ="Logo"className="navbar_logo" />
           </div>
         </nav>
 
