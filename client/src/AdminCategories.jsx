@@ -25,10 +25,6 @@ class AdminCategories extends Component {
         this.props.form.validateFields();
     }
 
-    // componentDidUpdate() {
-    //     this.clearFields();
-    // }
-
     fetchCategories = () => {
         axios.get('/api/admin/categories', {})
             .then((response) => {
@@ -55,18 +51,6 @@ class AdminCategories extends Component {
             active: !this.state.active
         });
     }
-
-    // //clear fields after submit
-    // clearFields = () => {
-    //     console.log('this is clearing the field')
-    //     this.props.form.resetFields()
-    //         // .then((response) => {   
-    //         //     this.fetchCategories()
-    //         // })
-    // }
-
-
-
 
     // create new category and saves in db
     handleSubmit = e => {
