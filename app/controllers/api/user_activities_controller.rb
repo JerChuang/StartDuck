@@ -5,7 +5,7 @@ class Api::UserActivitiesController < ApplicationController
     @agenda_dates = (@user_agenda.start_date...@user_agenda.end_date+1).map(&:to_s)
     @activities = @user_activities.select('user_activities.*, activities.*').joins("INNER JOIN activities ON user_activities.activity_id = activities.id")
     # @activities = @user_activities.map{|user_activity|user_activity.activity}
-    @categories = @user_activities.map {|user_activity|user_activity.activity.category.name}.uniq
+    @categories = @user_activities.map {|user_activity|user_activity.activity.category}.uniq
    
 
     render :json => {

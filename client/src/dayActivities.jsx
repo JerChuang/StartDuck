@@ -12,6 +12,7 @@ class DayActivities extends React.Component{
     this.state = {
       activities: [],
       categories: [],
+      filterActivities:[],
       email: this.props.cookies.get('email'),
       date: '',
       redirect: false,
@@ -20,12 +21,12 @@ class DayActivities extends React.Component{
   }
 
   componentDidMount() {
-    console.log('did mount')
+    // console.log('did mount')
     this.getActivities();
   }
 
   componentDidUpdate(prevProps){
-    console.log('did update', prevProps)
+    // console.log('did update', prevProps)
     if(this.props.params !== prevProps.params){
       this.getActivities();
     }
@@ -42,10 +43,14 @@ class DayActivities extends React.Component{
       }
     })
     .then((response) => {
+      // console.log('response.data.activities', response.data.activities)
+      // console.log('response.data.categories', response.data.categories)
       this.setState({
         activities: response.data.activities,
+        filterActivities: response.data.activities,
         categories: response.data.categories,
-        agenda: response.data.agenda
+        agenda: response.data.agenda,
+
       });
     })
   }
@@ -76,20 +81,33 @@ class DayActivities extends React.Component{
     return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
   }
 
+  filterCategory = (event) => {
+    this.setState({
+      filterActivities: this.state.activities.filter(
+        activity => {
+          return activity.category_id === Number(event.currentTarget.id)
+        }),
+    })
+  }
+
+  allCategories = () => {
+    this.setState({
+      filterActivities: this.state.activities
+    })
+  }
+
+
   render(){
-    console.log('this.state.activities from dayActivities', this.state.activities)
-    // console.log('this.state from dayActivities', this.state)
     if(this.state.redirect){
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
       )
     }
     const categories = this.state.categories.map(category => {
-      return <button className = "dayActivities_categoriesButtons">{category}</button>
+      return <button id={category.id} className="dayActivities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
     })
 
     if(this.state.activities.length){
-      console.log('true condition triggered')
       return (
         <section className="dayActivities">
           <div className="dayActivities_calendar" >
@@ -97,11 +115,11 @@ class DayActivities extends React.Component{
           </div>
           <div>
             <div className="dayActivities_categories">
-              {categories}
+              {categories} <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
               <button className = "dayActivities_edit">edit</button>
             </div>
             <h2>Activities</h2>
-            <ActivitiesList className="dayActivities_activitiesList" activities = {this.state.activities}/>
+            <ActivitiesList className="dayActivities_activitiesList" activities = {this.state.filterActivities}/>
           </div>
         </section>
       )
