@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users
 
     namespace :admin do
-      resources :products
+      resources :activities
       resources :categories
     end
   
