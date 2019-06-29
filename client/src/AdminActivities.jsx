@@ -7,15 +7,15 @@ class AdminActivities extends Component {
     }
     
     componentDidMount () {
-        this.fetchCategories()
+        this.fetchActivities()
     }
     
-    fetchCategories = () => {
-        axios.get('/api/admin/categories', {})
+    fetchActivities = () => {
+        axios.get('/api/admin/activities', {})
             .then((response) => {
                 console.log('responsedata',response.data)
                 this.setState({
-                    categories: response.data.categories
+                    activities: response.data.activities
                 })
             })
         }
@@ -26,8 +26,8 @@ class AdminActivities extends Component {
 
 
     render() {
-        console.log('thestate',this.state.categories)
-        const categories = this.state.categories.map(category => {
+        console.log('thestate',this.state)
+        const activities = this.state.activities.map(category => {
         return <tr>
         {category.name} 
         <Icon type="edit" /> 
@@ -35,16 +35,16 @@ class AdminActivities extends Component {
         </tr>   
         })
         return (
-            <div className="adminCategories">
+            <div className="adminActivities">
 
-                <table className="tableAdminCategories">
+                <table className="tableAdminActivities">
                     <thead>
                         <tr>
-                        <th colSpan="2">Category</th>
+                        <th colSpan="2">Activity</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {categories}
+                        {activities}
                     </tbody>
                 </table>
 

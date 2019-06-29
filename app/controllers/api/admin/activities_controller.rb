@@ -6,6 +6,9 @@ class Api::Admin::ActivitiesController < ApplicationController
             activities: @activities
         }
     end
-
+    
+    def show
+        @activity = Activity.find params[:id]
+      end
 
 end
