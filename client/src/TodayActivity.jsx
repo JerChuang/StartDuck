@@ -83,25 +83,15 @@ class TodayActivity extends Component {
 		}
     }
     complete = () => {
-        axios.patch('/api/user_activities/:id', {
-            params: {
-                email: this.state.email,
-                date: this.props.params
-            }
-        }) // You can simply make your requests to "/api/whatever you want"
+        axios.patch(`/api/user_activities/${this.props.params.activityID}`, {
+            
+            email: this.state.email,
+            completeness: true
+            
+        }) 
             .then((response) => {
-				console.log('this is response',response)
-                // handle success
-                const activity = response.data.activities.find(element => {
-                    console.log('elementid',element.id)
-                    console.log('activityid', element.activity_id)
-                    return element.id == this.props.params.activityID;
-                })
-                console.log('activity', this.props.params)
                 this.setState({
-                    activities: response.data.activities,
-                    categories: response.data.categories,
-					activity: activity
+                    completeness: "Completed"
                 });
             })
 
