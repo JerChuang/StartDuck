@@ -17,6 +17,7 @@ class TodayActivity extends Component {
             categories: [],
             email: this.props.cookies.get('email'),
             completeness: '',
+            agenda: [],
         };
     }
 
@@ -55,7 +56,8 @@ class TodayActivity extends Component {
                 this.setState({
                     activities: response.data.activities,
                     categories: response.data.categories,
-					activity: activity
+                    activity: activity,
+                    agenda: response.data.agenda,
                 });
             })
     }
@@ -96,7 +98,26 @@ class TodayActivity extends Component {
                 });
             })
 
-	}
+    }
+    
+    onFullRender = (value) => {
+        const date = value.format('YYYY-MM-DD');
+        let style ={
+          paddingLeft:"3px",
+          opacity:0.5};
+    
+        for (let assigned of this.state.agenda){
+          if(date === assigned) {
+            style = {
+                background: "lightskyblue",
+                border: "1px solid lightcyan",
+                fontStyle: "italic",
+                fontWeight: "bold",
+                paddingLeft: "3px"};
+            }
+        }
+        return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
+      }
 
     render() {
 
@@ -116,7 +137,7 @@ class TodayActivity extends Component {
                             <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
                         </div>
                     </h3>
-                    {this.state.active && <Calendar onSelect={this.onSelect} fullscreen={false} className="sidebar_calendar" />}
+                    {this.state.active && <Calendar onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
                         <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>

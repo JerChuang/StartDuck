@@ -50,7 +50,6 @@ class DayActivities extends React.Component{
     })
   }
 
-
   onSelect = (value) => {
     this.setState({
       date: value.format('YYYY-MM-DD'),
@@ -58,9 +57,7 @@ class DayActivities extends React.Component{
     });
   }
 
-
   onFullRender = (value) => {
-
     const date = value.format('YYYY-MM-DD');
     let style ={
       paddingLeft:"3px",
