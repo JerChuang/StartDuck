@@ -15,7 +15,7 @@ class CompletedActivityContent extends Component {
             activities: [],
             activity: {},
             categories: [],
-      email: this.props.cookies.get('email'),
+            email: this.props.cookies.get('email'),
         };
     }
 

@@ -14,20 +14,29 @@ class CompletedActivities extends Component {
         };
     }
 
-    componentDidMount() {
+      componentDidMount() {
+        this.getActivities();
+      }
+
+      componentDidUpdate(prevProps){
+        if(this.props.params !== prevProps.params){
+          this.getActivities();
+        }
+      }
+
+      getActivities(){
         axios.get('api/users/:id', {
           params:{
-            email: this.state.email
+            email: this.state.email,
           }
         })
         .then((response) => {
-            console.log("response.dataaaa", response.data)
           this.setState({
-            categories: response.data.categories,
-            activities: response.data.activities
+            activities: response.data.activities,
+            categories: response.data.categories
           });
         })
-    }
+      }
 
     render () {
       console.log('this.state.categories', this.state.categories)
