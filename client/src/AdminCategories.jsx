@@ -5,9 +5,9 @@ import { Icon, Form, Input, Button } from 'antd';
 
 function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
-  }
-  
-  
+}
+
+
 class AdminCategories extends Component {
     constructor(props) {
         super(props);
@@ -41,31 +41,39 @@ class AdminCategories extends Component {
     onDelete = (event) => {
         axios.delete(`/api/admin/categories/${event.currentTarget.id}`, {})
             .then((response) => {
-                console.log('this is from delete', event.currentTarget.id)
+                this.fetchCategories()
             })
     }
 
-    // create new category and saves in db
-    onCreate = () => {
-        axios.post('/api/admin/categories', {})
-            // console.log('is this reading??')
-            .then((response) => {
-                console.log('this is added', response)
-            })
-    }
+
 
     // toggles new category form
-    onAddButton = () => {
+    toggleCategory = () => {
+        console.log('this is changing', this.state.active)
         this.setState({
             active: !this.state.active
         });
     }
 
+    //clear fields after submit
+    onHandleChange() {
+        this.setState({
+            categories: " "
+        });
+    }
+
+
+    // create new category and saves in db
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                axios.post('/api/admin/categories', { name: values.category })
+                    // console.log('this is values',values.category)
+                    // console.log('is this reading??')
+                    .then((response) => {
+                        this.fetchCategories()
+                    })
             }
         });
     };
@@ -84,7 +92,7 @@ class AdminCategories extends Component {
         const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
             <div className="adminCategories">
-                <Icon type="plus-square" className="categoryAddIcon" onClick={this.onAddButton} />
+                <Icon type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
 
                 <table className="tableAdminCategories">
                     <thead>
@@ -97,7 +105,7 @@ class AdminCategories extends Component {
                     </tbody>
                 </table>
 
-                <Form layout="inline" onSubmit={this.handleSubmit}>
+                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} onChange={this.onHandleChange}>
                     <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
                         {getFieldDecorator('category', {
                             rules: [{ required: true, message: 'Please input category!' }],
@@ -110,11 +118,12 @@ class AdminCategories extends Component {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" onClick={this.onCreate} disabled={hasErrors(getFieldsError())}>
+                        <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
                             Create
                         </Button>
                     </Form.Item>
                 </Form>
+                }
             </div>
         )
     }
