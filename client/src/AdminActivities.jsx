@@ -20,9 +20,14 @@ class AdminActivities extends Component {
             })
         }
 
-    onDelete = () => {
-        
-    }
+        // delete an exisiting activity by clicking trash button
+        onDelete = (event) => {
+            axios.delete(`/api/admin/categories/${event.currentTarget.id}`, {})
+                .then((response) => {
+                    this.fetchCategories()
+                })
+        }
+    
 
 
     render() {
@@ -31,7 +36,7 @@ class AdminActivities extends Component {
         return <tr>
         {activity.name} 
         <Icon type="edit" /> 
-        <Icon type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
+        <Icon type="delete" className="activityDeleteIcon" onClick={this.onDelete} />
         </tr>   
         })
         return (
