@@ -56,7 +56,6 @@ class TodayActivity extends Component {
                     activities: response.data.activities,
                     categories: response.data.categories,
 					activity: activity
-
                 });
             })
     }
@@ -83,6 +82,30 @@ class TodayActivity extends Component {
 				completeness: "Incomplete"
 			})
 		}
+    }
+    complete = () => {
+        axios.patch('/api/user_activities/:id', {
+            params: {
+                email: this.state.email,
+                date: this.props.params
+            }
+        }) // You can simply make your requests to "/api/whatever you want"
+            .then((response) => {
+				console.log('this is response',response)
+                // handle success
+                const activity = response.data.activities.find(element => {
+                    console.log('elementid',element.id)
+                    console.log('activityid', element.activity_id)
+                    return element.id == this.props.params.activityID;
+                })
+                console.log('activity', this.props.params)
+                this.setState({
+                    activities: response.data.activities,
+                    categories: response.data.categories,
+					activity: activity
+                });
+            })
+      
 	}
 
 
@@ -122,6 +145,7 @@ class TodayActivity extends Component {
                     <div className="TodayContent">
 						<ReactMarkdown source={this.state.activity.content} />
                     </div>
+                    <button className="todayActivity_complete" onClick={this.complete}>Complete Activity!</button>
                 </div>
 
             </section>

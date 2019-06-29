@@ -27,4 +27,7 @@ class Api::UserActivitiesController < ApplicationController
     }
   end
 
+  def update
+    
+  end
 end
