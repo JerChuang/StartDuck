@@ -23,8 +23,11 @@ class AdminCategories extends Component {
     componentDidMount() {
         this.fetchCategories();
         this.props.form.validateFields();
-
     }
+
+    // componentDidUpdate() {
+    //     this.clearFields();
+    // }
 
     fetchCategories = () => {
         axios.get('/api/admin/categories', {})
@@ -46,21 +49,23 @@ class AdminCategories extends Component {
     }
 
 
-
     // toggles new category form
     toggleCategory = () => {
-        console.log('this is changing', this.state.active)
         this.setState({
             active: !this.state.active
         });
     }
 
     //clear fields after submit
-    onHandleChange() {
-        this.setState({
-            categories: " "
-        });
+    clearFields = () => {
+        console.log('this is clearing the field')
+        this.props.form.resetFields()
+            // .then((response) => {   
+            //     this.fetchCategories()
+            // })
     }
+
+
 
 
     // create new category and saves in db
@@ -83,7 +88,6 @@ class AdminCategories extends Component {
         const categories = this.state.categories.map(category => {
             return <tr>
                 {category.name}
-                <Icon type="edit" />
                 <Icon id={category.id} type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
             </tr>
         })
@@ -92,7 +96,7 @@ class AdminCategories extends Component {
         const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
             <div className="adminCategories">
-                <Icon type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
+                <Icon  style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
 
                 <table className="tableAdminCategories">
                     <thead>
@@ -105,10 +109,10 @@ class AdminCategories extends Component {
                     </tbody>
                 </table>
 
-                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} onChange={this.onHandleChange}>
+                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} onClick={this.clearFields}>
                     <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
                         {getFieldDecorator('category', {
-                            rules: [{ required: true, message: 'Please input category!' }],
+                            rules: [{ required: true, message: 'Please input category!', valuePropName: 'value' }],
                         })(
                             <Input
                                 prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -118,7 +122,9 @@ class AdminCategories extends Component {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
+                        <Button type="primary" 
+                        htmlType="submit" 
+                        disabled={hasErrors(getFieldsError())}>
                             Create
                         </Button>
                     </Form.Item>
