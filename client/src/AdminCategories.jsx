@@ -56,14 +56,14 @@ class AdminCategories extends Component {
         });
     }
 
-    //clear fields after submit
-    clearFields = () => {
-        console.log('this is clearing the field')
-        this.props.form.resetFields()
-            // .then((response) => {   
-            //     this.fetchCategories()
-            // })
-    }
+    // //clear fields after submit
+    // clearFields = () => {
+    //     console.log('this is clearing the field')
+    //     this.props.form.resetFields()
+    //         // .then((response) => {   
+    //         //     this.fetchCategories()
+    //         // })
+    // }
 
 
 
@@ -78,6 +78,8 @@ class AdminCategories extends Component {
                     // console.log('is this reading??')
                     .then((response) => {
                         this.fetchCategories()
+                        this.props.form.resetFields()
+
                     })
             }
         });
@@ -109,7 +111,7 @@ class AdminCategories extends Component {
                     </tbody>
                 </table>
 
-                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} onClick={this.clearFields}>
+                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} >
                     <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
                         {getFieldDecorator('category', {
                             rules: [{ required: true, message: 'Please input category!', valuePropName: 'value' }],
