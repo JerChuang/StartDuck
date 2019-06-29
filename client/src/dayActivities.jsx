@@ -115,7 +115,8 @@ class DayActivities extends React.Component{
           </div>
           <div>
             <div className="dayActivities_categories">
-              {categories} <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
+              {categories}
+              <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
               <button className = "dayActivities_edit">edit</button>
             </div>
             <h2>Activities</h2>
