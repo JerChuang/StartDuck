@@ -27,4 +27,8 @@ class Api::UserActivitiesController < ApplicationController
     }
   end
 
+  def update
+    @user_agenda = User.find_by(email:params['email']).user_agendas.last
+    @user_agenda.user_activities.where(activity_id:params["id"]).update(completeness:params['completeness'])
+  end
 end

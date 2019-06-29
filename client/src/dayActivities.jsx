@@ -20,10 +20,12 @@ class DayActivities extends React.Component{
   }
 
   componentDidMount() {
+    console.log('did mount')
     this.getActivities();
   }
 
   componentDidUpdate(prevProps){
+    console.log('did update', prevProps)
     if(this.props.params !== prevProps.params){
       console.log('this.props.params:', this.props.params)
       console.log('prevProps.params:', prevProps.params)

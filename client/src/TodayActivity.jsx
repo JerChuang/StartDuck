@@ -15,7 +15,8 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-			email: this.props.cookies.get('email'),
+            email: this.props.cookies.get('email'),
+            completeness: '',
         };
     }
 
@@ -83,18 +84,28 @@ class TodayActivity extends Component {
 				completeness: "Incomplete"
 			})
 		}
+    }
+    complete = () => {
+        axios.patch(`/api/user_activities/${this.props.params.activityID}`, {
+            completeness: true,
+            email: this.state.email,
+        }) 
+            .then((response) => {
+                this.setState({
+                    completeness: "Completed"
+                })
+            }) 
 	}
 
-
     render() {
+
+        console.log('This is props.params',this.props.params)
         if(this.state.redirect){
             return (
                 <Redirect to={`/${this.state.date}/activities`}/>
             )
           }
-		console.log('this is markdown',this.state.markdown)
 
-		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
 
