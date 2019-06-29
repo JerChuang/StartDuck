@@ -14,7 +14,8 @@ class CompletedActivityContent extends Component {
             activities: [],
             activity: {},
             categories: [],
-      email: this.props.cookies.get('email'),
+            email: this.props.cookies.get('email'),
+
         };
     }
 
@@ -96,19 +97,6 @@ class CompletedActivityContent extends Component {
     console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
-
-                <div className="sideBarSchedule">
-                    <h3 className="dayHeading">{this.props.params.day}
-                    <div className="todayActivityIcon">
-                            <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
-                        </div>
-                    </h3>
-                    {this.state.active && <Calendar onSelect={this.onSelect} fullscreen={false} className="sidebar_calendar" />}
-
-                    <div className="TodayActivityCalendar">
-                        <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
-                    </div>
-                </div>
 
                 <div className="TodayTask">
 
