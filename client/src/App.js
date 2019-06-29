@@ -12,7 +12,7 @@ import DatePicker from "./datePicker.jsx";
 import TodayActivity from "./TodayActivity.jsx";
 import CompletedActivities from './CompletedActivities.jsx'
 import AdminCategories from "./AdminCategories.jsx";
-// import adminActivities from "./adminActivities.jsx";
+import AdminActivities from "./AdminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
