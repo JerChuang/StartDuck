@@ -21,7 +21,10 @@ class AdminCategories extends Component {
         }
 
     onDelete = () => {
-        
+        axios.delete('/api/admin/categories', {})
+            .then((response) => {
+                console.log('this is from delete',response.data)
+            })
     }
 
 

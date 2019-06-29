@@ -9,6 +9,12 @@ class Api::Admin::ActivitiesController < ApplicationController
     
     def show
         @activity = Activity.find params[:id]
-      end
+        
+        render :json => {
+            activity: @activity
+        }
+    end
+
+
 
 end

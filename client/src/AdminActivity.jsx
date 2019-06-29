@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+
+
 class AdminActivity extends Component {
     state = {
         activity: [],
@@ -11,11 +14,12 @@ class AdminActivity extends Component {
     }
     
     fetchActivity = () => {
-        axios.get('/api/admin/activities', {})
+        axios.get(`/api/admin/activities/${this.props.params.id}`, {})
             .then((response) => {
                 console.log('responsedata',response.data)
+                
                 this.setState({
-                    activities: response.data.activities
+                    activity: response.data.activity
                 })
             })
         }
@@ -26,27 +30,14 @@ class AdminActivity extends Component {
 
 
     render() {
-        console.log('theprops',this.props)
-        const activity = this.state.activity.map(category => {
-        return <tr>
-        {category.name} 
-        <Icon type="edit" /> 
-        <Icon type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
-        </tr>   
-        })
         return (
-            <div className="adminActivities">
+            <div className="adminActivity">
 
-                <table className="tableAdminActivities">
-                    <thead>
-                        <tr>
-                        <th colSpan="2">Activity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {activity}
-                    </tbody>
-                </table>
+                <div>
+                    <p>{this.state.activity.name}</p>
+                    <p>{this.state.activity.duration} m</p>
+                    <ReactMarkdown source={this.state.activity.content} />
+                </div>
 
             </div>
         )
