@@ -27,9 +27,9 @@ class AdminActivities extends Component {
 
     render() {
         console.log('thestate',this.state)
-        const activities = this.state.activities.map(category => {
+        const activities = this.state.activities.map(activity => {
         return <tr>
-        {category.name} 
+        {activity.name} 
         <Icon type="edit" /> 
         <Icon type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
         </tr>   

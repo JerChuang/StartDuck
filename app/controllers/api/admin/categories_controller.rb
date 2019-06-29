@@ -10,8 +10,20 @@ class Api::Admin::CategoriesController < ApplicationController
   def destroy
     @category = Category.find params[:id]
     @category.destroy
-    redirect_to [:admin, :categories], notice: 'Category deleted!'
+    # redirect_to [:admin, :categories], notice: 'Category deleted!'
   end
 
+  def create
+    @category = Category.create(category_params)
+    # @category.save
+  end
+
+  private
+    
+  def category_params
+    params.require(:category).permit(
+      :name
+    )
+  end
   
 end
