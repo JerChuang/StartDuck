@@ -82,18 +82,18 @@ class App extends Component {
               render={(props) => <DayActivities {...props} cookies={cookies} params={props.match.params} />}
             />
             <Route
+              path="/completed_activities/:id"
+              render={(props) => {
+                console.log('this is from appjssssssss', props)
+                return <CompletedActivityContent {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />}
+              }/>
+            <Route
               path="/completed_activities"
               render={(props) => {
                 console.log('this is from appjs', props)
               return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
+              }/>
 
-              }/>
-              <Route
-              path="/completed_activities/:id"
-              render={(props) => {
-                console.log('this is from appjs', props)
-                return <CompletedActivityContent {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />}
-              }/>
 
             <Route
               path="/"

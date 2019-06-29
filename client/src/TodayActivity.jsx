@@ -22,7 +22,7 @@ class TodayActivity extends Component {
     componentDidMount() {
 		this.fetchActivity(this.props.params.activityID);
 		this.checkCompleteness();
-		
+
     }
 
     componentDidUpdate (prevProps) {
@@ -34,7 +34,7 @@ class TodayActivity extends Component {
         if (this.state.redirect){
             this.setState({redirect:false})
         }
-    } 
+    }
 
     fetchActivity = (activityID) => {
         axios.get('/api/user_activities/:id', {
@@ -44,11 +44,11 @@ class TodayActivity extends Component {
             }
         }) // You can simply make your requests to "/api/whatever you want"
             .then((response) => {
-				console.log('this is response',response)
+				console.log('this is responsefjdkjkdjd',response)
                 // handle success
                 const activity = response.data.activities.find(element => {
-                    console.log('elementid',element.id)
-                    console.log('activityid', element.activity_id)
+                    // console.log('elementid',element.id)
+                    // console.log('activityid', element.activity_id)
                     return element.id == this.props.params.activityID;
                 })
                 console.log('activity', this.props.params)
@@ -105,7 +105,7 @@ class TodayActivity extends Component {
 					activity: activity
                 });
             })
-      
+
 	}
 
 
