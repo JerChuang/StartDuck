@@ -62,16 +62,16 @@ class App extends Component {
         <main className="main-container">
           <Switch>
 
-            <Route 
-            path="/admin/activities/:id" 
+            <Route
+            path="/admin/activities/:id"
             render={(props) => <AdminActivity {...props} activity={this.state.activity} params={props.match.params}/>}
             />
 
-            <Route 
-            path="/admin/activities" 
+            <Route
+            path="/admin/activities"
             render={(props) => <AdminActivities {...props} activities={this.state.activities} />}
             />
-            
+
             <Route
               path="/admin/categories"
               render={(props) => <AdminCategories {...props} categories={this.state.categories} />}
@@ -94,17 +94,18 @@ class App extends Component {
               render={(props) => <DayActivities {...props} cookies={cookies} params={props.match.params} />}
             />
             <Route
-              path="/completed_activities"
-              render={(props) => {
-              return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
-
-              }/>
-              <Route
               path="/completed_activities/:id"
               render={(props) => {
-                console.log('this is from appjs', props)
-                return <CompletedActivityContent {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />}
+              return <CompletedActivityContent {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />}
+
               }/>
+            <Route
+              path="/completed_activities"
+              render={(props) => {
+                console.log('this is from appjs', props)
+              return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
+              }/>
+
 
             <Route
               path="/"

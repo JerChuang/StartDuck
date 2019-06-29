@@ -25,12 +25,13 @@ class CompletedActivities extends Component {
       }
 
       getActivities(){
-        axios.get('api/users/:id', {
+        axios.get('/api/users/:id', {
           params:{
             email: this.state.email,
           }
         })
         .then((response) => {
+            console.log('response.dataaaaa', response.data)
           this.setState({
             activities: response.data.activities,
             categories: response.data.categories
@@ -39,7 +40,7 @@ class CompletedActivities extends Component {
       }
 
     render () {
-      console.log('this.state.categories', this.state.categories)
+      console.log('this.state.activitiessssss', this.state.activities.content)
         const categories = this.state.categories.map(category => {
           return <button className = "dayActivities_categoriesButtons">{category}</button>
         })
