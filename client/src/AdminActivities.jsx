@@ -22,9 +22,9 @@ class AdminActivities extends Component {
 
         // delete an exisiting activity by clicking trash button
         onDelete = (event) => {
-            axios.delete(`/api/admin/categories/${event.currentTarget.id}`, {})
+            axios.delete(`/api/admin/activities/${event.currentTarget.id}`, {})
                 .then((response) => {
-                    this.fetchCategories()
+                    this.fetchActivities()
                 })
         }
     
@@ -34,11 +34,12 @@ class AdminActivities extends Component {
         console.log('thestate',this.state)
         const activities = this.state.activities.map(activity => {
         return <tr>
-        {activity.name} 
-        <Icon type="edit" /> 
-        <Icon type="delete" className="activityDeleteIcon" onClick={this.onDelete} />
+            {activity.name} 
+            <Icon type="edit" /> 
+            <Icon id={activity.id} type="delete" className="activityDeleteIcon" onClick={this.onDelete} />
         </tr>   
         })
+
         return (
             <div className="adminActivities">
 

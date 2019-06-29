@@ -15,6 +15,9 @@ class Api::Admin::ActivitiesController < ApplicationController
         }
     end
 
-
-
+    def destroy
+        @activity = Activity.find params[:id]
+        @activity.destroy
+    end
+    
 end
