@@ -15,7 +15,9 @@ class TodayActivity extends Component {
             activities: [],
             activity: {},
             categories: [],
-			email: this.props.cookies.get('email'),
+            email: this.props.cookies.get('email'),
+            completeness: '',
+            agenda: [],
         };
     }
 
@@ -54,7 +56,8 @@ class TodayActivity extends Component {
                 this.setState({
                     activities: response.data.activities,
                     categories: response.data.categories,
-					activity: activity
+                    activity: activity,
+                    agenda: response.data.agenda,
                 });
             })
     }
@@ -83,40 +86,48 @@ class TodayActivity extends Component {
 		}
     }
     complete = () => {
-        axios.patch('/api/user_activities/:id', {
-            params: {
-                email: this.state.email,
-                date: this.props.params
-            }
-        }) // You can simply make your requests to "/api/whatever you want"
+        axios.patch(`/api/user_activities/${this.props.params.activityID}`, {
+            
+            email: this.state.email,
+            completeness: true
+            
+        }) 
             .then((response) => {
-				console.log('this is response',response)
-                // handle success
-                const activity = response.data.activities.find(element => {
-                    console.log('elementid',element.id)
-                    console.log('activityid', element.activity_id)
-                    return element.id == this.props.params.activityID;
-                })
-                console.log('activity', this.props.params)
                 this.setState({
-                    activities: response.data.activities,
-                    categories: response.data.categories,
-					activity: activity
+                    completeness: "Completed"
                 });
             })
 
-	}
-
+    }
+    
+    onFullRender = (value) => {
+        const date = value.format('YYYY-MM-DD');
+        let style ={
+          paddingLeft:"3px",
+          opacity:0.5};
+    
+        for (let assigned of this.state.agenda){
+          if(date === assigned) {
+            style = {
+                background: "lightskyblue",
+                border: "1px solid lightcyan",
+                fontStyle: "italic",
+                fontWeight: "bold",
+                paddingLeft: "3px"};
+            }
+        }
+        return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
+      }
 
     render() {
+
+        console.log('This is props.params',this.props.params)
         if(this.state.redirect){
             return (
                 <Redirect to={`/${this.state.date}/activities`}/>
             )
           }
-		console.log('this is markdown',this.state.markdown)
 
-		console.log('this is state.completenesss', this.state.completeness)
         return (
             <section className="dayActivity">
 
@@ -126,7 +137,7 @@ class TodayActivity extends Component {
                             <Icon style={{ fontSize: '35px' }} type="calendar" onClick={this.handleClick} />
                         </div>
                     </h3>
-                    {this.state.active && <Calendar onSelect={this.onSelect} fullscreen={false} className="sidebar_calendar" />}
+                    {this.state.active && <Calendar onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false} className="sidebar_calendar" />}
 
                     <div className="TodayActivityCalendar">
                         <TodayActivityCalendar activities={this.state.activities} params={this.props.match.params}/>
