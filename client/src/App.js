@@ -11,10 +11,9 @@ import DayActivities from "./dayActivities.jsx";
 import DatePicker from "./datePicker.jsx";
 import TodayActivity from "./TodayActivity.jsx";
 import CompletedActivities from './CompletedActivities.jsx'
-
+import AdminCategories from "./AdminCategories.jsx";
 // import adminActivities from "./adminActivities.jsx";
 // import adminActivity from "./adminActivity.jsx";
-// import adminCategories from "./adminCategories.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const cookies = new Cookies()
@@ -25,7 +24,7 @@ class App extends Component {
     this.state = {
       message: 'Click the button to load data!',
       activities: [{ duration: 60, name: "Japanese 100" }, { duration: 120, name: "Japanese 200" }, { duration: 30, name: "Japanese 300" }],
-      categories: ["coding", "japanese", "cooking", "swimming"],
+      categories: ["coding", "swimming"],
       email: cookies.get('email'),
     }
   }
@@ -63,11 +62,16 @@ class App extends Component {
           <Switch>
             <Route path="/admin/activities/:activityID" component={adminActivity} />
             <Route path="/admin/activities" component={adminActivities} />
-            <Route path="/admin/categories" component={adminCategories} />
+            
+            <Route
+              path="/admin/categories"
+              render={(props) => <AdminCategories {...props} categories={this.state.categories} />}
+            />
+
             <Route
               path="/:day/activities/:activityID"
               render={(props) => {
-                console.log('KV', props)
+                // console.log('KV', props)
                 return <TodayActivity {...props} cookies={cookies} activities={this.state.activities} params={props.match.params} />
               }
               } />
@@ -83,7 +87,6 @@ class App extends Component {
             <Route
               path="/completed_activities"
               render={(props) => {
-                console.log('this is from appjs', props)
               return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
               
               }/>
@@ -103,9 +106,9 @@ function adminActivities() {
   return <h2>This is the component for /admin/activities</h2>;
 }
 
-function adminCategories() {
-  return <h2>This is the component for /admin/categories</h2>;
-}
+// function adminCategories() {
+//   return <h2>This is the component for /admin/categories</h2>;
+// }
 
 function adminActivity() {
   return <h2>This is the component for /admin/activities/:activityID</h2>;
