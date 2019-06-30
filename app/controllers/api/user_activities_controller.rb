@@ -4,7 +4,7 @@ class Api::UserActivitiesController < ApplicationController
     @user_activities = @user_agenda.user_activities.where(date: params['date'])
     @agenda_dates = (@user_agenda.start_date...@user_agenda.end_date+1).map(&:to_s)
     # @activities = @user_activities.select('user_activities.*, activities.*').joins("INNER JOIN activities ON user_activities.activity_id = activities.id")
-    @activities = @user_activities.select('user_activities.id AS user_activities_id, user_activities.*, activities.*').joins(:activity)
+    @activities = @user_activities.select('user_activities.id AS user_activities_id, user_activities.*, activities.*').joins(:activity).order(created_at: :asc)
 
     # @activities = @user_activities.map{|user_activity|user_activity.activity}
     @categories = @user_activities.map {|user_activity|user_activity.activity.category}.uniq
@@ -19,7 +19,7 @@ class Api::UserActivitiesController < ApplicationController
   def show
     @user_agenda = User.find_by(email:params['email']).user_agendas.last
     @user_activities = @user_agenda.user_activities.where(date: params['date'])
-    @activities = @user_activities.select('user_activities.*, activities.*').joins("INNER JOIN activities ON user_activities.activity_id = activities.id")
+    @activities = @user_activities.select('user_activities.*, activities.*').joins("INNER JOIN activities ON user_activities.activity_id = activities.id").order(created_at: :asc)
     @categories = @user_activities.map {|user_activity|user_activity.activity.category.name}.uniq
     @agenda_dates = (@user_agenda.start_date...@user_agenda.end_date+1).map(&:to_s)
     render :json => {
