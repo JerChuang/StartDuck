@@ -74,11 +74,12 @@ class TodayActivity extends Component {
             completeness: !this.state.activity.completeness
         }) 
             .then((response) => {         
-                let activity = {...this.state.activity}
-                activity.completeness = !this.state.activity.completeness
-                this.setState({
-                    activity:activity,
-                });
+                // let activity = {...this.state.activity}
+                // activity.completeness = !this.state.activity.completeness
+                // this.setState({
+                //     activity:activity,
+                // });
+                this.fetchActivity();
             })
     }
     
