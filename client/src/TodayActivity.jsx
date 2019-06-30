@@ -40,15 +40,12 @@ class TodayActivity extends Component {
                 email: this.state.email,
                 date: this.props.params
             }
-        }) // You can simply make your requests to "/api/whatever you want"
+        })
             .then((response) => {
-				console.log('this is responsefjdkjkdjd',response)
                 // handle success
                 const activity = response.data.activities.find(element => {
-
-                    return element.id == this.props.params.activityID;
+                    return element.id === Number(this.props.params.activityID);
                 })
-                console.log('activity', this.props.params)
                 this.setState({
                     activities: response.data.activities,
                     categories: response.data.categories,
@@ -71,25 +68,18 @@ class TodayActivity extends Component {
         });
     }
 
-    complete = (event) => {
-        console.log(event.currentTarget.className)
-        this.state.activity.completeness? 
-            event.currentTarget.className = "todayActivity_complete":
-            event.currentTarget.className = "todayActivity_cancel"
+    complete = (event) => {      
         axios.patch(`/api/user_activities/${this.props.params.activityID}`, {
             email: this.state.email,
             completeness: !this.state.activity.completeness
         }) 
-            .then((response) => {
-                
+            .then((response) => {         
                 let activity = {...this.state.activity}
                 activity.completeness = !this.state.activity.completeness
                 this.setState({
                     activity:activity,
                 });
             })
-        console.log(this.state.activity.completeness)
-
     }
     
     onFullRender = (value) => {
@@ -112,8 +102,6 @@ class TodayActivity extends Component {
       }
 
     render() {
-
-        console.log('This.state.activity.completeness',this.state.activity.completeness)
         if(this.state.redirect){
             return (
                 <Redirect to={`/${this.state.date}/activities`}/>
@@ -137,7 +125,6 @@ class TodayActivity extends Component {
                 </div>
 
                 <div className="TodayTask">
-
                     <div className="TodayActivityBox">
                         <TodayActivityBox activity={this.state.activity} />
                     </div>
@@ -147,8 +134,13 @@ class TodayActivity extends Component {
                     <div className="TodayContent">
 						<ReactMarkdown source={this.state.activity.content} />
                     </div>
-                    <button className="todayActivity_complete"
-                     onClick={this.complete}>{this.state.activity.completeness ? "Wait! I'm not done yet!":"Complete Activity!"}</button>
+
+                    <button className={this.state.activity.completeness? 
+                                        "todayActivity_cancel":
+                                        "todayActivity_complete"}
+                            onClick={this.complete}>
+                        {this.state.activity.completeness ? "Wait! I'm not done yet!":"Complete Activity!"}
+                    </button>
                 </div>
 
             </section>
