@@ -3,6 +3,21 @@ import React, { Component } from 'react';
 import Logo from './images/logo.png'
 import {Link, Redirect} from "react-router-dom";
 import * as moment from 'moment';
+import { withRouter } from 'react-router-dom'; 
+
+const HideSchedule = (props) => {
+  const { location } = props;
+  if (location.pathname.match("/schedule")){
+    console.log('if hiding')
+    return null;
+  }
+
+  return (
+   <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
+  )
+}
+
+const Reschedule = withRouter(HideSchedule);
 
 
 class Nav extends Component {
@@ -55,8 +70,8 @@ class Nav extends Component {
     <div className="container-fluid">
       {/* <Logo className="navbar_logo" /> */}
       <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
-
-      <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
+        <Reschedule/>
+      {/* <Link className="link" to="/schedule" currentpath = '/'>Reschedule</Link> */}
       <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
       <button className="navbar_logout" onClick={this.handleClick}>Logout</button>
     </div>
