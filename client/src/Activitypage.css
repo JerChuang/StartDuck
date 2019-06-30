@@ -80,3 +80,13 @@
     border-radius: 5px;
     background: #10E9FF;
 }
+.todayActivity_cancel {
+    width: 200px;
+    height: 50px;
+    font-size: 13px;
+    color: black;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    border-radius: 5px;
+    background: rgb(230, 193, 255);
+}

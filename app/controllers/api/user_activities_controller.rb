@@ -9,7 +9,6 @@ class Api::UserActivitiesController < ApplicationController
     # @activities = @user_activities.map{|user_activity|user_activity.activity}
     @categories = @user_activities.map {|user_activity|user_activity.activity.category}.uniq
 
-
     render :json => {
       activities: @activities,
       categories: @categories,
