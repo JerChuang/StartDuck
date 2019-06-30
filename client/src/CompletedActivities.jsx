@@ -24,26 +24,11 @@ class CompletedActivities extends Component {
     }
   }
 
-<<<<<<< HEAD
-      getActivities() {
-        axios.get('/api/users/:id', {
-          params:{
-            email: this.state.email,
-          }
-        })
-        .then((response) => {
-            console.log('response.dataaaaa', response.data)
-          this.setState({
-            activities: response.data.activities,
-            categories: response.data.categories
-          });
-        })
-=======
+
   getActivities(){
     axios.get('/api/users/:id', {
       params:{
         email: this.state.email,
->>>>>>> ccf5030d856f567336c03a5eb20605b7e66a0ea9
       }
     })
     .then((response) => {
@@ -63,7 +48,7 @@ class CompletedActivities extends Component {
         }),
     })
   }
-  
+
   allCategories = () => {
     this.setState({
       filterActivities: this.state.activities
@@ -79,7 +64,7 @@ class CompletedActivities extends Component {
       <section className="dayActivities">
       <div>
       <div className="dayActivities_categories">
-        {categories}  
+        {categories}
         <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
         </div>
       <h2>Completed Activities</h2>
