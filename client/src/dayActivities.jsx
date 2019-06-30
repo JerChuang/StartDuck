@@ -50,7 +50,7 @@ class DayActivities extends React.Component{
         filterActivities: response.data.activities,
         categories: response.data.categories,
         agenda: response.data.agenda,
-
+        
       });
     })
   }

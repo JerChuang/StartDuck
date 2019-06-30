@@ -16,21 +16,18 @@ class TodayActivity extends Component {
             activity: {},
             categories: [],
             email: this.props.cookies.get('email'),
-            completeness: '',
             agenda: [],
         };
     }
 
     componentDidMount() {
 		this.fetchActivity(this.props.params.activityID);
-		this.checkCompleteness();
     }
 
     componentDidUpdate (prevProps) {
         const activityID = this.props.params.activityID
         if (prevProps.params.activityID !== activityID) {
 			this.fetchActivity(activityID);
-			this.checkCompleteness();
         }
         if (this.state.redirect){
             this.setState({redirect:false})
@@ -48,8 +45,7 @@ class TodayActivity extends Component {
 				console.log('this is responsefjdkjkdjd',response)
                 // handle success
                 const activity = response.data.activities.find(element => {
-                    // console.log('elementid',element.id)
-                    // console.log('activityid', element.activity_id)
+
                     return element.id == this.props.params.activityID;
                 })
                 console.log('activity', this.props.params)
@@ -73,30 +69,25 @@ class TodayActivity extends Component {
             redirect: true,
         });
     }
-	checkCompleteness = () => {
-		if (this.state.activity.completeness) {
-			this.setState({
-				completeness: "Completed"
-			})
-		}
-		else {
-			this.setState({
-				completeness: "Incomplete"
-			})
-		}
-    }
-    complete = () => {
+
+    complete = (event) => {
+        console.log(event.currentTarget.className)
+        this.state.activity.completeness? 
+            event.currentTarget.className = "todayActivity_complete":
+            event.currentTarget.className = "todayActivity_cancel"
         axios.patch(`/api/user_activities/${this.props.params.activityID}`, {
-            
             email: this.state.email,
-            completeness: true
-            
+            completeness: !this.state.activity.completeness
         }) 
             .then((response) => {
+                
+                let activity = {...this.state.activity}
+                activity.completeness = !this.state.activity.completeness
                 this.setState({
-                    completeness: "Completed"
+                    activity:activity,
                 });
             })
+        console.log(this.state.activity.completeness)
 
     }
     
@@ -121,7 +112,7 @@ class TodayActivity extends Component {
 
     render() {
 
-        console.log('This is props.params',this.props.params)
+        console.log('This.state.activity.completeness',this.state.activity.completeness)
         if(this.state.redirect){
             return (
                 <Redirect to={`/${this.state.date}/activities`}/>
@@ -150,12 +141,13 @@ class TodayActivity extends Component {
                         <TodayActivityBox activity={this.state.activity} />
                     </div>
                     <div className="Completeness">
-                        <span>Status: {this.state.completeness}	</span>
+                        <span>Status: {this.state.activity.completeness ? "Complete":"Incomplete"}	</span>
                     </div>
                     <div className="TodayContent">
 						<ReactMarkdown source={this.state.activity.content} />
                     </div>
-                    <button className="todayActivity_complete" onClick={this.complete}>Complete Activity!</button>
+                    <button className="todayActivity_complete"
+                     onClick={this.complete}>{this.state.activity.completeness ? "Wait! I'm not done yet!":"Complete Activity!"}</button>
                 </div>
 
             </section>
