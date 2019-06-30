@@ -51,7 +51,7 @@ class DayActivities extends React.Component{
         filterActivities: response.data.activities,
         categories: response.data.categories,
         agenda: response.data.agenda,
-
+        
       });
     })
   }
@@ -122,8 +122,14 @@ class DayActivities extends React.Component{
           </div>
           <div>
             <div className="dayActivities_categories">
+<<<<<<< HEAD
               {categories} <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
               <button className = "dayActivities_edit" onClick={this.toggle.bind(this)}>edit</button>
+=======
+              {categories}
+              <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
+              <button className = "dayActivities_edit">edit</button>
+>>>>>>> ccf5030d856f567336c03a5eb20605b7e66a0ea9
             </div>
             <h2>Activities</h2>
             <ActivitiesList className="dayActivities_activitiesList" shown = {this.state.shown} activities = {this.state.filterActivities}/>

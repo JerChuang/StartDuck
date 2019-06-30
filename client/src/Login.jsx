@@ -4,6 +4,7 @@ import main from './images/main.png'
 import { Form, Icon, Input, Button} from 'antd';
 import {Redirect} from "react-router-dom";
 import * as moment from 'moment';
+import axios from 'axios';
 
 class Login extends Component {
 
@@ -20,18 +21,16 @@ class Login extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         this.props.cookies.set("email", values.email, { path: '/' })
         this.props.setUser(this.props.cookies.get('email'))
-        // console.log(this.props.cookies.get('email'))
         this.setState({redirect:true})
+        axios.post('/api/users', {email: this.props.cookies.get('email')})
       }
     });
   };
 
   render() {
-    // console.log(moment().format('YYYY-MM-DD'))
-    if(this.state.redirect){
+    if(this.state.redirect || this.props.cookies.get('email')){
       return (
           <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
       )

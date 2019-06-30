@@ -22,17 +22,17 @@ class datePicker extends React.Component {
   disabledStartDate = start_date => {
     const { end_date } = this.state;
     if (!start_date || !end_date) {
-      return false;
+      return moment().add(-1, 'days')  >= start_date;
     }
-    return start_date.valueOf() > end_date.valueOf();
+      return moment().add(-1, 'days')  >= start_date || end_date < start_date;
   };
 
   disabledEndDate = end_date => {
     const { start_date } = this.state;
     if (!end_date || !start_date) {
-      return false;
+      return moment().add(-1, 'days')  >= end_date;
     }
-    return end_date.valueOf() <= start_date.valueOf();
+    return end_date < start_date;
   };
 
   onChange = (field, value) => {
@@ -66,25 +66,21 @@ class datePicker extends React.Component {
     this.setState({
       categories: category1
     });
-    console.log("this is topicsssss", this.state.categories)
   };
 
   setTime = hours_per_day => {
-    console.log("this is timeeeeee", hours_per_day)
     this.setState({ hours_per_day: hours_per_day });
   };
 
   handleSubmit = () => {
     axios.post('/api/user_agendas',
         {
-        email: "bob@Dee.com",
+        email: this.props.cookies.get('email'),
         start_date: this.state.start_date.format('YYYY-MM-DD'),
         end_date: this.state.end_date.format('YYYY-MM-DD'),
         categories: this.state.categories,
         hours_per_day: this.state.hours_per_day
       }).then(() => this.setState({ redirect: true }));
-    console.log("this is start_date", this.state.start_date.format('YYYY-MM-DD'))
-    console.log("this is end_date", this.state.end_date.format('YYYY-MM-DD'))
   }
 
   render() {

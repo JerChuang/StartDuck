@@ -28,7 +28,6 @@ class ActivitiesList extends Component {
              </Link>
              </div>
     })
-
     return (
       <main className="dayActivities_activitiesList">
         {activities}
