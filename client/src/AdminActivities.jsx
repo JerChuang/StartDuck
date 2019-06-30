@@ -9,15 +9,30 @@ class AdminActivities extends Component {
 
         this.state = {
             activities: [],
+            categories: [],
             active: false,
         }
     }
 
     componentDidMount() {
-        this.fetchActivities()
+        this.fetchCategories();
+        this.fetchActivities();
     }
 
-    //receives data from backend
+    // recevies categories
+    fetchCategories = () => {
+        axios.get('/api/admin/categories', {})
+            .then((response) => {
+                console.log('responsedata', response.data.categories)
+                this.setState({
+                    categories: response.data.categories
+                })
+
+            })
+    }
+
+
+    //receives activities from backend
     fetchActivities = () => {
         axios.get('/api/admin/activities', {})
             .then((response) => {
@@ -50,6 +65,17 @@ class AdminActivities extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                axios.post('/api/admin/activities', {
+                    name: values.activityName,
+                    content: values.content,
+                    duration: Number(values.duration),
+                    category: values.category
+                })
+                    .then((response) => {
+                        this.fetchActivities();
+                        this.props.form.resetFields();
+
+                    })
             }
         });
     };
@@ -71,35 +97,47 @@ class AdminActivities extends Component {
                 <Icon id={activity.id} type="delete" className="activityDeleteIcon" onClick={this.onDelete} />
             </tr>
         })
-
+        const categories = this.state.categories.map(category => {
+            return <Option value={category.id}>{category.name}</Option>
+        })
+console.log('this is the list of categories',categories);
         return (
             <div className="adminActivities">
 
                 <Icon style={{ fontSize: '32px' }} type="plus-square" className="activityAddIcon" onClick={this.toggleActivity} />
 
-                {this.state.active && <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={this.handleSubmit}>
-                    <Form.Item label="Note">
-                        {getFieldDecorator('note', {
-                            rules: [{ required: true, message: 'Please input your note!' }],
+                {this.state.active && <Form labelCol={{ span: 30 }} wrapperCol={{ span: 30 }} onSubmit={this.handleSubmit}>
+                    <Form.Item label="Activity Name">
+                        {getFieldDecorator('activityName', {
+                            rules: [{ required: true, message: 'Please input activity name!' }],
                         })(<Input />)}
                     </Form.Item>
-                    <Form.Item label="Gender">
-                        {getFieldDecorator('gender', {
-                            rules: [{ required: true, message: 'Please select your gender!' }],
+                    <Form.Item label="Category">
+                        {getFieldDecorator('category', {
+                            rules: [{ required: true, message: 'Please select category!' }],
                         })(
                             <Select
-                                placeholder="Select a option and change input text above"
-                                onChange={this.handleSelectChange}
+                                placeholder="Select a category"
+                                // onChange={this.handleSelectChange}
                             >
-                                <Option value="male">male</Option>
-                                <Option value="female">female</Option>
+                                {categories}
                             </Select>,
                         )}
+                    </Form.Item>
+                    <Form.Item label="Duration">
+                        {getFieldDecorator('duration', {
+                            rules: [{ required: true, message: 'Please input duration!' }],
+                        })(<Input />)}
+                    </Form.Item>
+                    <Form.Item label="Content">
+                        {getFieldDecorator('content', {
+                            rules: [{ required: true, message: 'Please input content!' }],
+                        })(<Input />)}
                     </Form.Item>
                     <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
                         <Button type="primary" htmlType="submit">
                             Submit
-          </Button>
+                        </Button>
                     </Form.Item>
                 </Form>
                 }

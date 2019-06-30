@@ -69,7 +69,7 @@ class App extends Component {
 
             <Route
             path="/admin/activities"
-            render={(props) => <AdminActivities {...props} activities={this.state.activities} />}
+            render={(props) => <AdminActivities {...props} activities={this.state.activities} params={props.match.params}/>}
             />
 
             <Route
