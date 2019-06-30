@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 // import ReactDom from 'react-dom';
 import { Calendar} from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
@@ -140,5 +140,5 @@ class DayActivities extends React.Component{
 
   }
 }
-export default withRouter(DayActivities);
+export default DayActivities;
 
