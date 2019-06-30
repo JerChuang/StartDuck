@@ -61,8 +61,8 @@ class AdminCategories extends Component {
                     // console.log('this is values',values.category)
                     // console.log('is this reading??')
                     .then((response) => {
-                        this.fetchCategories()
-                        this.props.form.resetFields()
+                        this.fetchCategories();
+                        this.props.form.resetFields();
 
                     })
             }
@@ -82,7 +82,7 @@ class AdminCategories extends Component {
         const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
             <div className="adminCategories">
-                <Icon  style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
+                <Icon style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
 
                 <table className="tableAdminCategories">
                     <thead>
