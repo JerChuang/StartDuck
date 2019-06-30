@@ -31,7 +31,7 @@ class Login extends Component {
 
   render() {
     // console.log(moment().format('YYYY-MM-DD'))
-    if(this.state.redirect){
+    if(this.state.redirect || this.props.cookies.get('email')){
       return (
           <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
       )
