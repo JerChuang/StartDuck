@@ -22,17 +22,17 @@ class datePicker extends React.Component {
   disabledStartDate = start_date => {
     const { end_date } = this.state;
     if (!start_date || !end_date) {
-      return false;
+      return moment().add(-1, 'days')  >= start_date;
     }
-    return start_date.valueOf() > end_date.valueOf();
+      return moment().add(-1, 'days')  >= start_date || end_date < start_date;
   };
 
   disabledEndDate = end_date => {
     const { start_date } = this.state;
     if (!end_date || !start_date) {
-      return false;
+      return moment().add(-1, 'days')  >= end_date;
     }
-    return end_date.valueOf() <= start_date.valueOf();
+    return end_date < start_date;
   };
 
   onChange = (field, value) => {
