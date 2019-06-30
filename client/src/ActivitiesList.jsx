@@ -6,14 +6,19 @@ import axios from 'axios';
 
 
 class ActivitiesList extends Component {
+  state = {
+    email: this.props.cookies.get('email'),
+  }
 
   onDelete = (event) => {
         console.log("event.currentTarget.id", event.currentTarget.id)
-        axios.delete(`/api/user_activities${event.currentTarget.id}`, {})
-            .then((response) => {
-                this.fetchCategories()
-            })
-    }
+        axios.delete(`/api/user_activities/${event.currentTarget.id}`, {
+        id: event.currentTarget.id
+      })
+        .then(response => {
+          this.props.handleRefresh()
+        })
+      }
 
   render() {
     var shown = {
@@ -28,7 +33,7 @@ class ActivitiesList extends Component {
       console.log("activityyyyyyyyyyysjidjiajdoisj", activity)
       return <div className="dayActivities_listBlock">
              <div className="dayActivities_deleteButton">
-              <Icon id={activity.id} onClick = {this.onDelete} style={ shown } type="minus-circle" />
+              <Icon id={activity.user_activities_id} onClick = {this.onDelete} style={ shown } type="minus-circle" />
              </div>
              <Link to={`/${activity.date}/activities/${activity.id}`} >
                 <ActivityItem key = {activity.id} {...activity } />

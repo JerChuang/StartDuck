@@ -18,8 +18,9 @@ class DayActivities extends React.Component{
       redirect: false,
       agenda: [],
       shown: true,
-      user_activities_id: []
+
     }
+
   }
 
   componentDidMount() {
@@ -58,6 +59,8 @@ class DayActivities extends React.Component{
     })
   }
 
+  handleRefresh = () => this.getActivities();
+
   onSelect = (value) => {
     this.setState({
       date: value.format('YYYY-MM-DD'),
@@ -67,6 +70,7 @@ class DayActivities extends React.Component{
 
   onFullRender = (value) => {
     const date = value.format('YYYY-MM-DD');
+
     let style ={
       paddingLeft:"3px",
       opacity:0.5};
@@ -106,7 +110,6 @@ class DayActivities extends React.Component{
   }
 
   render(){
-
     if(this.state.redirect){
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
@@ -128,7 +131,7 @@ class DayActivities extends React.Component{
               <button className = "dayActivities_edit" onClick={this.toggle.bind(this)}>edit</button>
             </div>
             <h2>Activities</h2>
-            <ActivitiesList className="dayActivities_activitiesList" shown = {this.state.shown} activities = {this.state.filterActivities}/>
+            <ActivitiesList  className="dayActivities_activitiesList" cookies={this.props.cookies} handleRefresh={this.handleRefresh} shown = {this.state.shown} activities = {this.state.filterActivities}/>
           </div>
         </section>
       )

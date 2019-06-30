@@ -104,7 +104,7 @@ class App extends Component {
                 render={(props) => {
                   console.log('Completed_activities route triggered', props)
                 return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
-  
+
                 }/>
 
             <Route
