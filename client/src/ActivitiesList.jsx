@@ -33,7 +33,7 @@ class ActivitiesList extends Component {
       console.log("activityyyyyyyyyyysjidjiajdoisj", activity)
       return <div className="dayActivities_listBlock">
              <div className="dayActivities_deleteButton">
-              <Icon id={activity.user_activities_id} onClick = {this.onDelete} style={ shown } type="minus-circle" />
+              <Icon id={activity.user_activities_id} onClick = {this.onDelete} style={ hidden } type="minus-circle" />
              </div>
              <Link to={`/${activity.date}/activities/${activity.id}`} >
                 <ActivityItem key = {activity.id} {...activity } />
@@ -44,9 +44,6 @@ class ActivitiesList extends Component {
     return (
       <main className="dayActivities_activitiesList">
         {activities}
-        <div className="dayActivities_addButton">
-          <Icon style={ shown } type="plus-circle" />
-        </div>
       </main>
     );
   }
