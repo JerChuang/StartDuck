@@ -74,7 +74,7 @@ class App extends Component {
 
             <Route
               path="/admin/categories"
-              render={(props) => <AdminCategories {...props} categories={this.state.categories} />}
+              render={(props) => <AdminCategories {...props} categories={this.state.categories} params={props.match.params}/>}
             />
 
             <Route
