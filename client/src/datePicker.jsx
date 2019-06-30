@@ -84,7 +84,7 @@ class datePicker extends React.Component {
   }
 
   render() {
-    console.log("this.props.location.pathname", this.props.location.pathname)
+
     const { redirect } = this.state;
     const { start_date, end_date, endOpen } = this.state;
     const formItemLayout = {

@@ -39,7 +39,7 @@ class Nav extends Component {
   }
 
   render(){
-    console.log("NAV this.props.location.pathname", window.location.pathname)
+    console.log("window.location.pathname", window.location.pathname)
 
     if(this.state.redirect){
       return (

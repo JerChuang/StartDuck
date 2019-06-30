@@ -42,19 +42,14 @@ class schedule extends React.Component{
       return(
         <SlideToggle
           duration={800}
-          render={({ onToggle, setCollapsibleElement, progress }) => (
+          collapsed
+          render={({ onToggle, setCollapsibleElement}) => (
             <div className="my-collapsible">
               <button className="my-collapsible__toggle" onClick={onToggle}>
                 Change Categories
               </button>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
-                <div
-                  className="my-collapsible__content-inner"
-                  style={{
-                    transform: `translateY(${Math.round(20 * (-1 + progress))}px)`
-                  }}
-                >
-
+                <div className="my-collapsible__content-inner">
                   <div className="radio_style">
                     { categories }
                   </div>
