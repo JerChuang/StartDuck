@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Form, Select, Input, Button } from 'antd';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 
 const { Option } = Select;
 class AdminActivities extends Component {
@@ -11,6 +12,7 @@ class AdminActivities extends Component {
             activities: [],
             categories: [],
             active: false,
+            textarea:""
         }
     }
 
@@ -62,6 +64,7 @@ class AdminActivities extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        const self = this;
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
@@ -74,18 +77,17 @@ class AdminActivities extends Component {
                     .then((response) => {
                         this.fetchActivities();
                         this.props.form.resetFields();
-
+                        self.setState({textarea:""})
                     })
             }
         });
     };
 
-    handleSelectChange = value => {
-        console.log(value);
-        this.props.form.setFieldsValue({
-            note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`,
-        });
-    };
+    changeContent = event => {
+        this.setState({
+            textarea:event.target.value,
+        })
+    }
 
     render() {
         console.log('thestate', this.state)
@@ -130,9 +132,11 @@ console.log('this is the list of categories',categories);
                         })(<Input />)}
                     </Form.Item>
                     <Form.Item label="Content">
+                        <ReactMarkdown source={this.state.textarea} />
                         {getFieldDecorator('content', {
                             rules: [{ required: true, message: 'Please input content!' }],
-                        })(<Input />)}
+                        })(<Input.TextArea onChange={this.changeContent} rows={10}/>)}
+                        
                     </Form.Item>
                     <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
                         <Button type="primary" htmlType="submit">
@@ -151,10 +155,6 @@ console.log('this is the list of categories',categories);
                         {activities}
                     </tbody>
                 </table>
-
-
-
-
             </div>
         )
     }
