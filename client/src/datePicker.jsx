@@ -79,11 +79,6 @@ class datePicker extends React.Component {
   };
 
   handleSubmit = () => {
-    if(!this.isFormValid){
-      this.setState({
-      showAlert: true
-    })
-    }
     axios.post('/api/user_agendas',
         {
         email: this.props.cookies.get('email'),
@@ -165,7 +160,7 @@ class datePicker extends React.Component {
             onOpenChange={this.handleEndOpenChange}
           />
          </Form.Item>
-          <Button className="datePicker_button" disabled={!this.isFormValid} onClick={this.handleSubmit}>
+          <Button className="datePicker_button" disabled={!this.isFormValid()} onClick={this.handleSubmit}>
             Submit
           </Button>
       </Form>
