@@ -56,6 +56,7 @@ class DayActivities extends React.Component{
   }
 
   onSelect = (value) => {
+    console.log('value for calendar', value)
     this.setState({
       date: value.format('YYYY-MM-DD'),
       redirect: true,
@@ -64,21 +65,14 @@ class DayActivities extends React.Component{
 
   onFullRender = (value) => {
     const date = value.format('YYYY-MM-DD');
-    let style ={
-      paddingLeft:"3px",
-      opacity:0.5};
+    let style ="activities_calendarNotScheduled";
 
     for (let assigned of this.state.agenda){
       if(date === assigned) {
-        style = {
-            background: "lightskyblue",
-            border: "1px solid lightcyan",
-            fontStyle: "italic",
-            fontWeight: "bold",
-            paddingLeft: "3px"};
+        style = "activities_calendarScheduled";
         }
     }
-    return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
+    return <div className={`ant-fullcalendar-value ${style}`}>{value.date()}</div>;
   }
 
   filterCategory = (event) => {
@@ -104,36 +98,42 @@ class DayActivities extends React.Component{
       )
     }
     const categories = this.state.categories.map(category => {
-      return <button id={category.id} className="dayActivities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
+      return <button id={category.id} className="activities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
     })
 
     if(this.state.activities.length){
       return (
-        <section className="dayActivities">
-          <div className="dayActivities_calendar" >
-            <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
-          </div>
-          <div>
-            <div className="dayActivities_categories">
-              {categories}
-              <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
-              <button className = "dayActivities_edit">edit</button>
+        <section className="activities">
+          <div className="activities_left">
+            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <div  className="activities_calendar" >
+              <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
             </div>
+          </div>
+
+          <div className="activities_right">
             <h2>Activities</h2>
-            <ActivitiesList className="dayActivities_activitiesList" activities = {this.state.filterActivities}/>
+            <div className="activities_categories">
+              {categories}
+              <button className="activities_categoriesButtons" onClick={this.allCategories}>All</button>
+              <button className = "activities_edit">edit</button>
+            </div>
+            <ActivitiesList className="activities_activitiesList" activities = {this.state.filterActivities}/>
           </div>
         </section>
       )
     } else {
       return (
-        <section className="dayActivities">
-
-        <div className="dayActivities_calendar" >
-          <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
-        </div>
-        <div>
-          <h2>No activities planned for the day</h2>
-        </div>
+        <section className="activities">
+          <div className="activities_left">
+            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <div className="activities_calendar" >
+              <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
+            </div>
+          </div>
+          <div className="activities_right">
+            <h2>No activities planned for the day</h2>
+          </div>
       </section>
       )
     }
