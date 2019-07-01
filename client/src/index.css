@@ -1,4 +1,5 @@
 @import "Activitypage.css";
+@import "Nav.css";
 
 body {
   margin: 0;
@@ -13,32 +14,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.navbar {
-  width: 100%;
-  background: white;
-  padding: 0 10px;
-  position: fixed; 
-  top: 0;
-  z-index:2;
-}
-.navbar_logo {
-  padding: 20px;
-  min-width: 125px;
-  width: 12vw;
-}
-.navbar_logout {
-    margin-right: 30px;
-    margin-top: 15px;
-    height: 40px;
-    width: 90px;
-    font-size: 13px;
-    color: white;
-    letter-spacing: 0.05em;
-    font-weight: bold;
-    -webkit-border-radius: 5px;
-    background: #10E9FF;
 }
 
 .login-page {
