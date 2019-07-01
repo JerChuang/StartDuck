@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { ReactComponent as Logo } from './images/logo.svg';
 import Logo from './images/logo.png'
-import {Link, Redirect, withRouter} from "react-router-dom";
+import {Link, Redirect } from "react-router-dom";
 import * as moment from 'moment';
 
 
@@ -35,7 +35,7 @@ class Nav extends Component {
   };
 
   onClick = (e) =>{
-    this.setState({onClick:true})
+    this.setState({onClick: !this.state.onClick})
   }
 
   render(){
