@@ -31,6 +31,16 @@ class Api::Admin::ActivitiesController < ApplicationController
 			)
     end
 
+    def update
+        @activity = Activity.find params[:id]
+        @activity.update(	
+            category_id: params[:category],
+            name: params[:name],
+            content: params[:content],
+            duration: params[:duration]
+            ) 
+    end
+
     # private
 
     # def actvity_params

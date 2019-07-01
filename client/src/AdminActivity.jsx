@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Form } from 'antd';
+import { Input, Form, Button } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
@@ -21,6 +21,8 @@ class AdminActivity extends Component {
                 console.log('responsedata',response.data)
                 this.props.form.setFieldsValue({
                     content:response.data.activity.content,
+                    activityName:response.data.activity.name,
+                    duration:response.data.activity.duration
               })
                 this.setState({
                     activity: response.data.activity,
@@ -39,17 +41,18 @@ class AdminActivity extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                // axios.post('/api/admin/activities', {
-                //     name: values.activityName,
-                //     content: values.content,
-                //     duration: Number(values.duration),
-                //     category: values.category
-                // })
-                //     .then((response) => {
-                //         this.fetchActivities();
-                //         this.props.form.resetFields();
-                //         self.setState({textarea:""})
-                //     })
+                axios.patch(`/api/admin/activities/${this.props.params.id}`, {
+                    name: values.activityName,
+                    content: values.content,
+                    duration: Number(values.duration),
+                    category: self.state.activity.category_id
+
+                })
+                    .then((response) => {
+                        this.fetchActivity();
+                        this.props.form.resetFields();
+                        self.setState({textarea:""})
+                    })
             }
         });
     };
@@ -61,21 +64,35 @@ class AdminActivity extends Component {
     }
 
     render() {
-        console.log(this.state.textarea)
         const { getFieldDecorator} = this.props.form;
         return (
             <div className="adminActivity">
                 <div>
-                    <p>{this.state.activity.name}</p>
-                    <p>{this.state.activity.duration} m</p>
-                    {/* <ReactMarkdown source={this.state.activity.content} /> */}
+                    
                     <Form labelCol={{ span: 30 }} wrapperCol={{ span: 30 }} onSubmit={this.handleSubmit}>
+                        <Form.Item label="Activity Name">
+                            <p>{this.state.activity.name}</p>
+                            {getFieldDecorator('activityName', {
+                                rules: [{ required: true, message: 'Please input activity name!' }],
+                            })(<Input />)}
+                        </Form.Item>
+                        <Form.Item label="Duration">
+                            <p>{this.state.activity.duration} m</p>
+                            {getFieldDecorator('duration', {
+                                rules: [{ required: true, message: 'Please input duration!' }],
+                            })(<Input />)}
+                        </Form.Item>
                         <Form.Item label="Content">
                             <ReactMarkdown source={this.state.textarea} />
                             {getFieldDecorator('content', {
                                 rules: [{ required: true, message: 'Please input content!' }],
                             })(<Input.TextArea onChange={this.changeContent} rows={10}/>)}    
                         </Form.Item>
+                        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                    </Form.Item>
                     </Form>
                     
                 </div>
