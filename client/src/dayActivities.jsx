@@ -16,6 +16,7 @@ class DayActivities extends React.Component{
       email: this.props.cookies.get('email'),
       date: '',
       redirect: false,
+      scheduleRedirect: false,
       agenda: [],
     }
   }
@@ -32,6 +33,9 @@ class DayActivities extends React.Component{
     }
     if (this.state.redirect){
       this.setState({redirect:false})
+    }
+    if (this.state.scheduleRedirect){
+      this.setState({scheduleRedirect:false})
     }
   }
 
@@ -50,8 +54,13 @@ class DayActivities extends React.Component{
         filterActivities: response.data.activities,
         categories: response.data.categories,
         agenda: response.data.agenda,
-        
       });
+    })
+    .catch((error) => {
+      if (error) {  
+        console.log(error)
+        this.checkFirstTimeUser();
+      }
     })
   }
 
@@ -90,13 +99,29 @@ class DayActivities extends React.Component{
     })
   }
 
+  checkFirstTimeUser = () => {
+   
+    if(!this.state.agenda.length){
+      console.log('if loop triggered in fisttimeuser')
+      this.setState({
+        scheduleRedirect: true,
+      })
+    }
+  }
+
 
   render(){
-    if(this.state.redirect){
+    if(this.state.redirect){ //redirect to selected days on calendar
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
       )
     }
+    if(this.state.scheduleRedirect){ //redirect to schedule page if no agenda
+      return (
+          <Redirect to={`/schedule`}/>
+      )
+    }
+
     const categories = this.state.categories.map(category => {
       return <button id={category.id} className="activities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
     })
