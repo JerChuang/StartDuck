@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, DatePicker, Button } from 'antd';
+import { Form, DatePicker, Button, Alert } from 'antd';
 import TimePicker123 from './TimePicker.jsx';
 import Schedule from './schedule.jsx';
 import axios from 'axios';
@@ -15,7 +15,8 @@ class datePicker extends React.Component {
       start_date: null,
       end_date: null,
       endOpen: false,
-      redirect: false
+      redirect: false,
+      // showAlert: false,
     }
   };
 
@@ -83,6 +84,16 @@ class datePicker extends React.Component {
       }).then(() => this.setState({ redirect: true }));
   }
 
+  // onClose = e => {
+  //   console.log(e, 'I was closed.');
+  // };
+
+  isFormValid = () => {
+  const {hours_per_day, categories, start_date, end_date} = this.state
+
+  return hours_per_day && categories && start_date && end_date
+}
+
   render() {
     const { redirect } = this.state;
     const { start_date, end_date, endOpen } = this.state;
@@ -100,7 +111,14 @@ class datePicker extends React.Component {
      if (redirect) {
        return <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>;
      }
-
+     // if (this.state.showAlert){
+     //   return (<Alert
+     //    message="You have to pick at least one category🧐"
+     //    type="warning"
+     //    closable
+     //    onClose={this.onClose}
+     //   />)
+     // }
     return (
       <div className="datePicker_form">
        <Form {...formItemLayout} >
@@ -138,7 +156,7 @@ class datePicker extends React.Component {
             onOpenChange={this.handleEndOpenChange}
           />
          </Form.Item>
-          <Button className="datePicker_button" onClick={this.handleSubmit}>
+          <Button className="datePicker_button" disabled={!this.isFormValid()} onClick={this.handleSubmit}>
             Submit
           </Button>
       </Form>

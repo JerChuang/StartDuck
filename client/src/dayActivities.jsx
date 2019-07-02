@@ -18,7 +18,10 @@ class DayActivities extends React.Component{
       redirect: false,
       scheduleRedirect: false,
       agenda: [],
+      shown: true,
+
     }
+
   }
 
   componentDidMount() {
@@ -47,22 +50,25 @@ class DayActivities extends React.Component{
       }
     })
     .then((response) => {
-      // console.log('response.data.activities', response.data.activities)
-      // console.log('response.data.categories', response.data.categories)
+      console.log('response.data.activities', response.data.activities)
+
       this.setState({
         activities: response.data.activities,
         filterActivities: response.data.activities,
         categories: response.data.categories,
         agenda: response.data.agenda,
+        user_activities_id: response.data.user_activities_id
       });
     })
     .catch((error) => {
-      if (error) {  
+      if (error) {
         console.log(error)
         this.checkFirstTimeUser();
       }
     })
   }
+
+  handleRefresh = () => this.getActivities();
 
   onSelect = (value) => {
     console.log('value for calendar', value)
@@ -99,8 +105,16 @@ class DayActivities extends React.Component{
     })
   }
 
+
+  toggle() {
+    this.setState({
+      shown: !this.state.shown
+    });
+  }
+
+
   checkFirstTimeUser = () => {
-   
+
     if(!this.state.agenda.length){
       console.log('if loop triggered in fisttimeuser')
       this.setState({
@@ -141,9 +155,9 @@ class DayActivities extends React.Component{
             <div className="activities_categories">
               {categories}
               <button className="activities_categoriesButtons" onClick={this.allCategories}>All</button>
-              <button className = "activities_edit">edit</button>
+              <button className = "activities_edit" onClick={this.toggle.bind(this)}>edit</button>
             </div>
-            <ActivitiesList className="activities_activitiesList" activities = {this.state.filterActivities}/>
+            <ActivitiesList className="activities_activitiesList" cookies={this.props.cookies} handleRefresh={this.handleRefresh} shown = {this.state.shown} activities = {this.state.filterActivities}/>
           </div>
         </section>
       )

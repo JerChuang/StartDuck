@@ -24,6 +24,7 @@ class CompletedActivities extends Component {
     }
   }
 
+
   getActivities(){
     axios.get('/api/users/:id', {
       params:{
@@ -47,7 +48,7 @@ class CompletedActivities extends Component {
         }),
     })
   }
-  
+
   allCategories = () => {
     this.setState({
       filterActivities: this.state.activities
@@ -56,18 +57,18 @@ class CompletedActivities extends Component {
 
   render () {
     const categories = this.state.categories.map(category => {
-      return <button id={category.id} className="dayActivities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
+      return <button id={category.id} className="activities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
     })
 
     return (
-      <section className="dayActivities">
+      <section className="activities">
       <div>
-      <div className="dayActivities_categories">
-        {categories}  
-        <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
+      <div className="activities_categories">
+        {categories}
+        <button className="activities_categoriesButtons" onClick={this.allCategories}>All</button>
         </div>
       <h2>Completed Activities</h2>
-      <CompletedActivitiesList className="dayActivities_activitiesList" activities = {this.state.filterActivities}/>
+      <CompletedActivitiesList className="activities_activitiesList" activities = {this.state.filterActivities}/>
       </div>
       </section>
     )
