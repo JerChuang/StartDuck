@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 461 380" style="enable-background:new 0 0 461 380;" xml:space="preserve">
+	 viewBox="0 0 220 199" style="enable-background:new 0 0 220 199;" xml:space="preserve">
 <style type="text/css">
-	.st0{font-family:'MyriadPro-Regular';}
-	.st1{font-size:37.9617px;}
-	.st2{font-family:'MyriadPro-Bold';}
-	.st3{fill:none;stroke:#0C0B01;stroke-miterlimit:10;}
-	.st4{opacity:0.87;fill:#00DDFF;}
-	.st5{fill:#8C8C8C;}
-	.st6{fill:#FFFFFF;}
-	.st7{fill:#4E2E7A;}
-	.st8{fill:#F9B50F;}
-	.st9{fill:#999999;}
-	.st10{fill:#4FDB70;}
-	.st11{fill:none;stroke:#F9B50F;stroke-width:5;stroke-miterlimit:10;}
-	.st12{fill:#FC516A;}
-	.st13{fill:#3A2227;}
-	.st14{fill:none;stroke:#4E2E7A;stroke-width:3;stroke-miterlimit:10;}
-	.st15{fill:#6B6B6B;}
-	.st16{fill:#296D37;}
-	.st17{fill:#AB8FD8;}
-	.st18{fill:#FFE236;}
-	.st19{fill:#998223;}
-	.st20{fill:#8AE6E0;}
-	.st21{fill:#D5F5F3;}
-	.st22{fill:#BBF2DF;}
-	.st23{fill:#D5F5EF;}
-	.st24{opacity:0.1;fill:#00DDFF;}
-	.st25{fill:#72CABB;}
-	.st26{fill:none;stroke:#2F7E8C;stroke-width:3;stroke-miterlimit:10;}
-	.st27{fill:none;stroke:#2F7E8C;stroke-width:4;stroke-miterlimit:10;}
-	.st28{fill:#425460;}
-	.st29{fill:#21272D;}
-	.st30{fill:#DAA082;}
-	.st31{fill:#FCCDB6;}
-	.st32{fill:#684133;}
-	.st33{fill:#B9B9B9;}
-	.st34{fill:#DC999D;}
-	.st35{fill:#CF8F8B;}
-	.st36{fill:#F4F3F6;}
-	.st37{fill:#EFF7F8;}
-	.st38{fill:#879FC4;}
-	.st39{fill:none;stroke:#60510D;stroke-miterlimit:10;}
-	.st40{fill:#F9FB7D;}
-	.st41{fill:#20200C;}
-	.st42{fill:#E7B6BA;}
-	.st43{fill:#8BE3F5;}
-	.st44{fill:#008595;}
-	.st45{fill:#F3EB75;}
-	.st46{fill:#001002;}
-	.st47{fill:#2E3E40;}
-	.st48{fill:#000800;}
-	.st49{fill:none;stroke:#757B67;stroke-width:2;stroke-miterlimit:10;}
-	.st50{fill:#DFE6F7;}
-	.st51{fill:#001001;}
-	.st52{fill:#E0AFAF;}
-	.st53{fill:#392C1C;}
+	.st0{fill:#F9B50F;}
+	.st1{opacity:0.87;fill:#00DDFF;}
+	.st2{fill:none;stroke:#0C0B01;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#4E2E7A;}
+	.st5{fill:#999999;}
+	.st6{fill:#4FDB70;}
+	.st7{fill:none;stroke:#F9B50F;stroke-width:5;stroke-miterlimit:10;}
+	.st8{fill:#FC516A;}
+	.st9{fill:#3A2227;}
+	.st10{fill:none;stroke:#4E2E7A;stroke-width:3;stroke-miterlimit:10;}
+	.st11{fill:#6B6B6B;}
+	.st12{fill:#296D37;}
+	.st13{fill:#AB8FD8;}
+	.st14{fill:#FFE236;}
+	.st15{fill:#998223;}
+	.st16{fill:#8AE6E0;}
+	.st17{fill:#D5F5F3;}
+	.st18{fill:#BBF2DF;}
+	.st19{fill:#D5F5EF;}
+	.st20{opacity:0.1;fill:#00DDFF;}
+	.st21{fill:#72CABB;}
+	.st22{fill:none;stroke:#2F7E8C;stroke-width:3;stroke-miterlimit:10;}
+	.st23{fill:none;stroke:#2F7E8C;stroke-width:4;stroke-miterlimit:10;}
+	.st24{fill:#425460;}
+	.st25{fill:#21272D;}
+	.st26{fill:#DAA082;}
+	.st27{fill:#FCCDB6;}
+	.st28{fill:#684133;}
+	.st29{fill:#B9B9B9;}
+	.st30{fill:#DC999D;}
+	.st31{fill:#CF8F8B;}
+	.st32{fill:#F4F3F6;}
+	.st33{fill:#EFF7F8;}
+	.st34{fill:#879FC4;}
+	.st35{fill:none;stroke:#60510D;stroke-miterlimit:10;}
+	.st36{fill:#F9FB7D;}
+	.st37{fill:#20200C;}
+	.st38{fill:#E7B6BA;}
+	.st39{fill:#8BE3F5;}
+	.st40{fill:#008595;}
+	.st41{fill:#F3EB75;}
+	.st42{fill:#001002;}
+	.st43{fill:#2E3E40;}
+	.st44{fill:#000800;}
+	.st45{fill:none;stroke:#757B67;stroke-width:2;stroke-miterlimit:10;}
+	.st46{fill:#DFE6F7;}
+	.st47{fill:#001001;}
+	.st48{fill:#E0AFAF;}
+	.st49{fill:#392C1C;}
+	.st50{fill:#8C8C8C;}
 </style>
 <g>
-	<text transform="matrix(1 0 0 1 119.2559 278.5098)"><tspan x="0" y="0" class="st0 st1">START </tspan><tspan x="108.2" y="0" class="st2 st1">DUCK</tspan></text>
+	<g>
+		<path d="M6.7,187.4c1.5,0.9,3.8,1.7,6.1,1.7c3.5,0,5.5-1.8,5.5-4.5c0-2.5-1.4-3.9-5-5.3c-4.3-1.5-7-3.8-7-7.5
+			c0-4.1,3.4-7.2,8.6-7.2c2.7,0,4.7,0.6,5.8,1.3l-0.9,2.8c-0.9-0.5-2.6-1.3-5-1.3c-3.6,0-5,2.2-5,4c0,2.5,1.6,3.7,5.3,5.1
+			c4.5,1.7,6.8,3.9,6.8,7.8c0,4.1-3,7.6-9.3,7.6c-2.6,0-5.3-0.7-6.8-1.7L6.7,187.4z"/>
+		<path d="M31.6,168h-8v-2.9h19.6v2.9H35v23.6h-3.5V168z"/>
+		<path d="M47.4,183.2l-2.7,8.3h-3.5l9-26.5h4.1l9,26.5h-3.7l-2.8-8.3H47.4z M56.1,180.6l-2.6-7.6c-0.6-1.7-1-3.3-1.4-4.8H52
+			c-0.4,1.6-0.8,3.2-1.3,4.8l-2.6,7.7H56.1z"/>
+		<path d="M67.1,165.5c1.7-0.4,4.2-0.5,6.6-0.5c3.7,0,6,0.7,7.7,2.2c1.3,1.2,2.1,3,2.1,5c0,3.5-2.2,5.8-5,6.8v0.1
+			c2,0.7,3.3,2.6,3.9,5.3c0.9,3.7,1.5,6.2,2,7.3h-3.5c-0.4-0.7-1-3-1.8-6.3c-0.8-3.7-2.2-5-5.3-5.1h-3.2v11.5h-3.4V165.5z
+			 M70.5,177.5H74c3.7,0,6-2,6-5c0-3.4-2.5-4.9-6.1-4.9c-1.6,0-2.8,0.2-3.4,0.3V177.5z"/>
+		<path d="M93.6,168h-8v-2.9h19.6v2.9h-8.1v23.6h-3.5V168z"/>
+		<path d="M116,165.5c2.2-0.4,5.1-0.5,8.1-0.5c5,0,8.3,0.9,10.8,2.8c2.7,2,4.5,5.3,4.5,10c0,5.1-1.8,8.6-4.4,10.7
+			c-2.8,2.3-7,3.4-12.2,3.4c-3.1,0-5.3-0.2-6.8-0.4V165.5z M122.1,187.1c0.5,0.1,1.3,0.1,2.1,0.1c5.4,0,9-2.9,9-9.3
+			c0-5.5-3.2-8.4-8.3-8.4c-1.3,0-2.2,0.1-2.7,0.2V187.1z"/>
+		<path d="M149.3,165.1v15.2c0,4.6,1.7,6.9,4.8,6.9c3.1,0,4.9-2.2,4.9-6.9v-15.2h6v14.8c0,8.2-4.1,12.1-11,12.1
+			c-6.7,0-10.6-3.7-10.6-12.1v-14.8H149.3z"/>
+		<path d="M189.6,190.8c-1.1,0.5-3.6,1.1-6.8,1.1c-9.1,0-13.9-5.7-13.9-13.2c0-9,6.4-14.1,14.4-14.1c3.1,0,5.5,0.6,6.5,1.2l-1.2,4.8
+			c-1.2-0.5-2.9-1-5-1c-4.8,0-8.4,2.9-8.4,8.8c0,5.3,3.1,8.6,8.5,8.6c1.8,0,3.8-0.4,5-0.9L189.6,190.8z"/>
+		<path d="M193.5,165.1h5.9v11.7h0.1c0.6-1,1.2-2,1.8-2.9l6-8.8h7.3l-8.8,11.3l9.2,15.2h-7l-6.5-11.4l-2.3,2.8v8.6h-5.9V165.1z"/>
+	</g>
 	
 		<image style="overflow:visible;" width="404" height="329" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZQAAAFJCAIAAAAzB0wGAAAACXBIWXMAAAsTAAALEwEAmpwYAAA7
 S2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
@@ -443,7 +459,7 @@ DR+0E612qt1OHbGRTjvVLtzp+B4GZWC9zG+WgfUqsE4WtAgnn8GDeOE0HDNnB8VMn53utzP9Yqbf
 RkNiLmSjo2JuVMTCNhYWdu5E4HSedPxC+4UTkFklIqtUZq8Q2eUyt1b666W/TvgKGSmIFwAv4zXH
 AIgXABAvACBeAIgXABAvACBeAIgXABAvACBeAEC8ABAvACBeAEC8ABAvACBeAEC8ABAvACBeAEC8
 AIB4ASBeAEC8AIB4ASBeAEC8AIB4ASBeAEC8AIB4AQDxAkC8AIB4AQDxAkC8AIB4AcDy/fcAUMbc
-iKLstLcAAAAASUVORK5CYII=" transform="matrix(0.4191 0 0 0.4191 136.3678 101)">
+iKLstLcAAAAASUVORK5CYII=" transform="matrix(0.4334 0 0 0.4334 21.8974 8)">
 	</image>
 </g>
 </svg>
