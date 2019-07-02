@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 // import ReactDom from 'react-dom';
 import { Calendar} from 'antd';
 import ActivitiesList from './ActivitiesList.jsx';
@@ -16,6 +16,7 @@ class DayActivities extends React.Component{
       email: this.props.cookies.get('email'),
       date: '',
       redirect: false,
+      scheduleRedirect: false,
       agenda: [],
       shown: true,
     }
@@ -34,6 +35,9 @@ class DayActivities extends React.Component{
     if (this.state.redirect){
       this.setState({redirect:false})
     }
+    if (this.state.scheduleRedirect){
+      this.setState({scheduleRedirect:false})
+    }
   }
 
   getActivities(){
@@ -51,12 +55,18 @@ class DayActivities extends React.Component{
         filterActivities: response.data.activities,
         categories: response.data.categories,
         agenda: response.data.agenda,
-        
       });
+    })
+    .catch((error) => {
+      if (error) {
+        console.log(error)
+        this.checkFirstTimeUser();
+      }
     })
   }
 
   onSelect = (value) => {
+    console.log('value for calendar', value)
     this.setState({
       date: value.format('YYYY-MM-DD'),
       redirect: true,
@@ -65,21 +75,14 @@ class DayActivities extends React.Component{
 
   onFullRender = (value) => {
     const date = value.format('YYYY-MM-DD');
-    let style ={
-      paddingLeft:"3px",
-      opacity:0.5};
+    let style ="activities_calendarNotScheduled";
 
     for (let assigned of this.state.agenda){
       if(date === assigned) {
-        style = {
-            background: "lightskyblue",
-            border: "1px solid lightcyan",
-            fontStyle: "italic",
-            fontWeight: "bold",
-            paddingLeft: "3px"};
+        style = "activities_calendarScheduled";
         }
     }
-    return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
+    return <div className={`ant-fullcalendar-value ${style}`}>{value.date()}</div>;
   }
 
   filterCategory = (event) => {
@@ -97,6 +100,7 @@ class DayActivities extends React.Component{
     })
   }
 
+
   toggle() {
     this.setState({
       shown: !this.state.shown
@@ -106,51 +110,73 @@ class DayActivities extends React.Component{
   render(){
 
     if(this.state.redirect){
+
+  checkFirstTimeUser = () => {
+
+    if(!this.state.agenda.length){
+      console.log('if loop triggered in fisttimeuser')
+      this.setState({
+        scheduleRedirect: true,
+      })
+    }
+  }
+
+
+  render(){
+    if(this.state.redirect){ //redirect to selected days on calendar
       return (
           <Redirect to={`/${this.state.date}/activities`}/>
       )
     }
+    if(this.state.scheduleRedirect){ //redirect to schedule page if no agenda
+      return (
+          <Redirect to={`/schedule`}/>
+      )
+    }
+
     const categories = this.state.categories.map(category => {
-      return <button id={category.id} className="dayActivities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
+      return <button id={category.id} className="activities_categoriesButtons" onClick={this.filterCategory}>{category.name}</button>
     })
 
     if(this.state.activities.length){
       return (
-        <section className="dayActivities">
-          <div className="dayActivities_calendar" >
-            <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
-          </div>
-          <div>
-            <div className="dayActivities_categories">
-<<<<<<< HEAD
-              {categories} <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
-              <button className = "dayActivities_edit" onClick={this.toggle.bind(this)}>edit</button>
-=======
-              {categories}
-              <button className="dayActivities_categoriesButtons" onClick={this.allCategories}>All</button>
-              <button className = "dayActivities_edit">edit</button>
->>>>>>> ccf5030d856f567336c03a5eb20605b7e66a0ea9
+        <section className="activities">
+          <div className="activities_left">
+            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <div  className="activities_calendar" >
+              <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
             </div>
+          </div>
+
+          <div className="activities_right">
             <h2>Activities</h2>
-            <ActivitiesList className="dayActivities_activitiesList" shown = {this.state.shown} activities = {this.state.filterActivities}/>
+            <div className="activities_categories">
+              {categories}
+              <button className="activities_categoriesButtons" onClick={this.allCategories}>All</button>
+              <button className = "activities_edit" onClick={this.toggle.bind(this)}>edit</button>
+            </div>
+            <ActivitiesList className="activities_activitiesList" shown = {this.state.shown} activities = {this.state.filterActivities}/>
+
           </div>
         </section>
       )
     } else {
       return (
-        <section className="dayActivities">
-
-        <div className="dayActivities_calendar" >
-          <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
-        </div>
-        <div>
-          <h2>No activities planned for the day</h2>
-        </div>
+        <section className="activities">
+          <div className="activities_left">
+            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <div className="activities_calendar" >
+              <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
+            </div>
+          </div>
+          <div className="activities_right">
+            <h2>No activities planned for the day</h2>
+          </div>
       </section>
       )
     }
 
   }
 }
-export default withRouter(DayActivities);
+export default DayActivities;
 
