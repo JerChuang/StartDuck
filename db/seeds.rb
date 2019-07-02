@@ -51,7 +51,7 @@ Activity.destroy_all
 activitybaking = cat2.activities.create!({
   name:  'Buffalo Chicken Sandwiches',
   content: "Prep time - 10 minutes
-  
+
   Cook time - 20 minutes
 
   ## Ingredients:
@@ -91,8 +91,8 @@ activitybaking = cat2.activities.create!({
 cat2.activities.create!({
   name:  'Chipotle Black Bean and Rice Stew',
   content: '[Likely origin](http://www.grouprecipes.com/427/chipotle-black-bean-and-rice-stew.html)
-  
-  
+
+
   ## Ingredients
 
    * 1 cup white rice
@@ -132,7 +132,7 @@ cat2.activities.create!({
 cat2.activities.create!({
   name:  'Chorizo Meatloaf',
   content: '## Meatloaf
-  
+
    - ~1 lb ground beef
    - ~0.5 lb chorizo out of casing
    - carrot, food processor
@@ -174,7 +174,7 @@ cat2.activities.create!({
 cat2.activities.create!({
   name:  'Shoyu-based chicken broth ramen',
   content: '![Shoyu-based chicken broth ramen](https://pbs.twimg.com/media/DvZQrF5UYAA8yuv?format=jpg&name=small)
-  
+
   ## Chicken broth
 
   ### Dashi
@@ -266,8 +266,9 @@ cat2.activities.create!({
 cat2.activities.create!({
   name:  'Crab salad',
   content: '
-  ![crab salad](http://i.imgur.com/JcilzHb.jpg)
-  In a medium bowl, combine:
+  ![crab salad](https://champagne-tastes.com/wp-content/uploads/2017/08/king-crab6-small-1-1.jpg)
+
+  ##### In a medium bowl, combine:
 
   - 1 pound **lump crabmeat**
   - 1 stalk **celery**, diced
@@ -280,7 +281,7 @@ cat2.activities.create!({
   - Kosher salt and freshly ground black pepper
 
   Serve immediately, or refrigerate up to two days, with:
-  
+
   ***Whole wheat crackers**',
   duration: 30,
   before_activity_id: nil,
@@ -290,15 +291,15 @@ cat2.activities.create!({
 cat2.activities.create!({
   name:  'Brussels Sprouts',
   content: 'This recipe is based on [Food Network\'s publication](http://www.foodnetwork.com/recipes/fried-brussels-sprouts-with-walnuts-and-capers-recipe/index.html) of Michael Symon\'s recipe for the Brussel\'s sprouts he serves at [Lolita](http://lolitarestaurant.com/) in Cleveland, OH.
-  
+
   ![Deep fried Brussels sprouts](http://i.imgur.com/vc7WhP2.jpg)
-  
+
   Pour enough oil into a medium pot so that the oil comes 3 inches up the sides. Heat the oil to 350 degrees.
-  
+
   - Canola oil, for deep-frying
-  
+
   Whisk together in a bowl large enough to toss all of the Brussels sprouts:
-  
+
   - 1 clove garlic, minced
   - 4 salt-packed anchovy fillets, rinsed, filleted and minced
   - 1 serrano chile, seeded and minced
@@ -307,18 +308,18 @@ cat2.activities.create!({
   - 2 scallions, white and green parts, thinly sliced on the bias
   - 1/4 cup walnut pieces, toasted and coarsely chopped
   - 1/2 cup extra-virgin olive oil
-  
+
   Working in batches, deep-fry the Brussels sprouts until the edges begin to curl and brown, about 3 minutes.
-  
+
   - 1 pound Brussels sprouts, trimmed and quartered lengthwise
-  
+
   To the last batch, add and stand back (the capers will pop and sputter!):
-  
+
   - 2 cups loosely packed flat-leaf parsley leaves
   - 2 tablespoons salt-packed capers, rinsed and patted dry
-  
+
   When the color of the parsley becomes a deeper, more saturated shade of green, about 30 seconds to 1 minute, remove the contents of the pot with a skimmer and place directly in the bowl of dressing. Toss to coat. Season to taste.
-  
+
   - Kosher salt and freshly ground black pepper',
   duration: 30,
   before_activity_id: nil,
@@ -327,31 +328,31 @@ cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Greek salad',
-  content: "![Greek salad](http://i.imgur.com/IAdzNYP.jpg)
-  
+  content: "![Greek salad](https://www.jessicagavin.com/wp-content/uploads/2018/02/greek-salad-2-1200-500x500.jpg)
+
   [Source](http://www.foodnetwork.com/recipes/ina-garten/greek-salad-recipe.html)
-  
+
   Vinaigrette
   -----------
-  
+
   In a small bowl, whisk together:
-  
+
   - 3 cloves garlic, minced
   - 1 teaspoon dried oregano
   - 1/2 teaspoon Dijon mustard
   - 1/4 cup good red wine vinegar
   - 1 teaspoon kosher salt
   - 1/2 teaspoon freshly ground black pepper
-  
+
   While whisking, slowly add to make an emulsion:
-  
+
   - 1/2 cup good olive oil
-  
+
   Salad
   -----
-  
+
   In a large bowl, combine and toss lightly:
-  
+
   - 1 hothouse cucumber, unpeeled, seeded, and sliced 1/4-inch thick
   - 1 red bell pepper, large-diced
   - 1 yellow bell pepper, large-diced
@@ -361,7 +362,7 @@ cat2.activities.create!({
   - 1/2 pound feta cheese, crumbled
   - 1/2 cup kalamata olives, pitted
   - Vinaigrette
-  
+
   Set aside for 30 minutes to allow the flavors to blend. Serve at room temperature.",
   duration: 60,
   before_activity_id: nil,
@@ -372,49 +373,49 @@ cat2.activities.create!({
   name:  'Chicken and dumplings',
   content: '
   Season and dredge both sides:
-  
+
   - 4 chicken thighs
   - Salt and pepper
   - 1/2 cup all-purpose flour
-  
+
   In two batches, brown chicken on both sides and remove to a clean plate:
-  
+
   - Chicken
   - 2 tablespoons butter
   - 2 tablespoons olive oil
-  
+
   In the same pot, saute over medium-low heat (about 3-4 minutes):
-  
+
   - 1/2 cup carrots, diced
   - 1/2 cup celery, diced
   - 1 whole medium onion, diced
-  
+
   Add to combine, cover and simmer for 20 minutes:
-  
+
   - Chicken
   - 1/2 teaspoon ground thyme
   - 1/4 teaspoon turmeric
   - 6 cups low sodium chicken broth [cut sauce in half?]
   - 1/2 cup apple cider [cut sauce in half?]
-  
+
   While chicken is simmering, make the dough for the dumplings by sifting together all dry ingredients, adding  half-and-half, and stirring gently to combine. Set aside.
-  
+
   [cut dumpling quantity in half?]
-  
+
   - 1-1/2 cup all-purpose flour
   - 1/2 cup yellow cornmeal [Ashley doesn\'t like the corn meal]
   - 1 tablespoon baking powder
   - 1 teaspoon kosher salt
   - 1 1/2 cup half-and-half
-  
+
   Remove chicken from pot and shred it. Add to combine, then simmer for 15 minutes:
-  
+
   - Shredded chicken, skins discarded
   - 1/2 cup heavy cream [cut sauce in half?]
   - Dumpling dough, roughly formed into tablespoon-sized balls
   - 2 tablespoons fresh parsley, minced
   - Kosher salt
-  
+
   Allow to sit for 10 minutes before serving.',
   duration: 60,
   before_activity_id: nil,
