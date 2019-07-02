@@ -62,11 +62,6 @@ class datePicker extends React.Component {
   };
 
   setCategories = topics => {
-    // if(!topics){
-    //   this.setState({
-    //   showAlert: true
-    // })
-    // }
     var category1 = this.state.categories
     category1.push(topics)
     this.setState({
@@ -92,6 +87,7 @@ class datePicker extends React.Component {
   // onClose = e => {
   //   console.log(e, 'I was closed.');
   // };
+
   isFormValid = () => {
   const {hours_per_day, categories, start_date, end_date} = this.state
 
