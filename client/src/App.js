@@ -77,7 +77,7 @@ class App extends Component {
                 path="/completed_activities"
                 render={(props) => {
                 return <CompletedActivities {...props} params={props.match.params} setUser={this.setUser} cookies={cookies} />}
-  
+
                 }/>
 
             <Route

@@ -24,6 +24,7 @@ class CompletedActivities extends Component {
     }
   }
 
+
   getActivities(){
     axios.get('/api/users/:id', {
       params:{
@@ -47,7 +48,7 @@ class CompletedActivities extends Component {
         }),
     })
   }
-  
+
   allCategories = () => {
     this.setState({
       filterActivities: this.state.activities
@@ -63,7 +64,7 @@ class CompletedActivities extends Component {
       <section className="activities">
       <div>
       <div className="activities_categories">
-        {categories}  
+        {categories}
         <button className="activities_categoriesButtons" onClick={this.allCategories}>All</button>
         </div>
       <h2>Completed Activities</h2>

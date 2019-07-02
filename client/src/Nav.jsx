@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from './images/logo.svg';
 // import Logo from './images/logo.png'
 import {Link, Redirect} from "react-router-dom";
 import * as moment from 'moment';
-import { withRouter } from 'react-router-dom'; 
+import { withRouter } from 'react-router-dom';
 
 const HideSchedule = (props) => {
   const { location } = props;
@@ -21,7 +21,7 @@ const Reschedule = withRouter(HideSchedule);
 class Nav extends Component {
   state = {
     redirect: false,
-    redirect1: false
+    redirect1: false,
   }
 
   logout = (e) =>{
@@ -46,6 +46,8 @@ class Nav extends Component {
     this.setState({redirect1:true})
   };
 
+
+
   render(){
     if(this.state.redirect){
       return (
@@ -58,7 +60,18 @@ class Nav extends Component {
           <Redirect to={`/${moment().format('YYYY-MM-DD')}/activities`}/>
       )
     }
-
+    if(window.location.pathname === '/schedule'){
+      return(
+      <nav className="navbar">
+      <div className="container-fluid">
+        {/* <Logo className="navbar_logo" /> */}
+        <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
+        <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
+        <button className="navbar_logout" onClick={this.handleClick}>Logout</button>
+      </div>
+      </nav>
+        )
+    }
     if (this.props.cookies.get('email')){
       return(
         <nav className="navbar">
@@ -76,10 +89,11 @@ class Nav extends Component {
       return(
         <nav className="navbar">
           <nav className="navbar_left">
-            <Logo className="navbar_logo" /> 
+            <Logo className="navbar_logo" />
             {/* <img src={Logo} alt ="Logo" className="navbar_logo" /> */}
           </nav>
         </nav>
+
       )
     }
   }
