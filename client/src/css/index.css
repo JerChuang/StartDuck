@@ -17,35 +17,6 @@ code {
     monospace;
 }
 
-<<<<<<< HEAD:client/src/index.css
-.navbar {
-  width: 100%;
-  background: white;
-  padding: 0 10px;
-  position: fixed;
-  top: 0;
-  z-index:2;
-}
-.navbar_logo {
-  padding: 20px;
-  min-width: 125px;
-  width: 12vw;
-}
-.navbar_logout {
-    margin-right: 30px;
-    margin-top: 15px;
-    height: 40px;
-    width: 90px;
-    font-size: 13px;
-    color: white;
-    letter-spacing: 0.05em;
-    font-weight: bold;
-    -webkit-border-radius: 5px;
-    background: #10E9FF;
-}
-
-=======
->>>>>>> 2f3ad9c37095cb4c2cc798c2b8ae972fc1620cdc:client/src/css/index.css
 .login-page {
   display: flex;
   align-items: center;
@@ -73,61 +44,6 @@ code {
   color: gray;
 }
 
-
-<<<<<<< HEAD:client/src/index.css
-}
-
-.dayActivities_categories{
-  display:flex;
-}
-.dayActivities_categoriesButtons{
-  margin: 3px;
-  background-color: rgb(100, 9, 100);
-  color: white;
-  border-radius: 5px;
-}
-
-.dayActivities_calendar {
-  width: 30vw;
-  min-width: 300px;
-  height: 30vw;
-  min-height: 300px;
-  border: 1px solid #d9d9d9;
-  border-radius: 3px;
- }
-
-.dayActivities_activityItem {
-  padding: 1vw;
-  margin: 1vw;
-  width: 40vw;
-  min-width: 200px;
-  min-height: 30px;
-  height: 5vw;
-  border: 2px solid orange;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.dayActivities_listBlock {
-  display: flex;
-}
-
-.dayActivities_deleteButton {
-  display: flex;
-  margin-top: 42px;
-  color: red;
-}
-
-.dayActivities_addButton {
-  display: flex;
-  margin-top: 42px;
-  color: green;
-}
-
-=======
->>>>>>> 2f3ad9c37095cb4c2cc798c2b8ae972fc1620cdc:client/src/css/index.css
 
 .my-collapsible__toggle {
   font-size: 1rem;
