@@ -50,9 +50,7 @@ Activity.destroy_all
 
 activitybaking = cat2.activities.create!({
   name:  'Buffalo Chicken Sandwiches',
-  content: "# Buffalo Chicken Sandwiches
-
-  Prep time - 10 minutes
+  content: "Prep time - 10 minutes
   
   Cook time - 20 minutes
   
@@ -92,11 +90,7 @@ activitybaking = cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Chipotle Black Bean and Rice Stew',
-  content: '# Chipotle Black Bean and Rice Stew
-
-  Tags: vegetarian, tried
-  
-  [Likely origin](http://www.grouprecipes.com/427/chipotle-black-bean-and-rice-stew.html)
+  content: '[Likely origin](http://www.grouprecipes.com/427/chipotle-black-bean-and-rice-stew.html)
   
   
   ## Ingredients
@@ -137,9 +131,7 @@ cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Chorizo Meatloaf',
-  content: '# Chorizo Meatloaf
-
-  ## Meatloaf
+  content: '## Meatloaf
   
    - ~1 lb ground beef
    - ~0.5 lb chorizo out of casing
@@ -181,11 +173,7 @@ cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Shoyu-based chicken broth ramen',
-  content: '# Shoyu-based chicken broth ramen
-
-  *Version 0.2.0*
-  
-  ![Shoyu-based chicken broth ramen](https://pbs.twimg.com/media/DvZQrF5UYAA8yuv?format=jpg&name=small)
+  content: '![Shoyu-based chicken broth ramen](https://pbs.twimg.com/media/DvZQrF5UYAA8yuv?format=jpg&name=small)
   
   ## Chicken broth
   
@@ -276,10 +264,9 @@ cat2.activities.create!({
 })
 
 cat2.activities.create!({
-  name:  'Chipotle Black Bean and Rice Stew',
-  content: `Crab salad
-  ==========
-  <img src="http://i.imgur.com/JcilzHb.jpg" alt="Crab salad" width="50%" />
+  name:  'Crab salad',
+  content: '
+  ![crab salad](http://i.imgur.com/JcilzHb.jpg)
   In a medium bowl, combine:
   
   - 1 pound **lump crabmeat**
@@ -289,12 +276,12 @@ cat2.activities.create!({
   - 70 grams (~1/3 cup) **mayonnaise**
   - 40 grams (~3 tablespoons) **sour cream**
   - 1 tablespoon **lemon** juice
-  - 1 teaspoon **Colman's mustard** powder mustard
+  - 1 teaspoon **Colman\'s mustard** powder mustard
   - Kosher salt and freshly ground black pepper
   
   Serve immediately, or refrigerate up to two days, with:
   
-  ***Whole wheat crackers**`,
+  ***Whole wheat crackers**',
   duration: 30,
   before_activity_id: nil,
   after_activity_id: nil,
@@ -302,10 +289,7 @@ cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Brussels Sprouts',
-  content: `Brussels Sprouts
-  ================
-  
-  > This recipe is based on [Food Network's publication](http://www.foodnetwork.com/recipes/fried-brussels-sprouts-with-walnuts-and-capers-recipe/index.html) of Michael Symon's recipe for the Brussel's sprouts he serves at [Lolita](http://lolitarestaurant.com/) in Cleveland, OH.
+  content: 'This recipe is based on [Food Network\'s publication](http://www.foodnetwork.com/recipes/fried-brussels-sprouts-with-walnuts-and-capers-recipe/index.html) of Michael Symon\'s recipe for the Brussel\'s sprouts he serves at [Lolita](http://lolitarestaurant.com/) in Cleveland, OH.
   
   ![Deep fried Brussels sprouts](http://i.imgur.com/vc7WhP2.jpg)
   
@@ -335,31 +319,109 @@ cat2.activities.create!({
   
   When the color of the parsley becomes a deeper, more saturated shade of green, about 30 seconds to 1 minute, remove the contents of the pot with a skimmer and place directly in the bowl of dressing. Toss to coat. Season to taste.
   
-  - Kosher salt and freshly ground black pepper`,
+  - Kosher salt and freshly ground black pepper',
+  duration: 30,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
+
+cat2.activities.create!({
+  name:  'Greek salad',
+  content: "![Greek salad](http://i.imgur.com/IAdzNYP.jpg)
+  
+  [Source](http://www.foodnetwork.com/recipes/ina-garten/greek-salad-recipe.html)
+  
+  Vinaigrette
+  -----------
+  
+  In a small bowl, whisk together:
+  
+  - 3 cloves garlic, minced
+  - 1 teaspoon dried oregano
+  - 1/2 teaspoon Dijon mustard
+  - 1/4 cup good red wine vinegar
+  - 1 teaspoon kosher salt
+  - 1/2 teaspoon freshly ground black pepper
+  
+  While whisking, slowly add to make an emulsion:
+  
+  - 1/2 cup good olive oil
+  
+  Salad
+  -----
+  
+  In a large bowl, combine and toss lightly:
+  
+  - 1 hothouse cucumber, unpeeled, seeded, and sliced 1/4-inch thick
+  - 1 red bell pepper, large-diced
+  - 1 yellow bell pepper, large-diced
+  - 1 pint cherry or grape tomatoes, halved
+  - 1/2 red onion, sliced in half-rounds
+  - 1/2 pound feta cheese block, 1/2-inch diced
+  - 1/2 pound feta cheese, crumbled
+  - 1/2 cup kalamata olives, pitted
+  - Vinaigrette
+  
+  Set aside for 30 minutes to allow the flavors to blend. Serve at room temperature.",
   duration: 60,
   before_activity_id: nil,
   after_activity_id: nil,
 })
 
-# cat2.activities.create!({
-#   name:  'Chipotle Black Bean and Rice Stew',
-#   content: `# Chipotle Black Bean and Rice Stew
+cat2.activities.create!({
+  name:  'Chicken and dumplings',
+  content: '
+  Season and dredge both sides:
+  
+  - 4 chicken thighs
+  - Salt and pepper
+  - 1/2 cup all-purpose flour
+  
+  In two batches, brown chicken on both sides and remove to a clean plate:
+  
+  - Chicken
+  - 2 tablespoons butter
+  - 2 tablespoons olive oil
+  
+  In the same pot, saute over medium-low heat (about 3-4 minutes):
+  
+  - 1/2 cup carrots, diced
+  - 1/2 cup celery, diced
+  - 1 whole medium onion, diced
+  
+  Add to combine, cover and simmer for 20 minutes:
+  
+  - Chicken
+  - 1/2 teaspoon ground thyme
+  - 1/4 teaspoon turmeric
+  - 6 cups low sodium chicken broth [cut sauce in half?]
+  - 1/2 cup apple cider [cut sauce in half?]
+  
+  While chicken is simmering, make the dough for the dumplings by sifting together all dry ingredients, adding  half-and-half, and stirring gently to combine. Set aside.
+  
+  [cut dumpling quantity in half?]
+  
+  - 1-1/2 cup all-purpose flour
+  - 1/2 cup yellow cornmeal [Ashley doesn\'t like the corn meal]
+  - 1 tablespoon baking powder
+  - 1 teaspoon kosher salt
+  - 1 1/2 cup half-and-half
+  
+  Remove chicken from pot and shred it. Add to combine, then simmer for 15 minutes:
+  
+  - Shredded chicken, skins discarded
+  - 1/2 cup heavy cream [cut sauce in half?]
+  - Dumpling dough, roughly formed into tablespoon-sized balls
+  - 2 tablespoons fresh parsley, minced
+  - Kosher salt
+  
+  Allow to sit for 10 minutes before serving.',
+  duration: 60,
+  before_activity_id: nil,
+  after_activity_id: nil,
+})
 
-#   `,
-#   duration: 60,
-#   before_activity_id: nil,
-#   after_activity_id: nil,
-# })
 
-# cat2.activities.create!({
-#   name:  'Chipotle Black Bean and Rice Stew',
-#   content: `# Chipotle Black Bean and Rice Stew
-
-#   `,
-#   duration: 60,
-#   before_activity_id: nil,
-#   after_activity_id: nil,
-# })
 
 activity1 = cat1.activities.create!({
   name:  'Welcome',
