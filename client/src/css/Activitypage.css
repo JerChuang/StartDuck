@@ -9,6 +9,9 @@
     width: 100%;
     height: 10vw;
     background: orange;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
 .sideBarSchedule {
@@ -32,7 +35,7 @@
 
 .todayActivityDuration {
     font-size: 20px;
-    padding-top: 5vw;
+    text-align: center;
 }
 
 

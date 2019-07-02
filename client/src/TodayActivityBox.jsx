@@ -5,7 +5,7 @@ const TodayActivityBox = (props) => {
     return (
         <div className="todayActivityBox">
             <h1 className="todayActivityTitle">{props.activity.name}</h1>
-            <span className="todayActivityDuration">{props.activity.duration} m</span>
+            <h6 className="todayActivityDuration">{props.activity.duration} m</h6>
         </div>
     )
 }
