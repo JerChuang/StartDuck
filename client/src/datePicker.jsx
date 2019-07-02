@@ -91,7 +91,7 @@ class datePicker extends React.Component {
   isFormValid = () => {
   const {hours_per_day, categories, start_date, end_date} = this.state
 
-  return hours_per_day && categories && start_date && end_date
+  return hours_per_day && categories.length && start_date && end_date
 }
 
   render() {
