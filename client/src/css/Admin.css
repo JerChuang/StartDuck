@@ -1,0 +1,82 @@
+
+
+.adminActivities {
+    display: flex;
+    flex-direction: row
+}
+
+.existingActivities {
+    flex-grow: 1;
+    display: inline-block;
+    text-align: left;
+    padding-left: 75px;
+}
+
+.newActivityForm {
+    flex-grow: 1;
+    padding-top: 100px;
+}
+
+.adminActivitiesTitle {
+    padding-top: 10px;
+    border-radius: 15px;
+    background: orange;
+    color: black;
+    height: 75px;
+    margin: 0px 40px 10px 40px;
+    text-align: center
+}
+
+.ant-btn.createButton {
+    background: #2AD9FF;
+    border: solid 1px lightgray;
+    color: white;
+}
+
+
+.adminCategories {
+    display: flex;
+    flex-direction: row
+}
+
+
+.existingCategories {
+    flex-grow: 1;
+    display: inline-block;
+    text-align: left;
+    padding-left: 75px;
+}
+
+.newCategoryForm {
+    flex-grow: 1
+}
+
+/* .newCategory {
+    flex-grow: 1
+} */
+
+.adminCategoriesTitle {
+    border-radius: 15px;
+    background: orange;
+    color: black;
+    height: 75px;
+    margin: 0px 40px 10px 40px;
+    text-align: center
+}
+
+.activityTitle {
+    font-size: 20px
+}
+
+.activityIcons {
+    font-size: 20px;
+    float: right;
+}
+
+.activitiesList {
+    padding: 10px 60px 10px 40px
+}
+
+.activityEditIcon {
+    color: black
+}

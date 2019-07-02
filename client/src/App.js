@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
 import Cookies from 'universal-cookie';
-
 import Nav from './Nav.jsx';
 import Login from './Login.jsx'
 import DayActivities from "./dayActivities.jsx";

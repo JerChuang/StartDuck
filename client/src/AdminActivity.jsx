@@ -74,19 +74,19 @@ class AdminActivity extends Component {
                             <p>{this.state.activity.name}</p>
                             {getFieldDecorator('activityName', {
                                 rules: [{ required: true, message: 'Please input activity name!' }],
-                            })(<Input />)}
+                            })(<Input style={{width: '350px'}} />)}
                         </Form.Item>
                         <Form.Item label="Duration">
                             <p>{this.state.activity.duration} m</p>
                             {getFieldDecorator('duration', {
                                 rules: [{ required: true, message: 'Please input duration!' }],
-                            })(<Input />)}
-                        </Form.Item>
+                            })(<Input style={{width: '350px'}} />)}
+                            </Form.Item>
                         <Form.Item label="Content">
                             <ReactMarkdown source={this.state.textarea} />
                             {getFieldDecorator('content', {
                                 rules: [{ required: true, message: 'Please input content!' }],
-                            })(<Input.TextArea onChange={this.changeContent} rows={10}/>)}    
+                            })(<Input.TextArea style={{width: '350px'}} onChange={this.changeContent} rows={10}/>)}    
                         </Form.Item>
                         <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
                         <Button type="primary" htmlType="submit">
