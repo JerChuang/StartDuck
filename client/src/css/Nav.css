@@ -13,8 +13,8 @@
 }
 .navbar_logo {
   padding: 20px;
-  min-width: 125px;
-  width: 12vw;
+  min-width: 100px;
+  width: 9vw;
 }
 .navbar_right{
   display: flex;
@@ -22,48 +22,45 @@
 }
 
 .navbar_schedule{
-  font-size:1em;
+  font-size:1.1em;
   font-weight: bold;
   margin:5px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
   width: 10vw;
   min-width:90px;
   height: 4vw;
   min-height:40px;
   text-align: center;
   vertical-align: middle;
-  line-height:40px;
-  color: white;
-  background: #2AD9FF;
+  line-height:4vw;
+  color:#666666;
+  
 }
 
 .navbar_complete{
-  font-size:1em;
+  font-size:1.1em;
   font-weight: bold;
-  color: white;
   margin:5px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
   width: 10vw;
-  min-width:150px;
+  min-width:160px;
   height: 4vw;
   min-height:40px;
   justify-content: center;
   text-align: center;
   vertical-align: middle;
-  line-height:40px;
+  line-height:4vw;
+  color:#666666;
 
-  background: #2AD9FF;
+ 
 }
 
 .navbar_logout {
   font-size:1em;
-  width: 10vw;
+  width: 8vw;
   min-width:90px;
-  height: 4vw;
+  height: 3vw;
   min-height:40px;
   margin:5px;
+  margin-left: 4vw;
   color: white;
   letter-spacing: 0.05em;
   font-weight: bold;

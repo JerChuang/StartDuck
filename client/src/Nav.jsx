@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import { ReactComponent as Logo } from './images/logo.svg';
-import Logo from './images/logo.png'
-import {Link, Redirect } from "react-router-dom";
+import { ReactComponent as Logo } from './images/logo.svg';
+// import Logo from './images/logo.png'
+import {Link, Redirect} from "react-router-dom";
 import * as moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
@@ -76,8 +76,8 @@ class Nav extends Component {
       return(
         <nav className="navbar">
           <nav className="navbar_left">
-            {/* <Logo className="navbar_logo" /> */}
-            <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.redirectHome}/>
+            <Logo className="navbar_logo" />
+            {/* <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.redirectHome}/> */}
           </nav>
           <nav className="navbar_right">
             <Reschedule/>
@@ -88,9 +88,9 @@ class Nav extends Component {
     )} else{
       return(
         <nav className="navbar">
-          {/* <Logo className="navbar_logo" />  */}
           <nav className="navbar_left">
-            <img src={Logo} alt ="Logo" className="navbar_logo" />
+            <Logo className="navbar_logo" />
+            {/* <img src={Logo} alt ="Logo" className="navbar_logo" /> */}
           </nav>
         </nav>
 
