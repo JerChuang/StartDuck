@@ -1,0 +1,62 @@
+
+
+.adminActivities {
+    display: flex;
+    flex-direction: row
+}
+
+.existingActivities {
+    flex-grow: 2;
+    display: inline-block;
+    text-align: center
+}
+
+.newActivityForm {
+    flex-grow: 1
+}
+
+.newActivity {
+    flex-grow: 1
+}
+
+
+.adminActivitiesTitle {
+    border-radius: 15px;
+    background: orange;
+    color: black;
+    margin: 0px 15px 10px 15px
+}
+
+.ant-btn.createButton {
+    background: #2AD9FF;
+    border: solid 1px lightgray;
+    color: white;
+}
+
+
+.adminCategories {
+    display: flex;
+    flex-direction: row
+}
+
+
+.existingCategories {
+    flex-grow: 2;
+    display: inline-block;
+    text-align: center
+}
+
+.newCategoryForm {
+    flex-grow: 1
+}
+
+.newCategory {
+    flex-grow: 1
+}
+
+.adminCategoriesTitle {
+    border-radius: 15px;
+    background: orange;
+    color: black;
+    margin: 0px 15px 10px 15px
+}

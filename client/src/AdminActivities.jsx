@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Form, Select, Input, Button } from 'antd';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
+import {Link, Redirect} from "react-router-dom";
 
 const { Option } = Select;
 class AdminActivities extends Component {
@@ -53,7 +54,14 @@ class AdminActivities extends Component {
             })
     }
 
+    onEdit = (event) => {
+    //     // axios.get(`/api/admin/activities/${event.currentTarget.id}`)
+    //     console.log(event.currentTarget.id);
+    //     //     .then((response => {
+    //             <Link to={`/admin/activities/${event.currentTarget.id}`} />
+            }
 
+    
     // toggles new activity form
     toggleActivity = () => {
         this.setState({
@@ -93,68 +101,84 @@ class AdminActivities extends Component {
         console.log('thestate', this.state)
         const { getFieldDecorator } = this.props.form;
         const activities = this.state.activities.map(activity => {
-            return <tr>
+            return <ul>
                 {activity.name}
-                <Icon type="edit" />
+                <Icon id={activity.id} type="edit" className="activityEditIcon"  onClick={this.onEdit} >
+                   <Link to={`/admin/activities/${activity.id}`} />
+                </Icon>
                 <Icon id={activity.id} type="delete" className="activityDeleteIcon" onClick={this.onDelete} />
-            </tr>
+            </ul>
         })
         const categories = this.state.categories.map(category => {
             return <Option value={category.id}>{category.name}</Option>
         })
-console.log('this is the list of categories',categories);
+
         return (
             <div className="adminActivities">
+                <div className="existingActivities">
+                    <h2 className="adminActivitiesTitle"> Activity List</h2>
+                        <ul className="activitiesList">
+                            {activities}
+                        </ul>
+                </div>
+                <div className="newActivityForm">
+                    {this.state.active && <Form labelCol={{ span: 30 }} wrapperCol={{ span: 30 }} onSubmit={this.handleSubmit}>
+                        <Form.Item>
+                            {getFieldDecorator('activityName', {
+                                rules: [{ required: true, message: 'Please input activity name!' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="Activity Name"
 
-                <Icon style={{ fontSize: '32px' }} type="plus-square" className="activityAddIcon" onClick={this.toggleActivity} />
-
-                {this.state.active && <Form labelCol={{ span: 30 }} wrapperCol={{ span: 30 }} onSubmit={this.handleSubmit}>
-                    <Form.Item label="Activity Name">
-                        {getFieldDecorator('activityName', {
-                            rules: [{ required: true, message: 'Please input activity name!' }],
-                        })(<Input />)}
-                    </Form.Item>
-                    <Form.Item label="Category">
-                        {getFieldDecorator('category', {
-                            rules: [{ required: true, message: 'Please select category!' }],
-                        })(
-                            <Select
-                                placeholder="Select a category"
-                                // onChange={this.handleSelectChange}
-                            >
-                                {categories}
-                            </Select>,
-                        )}
-                    </Form.Item>
-                    <Form.Item label="Duration">
-                        {getFieldDecorator('duration', {
-                            rules: [{ required: true, message: 'Please input duration!' }],
-                        })(<Input />)}
-                    </Form.Item>
-                    <Form.Item label="Content">
-                        <ReactMarkdown source={this.state.textarea} />
-                        {getFieldDecorator('content', {
-                            rules: [{ required: true, message: 'Please input content!' }],
-                        })(<Input.TextArea onChange={this.changeContent} rows={10}/>)}
-                        
-                    </Form.Item>
-                    <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-                        <Button type="primary" htmlType="submit">
-                            Submit
-                        </Button>
-                    </Form.Item>
-                </Form>
-                }
-                <table className="tableAdminActivities">
-                    <thead>
-                        <tr>
-                            <th colSpan="2">Activity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {activities}
-                    </tbody>
-                </table>
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('category', {
+                                rules: [{ required: true, message: 'Please select category!' }],
+                            })(
+                                <Select placeholder="Select a category" style={{width: '190px'}}
+                                >
+                                    {categories}
+                                </Select>,
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('duration', {
+                                rules: [{ required: true, message: 'Please input duration!' }],
+                            })(
+                                <Input 
+                                prefix={<Icon type="dashboard" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Duration in minutes"
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            <ReactMarkdown source={this.state.textarea} />
+                            {getFieldDecorator('content', {
+                                rules: [{ required: true, message: 'Please input content!' }],
+                            })(
+                                <Input.TextArea 
+                                onChange={this.changeContent} 
+                                rows={10}
+                                style={{width: '190px'}}                            
+                                placeholder="Content"
+                                />
+                            )}
+                            
+                        </Form.Item>
+                        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
+                            <Button className="createButton" htmlType="submit">
+                                Create
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                    }
+                </div>
+                <div className="newActivity">
+                    <Icon style={{ fontSize: '32px' }} type="plus-square" className="activityAddIcon" onClick={this.toggleActivity} />
+                </div>
             </div>
         )
     }

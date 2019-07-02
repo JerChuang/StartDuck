@@ -72,50 +72,46 @@ class AdminCategories extends Component {
     render() {
 
         const categories = this.state.categories.map(category => {
-            return <tr>
+            return <ul>
                 {category.name}
                 <Icon id={category.id} type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
-            </tr>
+            </ul>
         })
 
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
             <div className="adminCategories">
-                <Icon style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
+                <div className="exisitigCategories">
+                    <h2 className="adminCategoriesTitle"> Categories List</h2>
+                    <ul>{categories}</ul>
+                </div>
+                <div className="newCategoryForm">
+                    {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} >
+                        <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
+                            {getFieldDecorator('category', {
+                                rules: [{ required: true, message: 'Please input category!', valuePropName: 'value' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="New Category"
+                                />,
+                            )}
+                        </Form.Item>
 
-                <table className="tableAdminCategories">
-                    <thead>
-                        <tr>
-                            <th colSpan="2">Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {categories}
-                    </tbody>
-                </table>
-
-                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} >
-                    <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
-                        {getFieldDecorator('category', {
-                            rules: [{ required: true, message: 'Please input category!', valuePropName: 'value' }],
-                        })(
-                            <Input
-                                prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                placeholder="New Category"
-                            />,
-                        )}
-                    </Form.Item>
-
-                    <Form.Item>
-                        <Button type="primary" 
-                        htmlType="submit" 
-                        disabled={hasErrors(getFieldsError())}>
-                            Create
-                        </Button>
-                    </Form.Item>
-                </Form>
-                }
+                        <Form.Item>
+                            <Button className="createButton"
+                            htmlType="submit" 
+                            disabled={hasErrors(getFieldsError())}>
+                                Create
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                    }
+                </div>
+                <div className="newCategory">
+                    <Icon style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
+                </div>
             </div>
         )
     }
