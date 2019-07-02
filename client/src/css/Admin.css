@@ -6,25 +6,25 @@
 }
 
 .existingActivities {
-    flex-grow: 2;
+    flex-grow: 1;
     display: inline-block;
-    text-align: center
+    text-align: left;
+    padding-left: 75px;
 }
 
 .newActivityForm {
-    flex-grow: 1
+    flex-grow: 1;
+    padding-top: 100px;
 }
-
-.newActivity {
-    flex-grow: 1
-}
-
 
 .adminActivitiesTitle {
+    padding-top: 10px;
     border-radius: 15px;
     background: orange;
     color: black;
-    margin: 0px 15px 10px 15px
+    height: 75px;
+    margin: 0px 40px 10px 40px;
+    text-align: center
 }
 
 .ant-btn.createButton {
@@ -41,22 +41,42 @@
 
 
 .existingCategories {
-    flex-grow: 2;
+    flex-grow: 1;
     display: inline-block;
-    text-align: center
+    text-align: left;
+    padding-left: 75px;
 }
 
 .newCategoryForm {
     flex-grow: 1
 }
 
-.newCategory {
+/* .newCategory {
     flex-grow: 1
-}
+} */
 
 .adminCategoriesTitle {
     border-radius: 15px;
     background: orange;
     color: black;
-    margin: 0px 15px 10px 15px
+    height: 75px;
+    margin: 0px 40px 10px 40px;
+    text-align: center
+}
+
+.activityTitle {
+    font-size: 20px
+}
+
+.activityIcons {
+    font-size: 20px;
+    float: right;
+}
+
+.activitiesList {
+    padding: 10px 60px 10px 40px
+}
+
+.activityEditIcon {
+    color: black
 }

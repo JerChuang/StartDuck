@@ -12,7 +12,7 @@ class AdminActivities extends Component {
         this.state = {
             activities: [],
             categories: [],
-            active: false,
+            active: true,
             textarea:""
         }
     }
@@ -53,14 +53,6 @@ class AdminActivities extends Component {
                 this.fetchActivities()
             })
     }
-
-    onEdit = (event) => {
-    //     // axios.get(`/api/admin/activities/${event.currentTarget.id}`)
-    //     console.log(event.currentTarget.id);
-    //     //     .then((response => {
-    //             <Link to={`/admin/activities/${event.currentTarget.id}`} />
-            }
-
     
     // toggles new activity form
     toggleActivity = () => {
@@ -101,13 +93,26 @@ class AdminActivities extends Component {
         console.log('thestate', this.state)
         const { getFieldDecorator } = this.props.form;
         const activities = this.state.activities.map(activity => {
-            return <ul>
+            return <ul className="activitiesList"><span className="activityTitle">
                 {activity.name}
-                <Icon id={activity.id} type="edit" className="activityEditIcon"  onClick={this.onEdit} >
-                   <Link to={`/admin/activities/${activity.id}`} />
-                </Icon>
-                <Icon id={activity.id} type="delete" className="activityDeleteIcon" onClick={this.onDelete} />
-            </ul>
+                </span>
+                <span className="activityIcons">
+                <Link to={`/admin/activities/${activity.id}`} >
+                <Icon id={activity.id} 
+                    type="edit" 
+                    className="activityEditIcon" 
+                    style={{ fontSize: '24px', color: 'rgba(0, 0, 0, 0.65)' }} 
+                />
+                   </Link>
+               
+                <Icon id={activity.id} 
+                    type="delete" 
+                    className="activityDeleteIcon" 
+                    onClick={this.onDelete} 
+                    style={{ fontSize: '24px', color: 'rgba(0, 0, 0, 0.65)' }}
+                />
+                </span>
+                </ul>
         })
         const categories = this.state.categories.map(category => {
             return <Option value={category.id}>{category.name}</Option>
@@ -121,6 +126,9 @@ class AdminActivities extends Component {
                             {activities}
                         </ul>
                 </div>
+                {/* <div className="newActivity">
+                    <Icon style={{ fontSize: '32px' }} type="plus-square" className="activityAddIcon" onClick={this.toggleActivity} />
+                </div> */}
                 <div className="newActivityForm">
                     {this.state.active && <Form labelCol={{ span: 30 }} wrapperCol={{ span: 30 }} onSubmit={this.handleSubmit}>
                         <Form.Item>
@@ -130,7 +138,7 @@ class AdminActivities extends Component {
                                 <Input
                                     prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Activity Name"
-
+                                    style={{width: '300px'}}
                                 />
                             )}
                         </Form.Item>
@@ -138,7 +146,7 @@ class AdminActivities extends Component {
                             {getFieldDecorator('category', {
                                 rules: [{ required: true, message: 'Please select category!' }],
                             })(
-                                <Select placeholder="Select a category" style={{width: '190px'}}
+                                <Select placeholder="Select a category" style={{width: '300px'}}
                                 >
                                     {categories}
                                 </Select>,
@@ -151,6 +159,7 @@ class AdminActivities extends Component {
                                 <Input 
                                 prefix={<Icon type="dashboard" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                 placeholder="Duration in minutes"
+                                style={{width: '300px'}}
                                 />
                             )}
                         </Form.Item>
@@ -162,7 +171,7 @@ class AdminActivities extends Component {
                                 <Input.TextArea 
                                 onChange={this.changeContent} 
                                 rows={10}
-                                style={{width: '190px'}}                            
+                                style={{width: '300px'}}                            
                                 placeholder="Content"
                                 />
                             )}
@@ -175,9 +184,6 @@ class AdminActivities extends Component {
                         </Form.Item>
                     </Form>
                     }
-                </div>
-                <div className="newActivity">
-                    <Icon style={{ fontSize: '32px' }} type="plus-square" className="activityAddIcon" onClick={this.toggleActivity} />
                 </div>
             </div>
         )

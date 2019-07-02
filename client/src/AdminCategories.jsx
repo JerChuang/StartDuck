@@ -14,7 +14,7 @@ class AdminCategories extends Component {
 
         this.state = {
             categories: [],
-            active: false,
+            active: true,
 
         }
     }
@@ -72,21 +72,31 @@ class AdminCategories extends Component {
     render() {
 
         const categories = this.state.categories.map(category => {
-            return <ul>
+            return <ul className="activitiesList"><span className="activityTitle">
                 {category.name}
-                <Icon id={category.id} type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
+                </span>
+                <span className="activityIcons">
+
+                <Icon id={category.id} 
+                    type="delete" 
+                    onClick={this.onDelete} 
+                    style={{ fontSize: '24px', color: 'rgba(0, 0, 0, 0.65)' }}
+                />
+                </span>
             </ul>
         })
 
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
-            <div className="adminCategories">
-                <div className="exisitigCategories">
-                    <h2 className="adminCategoriesTitle"> Categories List</h2>
-                    <ul>{categories}</ul>
+            <div className="adminActivities">
+                <div className="existingActivities">
+                    <h2 className="adminActivitiesTitle"> Categories List</h2>
+                    <ul className="activitiesList">
+                        {categories}
+                    </ul>
                 </div>
-                <div className="newCategoryForm">
+                <div className="newActivityForm">
                     {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} >
                         <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
                             {getFieldDecorator('category', {
@@ -109,9 +119,9 @@ class AdminCategories extends Component {
                     </Form>
                     }
                 </div>
-                <div className="newCategory">
+                {/* <div className="newCategory">
                     <Icon style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
-                </div>
+                </div> */}
             </div>
         )
     }
