@@ -14,7 +14,7 @@ class AdminCategories extends Component {
 
         this.state = {
             categories: [],
-            active: false,
+            active: true,
 
         }
     }
@@ -72,50 +72,56 @@ class AdminCategories extends Component {
     render() {
 
         const categories = this.state.categories.map(category => {
-            return <tr>
+            return <ul className="activitiesList"><span className="activityTitle">
                 {category.name}
-                <Icon id={category.id} type="delete" className="categoryDeleteIcon" onClick={this.onDelete} />
-            </tr>
+                </span>
+                <span className="activityIcons">
+
+                <Icon id={category.id} 
+                    type="delete" 
+                    onClick={this.onDelete} 
+                    style={{ fontSize: '24px', color: 'rgba(0, 0, 0, 0.65)' }}
+                />
+                </span>
+            </ul>
         })
 
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         const categoryError = isFieldTouched('category') && getFieldError('category');
         return (
-            <div className="adminCategories">
-                <Icon style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
-
-                <table className="tableAdminCategories">
-                    <thead>
-                        <tr>
-                            <th colSpan="2">Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="adminActivities">
+                <div className="existingActivities">
+                    <h2 className="adminActivitiesTitle"> Categories List</h2>
+                    <ul className="activitiesList">
                         {categories}
-                    </tbody>
-                </table>
+                    </ul>
+                </div>
+                <div className="newActivityForm">
+                    {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} >
+                        <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
+                            {getFieldDecorator('category', {
+                                rules: [{ required: true, message: 'Please input category!', valuePropName: 'value' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="New Category"
+                                />,
+                            )}
+                        </Form.Item>
 
-                {this.state.active && <Form layout="inline" onSubmit={this.handleSubmit} >
-                    <Form.Item validateStatus={categoryError ? 'error' : ''} help={categoryError || ''}>
-                        {getFieldDecorator('category', {
-                            rules: [{ required: true, message: 'Please input category!', valuePropName: 'value' }],
-                        })(
-                            <Input
-                                prefix={<Icon type="trophy" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                placeholder="New Category"
-                            />,
-                        )}
-                    </Form.Item>
-
-                    <Form.Item>
-                        <Button type="primary" 
-                        htmlType="submit" 
-                        disabled={hasErrors(getFieldsError())}>
-                            Create
-                        </Button>
-                    </Form.Item>
-                </Form>
-                }
+                        <Form.Item>
+                            <Button className="createButton"
+                            htmlType="submit" 
+                            disabled={hasErrors(getFieldsError())}>
+                                Create
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                    }
+                </div>
+                {/* <div className="newCategory">
+                    <Icon style={{ fontSize: '32px'}} type="plus-square" className="categoryAddIcon" onClick={this.toggleCategory} />
+                </div> */}
             </div>
         )
     }

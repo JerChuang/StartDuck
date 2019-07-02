@@ -1,6 +1,7 @@
 @import "Activitypage.css";
 @import "Nav.css";
 @import "Activities.css";
+@import "Admin.css";
 
 body {
   margin: 0;
@@ -44,7 +45,6 @@ code {
 .link {
   color: gray;
 }
-
 
 .my-collapsible__toggle {
   font-size: 1rem;
