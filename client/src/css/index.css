@@ -20,6 +20,7 @@ code {
 .login-page {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .main_image{
