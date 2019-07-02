@@ -1,4 +1,6 @@
 @import "Activitypage.css";
+@import "Nav.css";
+@import "Activities.css";
 
 body {
   margin: 0;
@@ -15,6 +17,7 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD:client/src/index.css
 .navbar {
   width: 100%;
   background: white;
@@ -41,6 +44,8 @@ code {
     background: #10E9FF;
 }
 
+=======
+>>>>>>> 2f3ad9c37095cb4c2cc798c2b8ae972fc1620cdc:client/src/css/index.css
 .login-page {
   display: flex;
   align-items: center;
@@ -67,31 +72,9 @@ code {
 .link {
   color: gray;
 }
-.dayActivities {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-.dayActivities_activitiesList{
-  color: rgb(100, 9, 100);
-  display: flex;
-  flex-direction: column;
-}
-.dayActivities h2{
-  color: rgb(100, 9, 100);
-  margin-left: 1vw;
-}
-
-.dayActivities_edit{
-  margin: 3px;
-  padding: 5px;
-  margin-left: auto;
-  background-color: rgb(100, 9, 100);
-  color: white;
-  border-radius: 5px;
 
 
+<<<<<<< HEAD:client/src/index.css
 }
 
 .dayActivities_categories{
@@ -143,6 +126,8 @@ code {
   color: green;
 }
 
+=======
+>>>>>>> 2f3ad9c37095cb4c2cc798c2b8ae972fc1620cdc:client/src/css/index.css
 
 .my-collapsible__toggle {
   font-size: 1rem;

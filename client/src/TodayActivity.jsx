@@ -98,7 +98,7 @@ class TodayActivity extends Component {
                 paddingLeft: "3px"};
             }
         }
-        return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>;
+        return <div className="ant-fullcalendar-value" style ={style}>{value.date()}</div>
       }
 
     render() {

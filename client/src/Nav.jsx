@@ -3,16 +3,28 @@ import React, { Component } from 'react';
 import Logo from './images/logo.png'
 import {Link, Redirect } from "react-router-dom";
 import * as moment from 'moment';
+import { withRouter } from 'react-router-dom';
 
+const HideSchedule = (props) => {
+  const { location } = props;
+  if (location.pathname.match("/schedule")){
+    return null;
+  }
+
+  return (
+   <Link className="navbar_schedule" to="/schedule" currentpath = '/'>Reschedule</Link>
+  )
+}
+
+const Reschedule = withRouter(HideSchedule);
 
 class Nav extends Component {
   state = {
     redirect: false,
     redirect1: false,
-    onClick: false
   }
 
-  handleClick = (e) =>{
+  logout = (e) =>{
     e.preventDefault();
     console.log('this.props.cookies from nav bar', this.props)
     this.props.cookies.remove('email',  { path: '/' })
@@ -29,18 +41,14 @@ class Nav extends Component {
     }
   }
 
-  handleClick1 = (e) =>{
+  redirectHome = (e) =>{
     e.preventDefault();
     this.setState({redirect1:true})
   };
 
-  onClick = (e) =>{
-    this.setState({onClick: !this.state.onClick})
-  }
+
 
   render(){
-    console.log("window.location.pathname", window.location.pathname)
-
     if(this.state.redirect){
       return (
           <Redirect to='/'/>
@@ -66,24 +74,26 @@ class Nav extends Component {
     }
     if (this.props.cookies.get('email')){
       return(
-      <nav className="navbar">
-      <div className="container-fluid">
-        {/* <Logo className="navbar_logo" /> */}
-        <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.handleClick1}/>
-
-        <Link onClick={this.onClick} className="link" to="/schedule" currentpath = '/'>Reschedule</Link>
-        <Link className="link" to="/completed_activities" currentpath = '/'>Completed Activities</Link>
-        <button className="navbar_logout" onClick={this.handleClick}>Logout</button>
-      </div>
-      </nav>
-      )} else{
-        return(
-          <nav className="navbar">
-            <div className="container-fluid">
-              {/* <Logo className="navbar_logo" />  */}
-              <img src={Logo} alt ="Logo"className="navbar_logo" />
-            </div>
+        <nav className="navbar">
+          <nav className="navbar_left">
+            {/* <Logo className="navbar_logo" /> */}
+            <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.redirectHome}/>
           </nav>
+          <nav className="navbar_right">
+            <Reschedule/>
+            <Link className="navbar_complete" to="/completed_activities" currentpath='/'>Completed Activities</Link>
+            <button className="navbar_logout" onClick={this.logout}>Logout</button>
+          </nav>
+        </nav>
+    )} else{
+      return(
+        <nav className="navbar">
+          {/* <Logo className="navbar_logo" />  */}
+          <nav className="navbar_left">
+            <img src={Logo} alt ="Logo" className="navbar_logo" />
+          </nav>
+        </nav>
+
       )
     }
   }
