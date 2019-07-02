@@ -76,7 +76,7 @@ class Nav extends Component {
       return(
         <nav className="navbar">
           <nav className="navbar_left">
-            <Logo className="navbar_logo" />
+            <Logo className="navbar_logo"  onClick={this.redirectHome} />
             {/* <img src={Logo} alt ="Logo"className="navbar_logo" onClick={this.redirectHome}/> */}
           </nav>
           <nav className="navbar_right">

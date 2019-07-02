@@ -89,5 +89,6 @@
 .dayActivities_deleteButton {
   display: flex;
   margin-top: 42px;
+  margin-right: 10px;
   color: red;
 }
