@@ -14,14 +14,12 @@ class DayActivities extends React.Component{
       categories: [],
       filterActivities:[],
       email: this.props.cookies.get('email'),
-      date: '',
+      date: moment(),
       redirect: false,
       scheduleRedirect: false,
       agenda: [],
       shown: true,
-
     }
-
   }
 
   componentDidMount() {
@@ -68,7 +66,7 @@ class DayActivities extends React.Component{
 
   onSelect = (value) => {
     this.setState({
-      date: value.format('YYYY-MM-DD'),
+      date: value,
       redirect: true,
     });
   }
@@ -121,7 +119,7 @@ class DayActivities extends React.Component{
   render(){
     if(this.state.redirect){ //redirect to selected days on calendar
       return (
-          <Redirect to={`/${this.state.date}/activities`}/>
+          <Redirect to={`/${this.state.date.format('YYYY-MM-DD')}/activities`}/>
       )
     }
     if(this.state.scheduleRedirect){ //redirect to schedule page if no agenda
@@ -138,7 +136,7 @@ class DayActivities extends React.Component{
       return (
         <section className="activities">
           <div className="activities_left">
-            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <h3>{this.state.date.format('dddd, MMMM Do YYYY')}</h3>
             <div  className="activities_calendar" >
               <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
             </div>
@@ -159,7 +157,7 @@ class DayActivities extends React.Component{
       return (
         <section className="activities">
           <div className="activities_left">
-            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <h3>{this.state.date.format('dddd, MMMM Do YYYY')}</h3>
             <div className="activities_calendar" >
               <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
             </div>
