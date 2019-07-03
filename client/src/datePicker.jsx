@@ -37,7 +37,6 @@ class datePicker extends React.Component {
   };
 
   onChange = (field, value) => {
-    // console.log(value.format('YYYY-MM-DD'))
     this.setState({
       [field]: value,
     });

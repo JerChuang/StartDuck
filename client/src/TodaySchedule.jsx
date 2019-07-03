@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TodaySchedule = (props) => {
-  console.log('is this working?',props,' from today schedule');
     return (
         <div className="todayActivityItem">
           <span className="dayActivities_itemName">{props.name}</span>

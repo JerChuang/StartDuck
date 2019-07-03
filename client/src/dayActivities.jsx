@@ -25,12 +25,10 @@ class DayActivities extends React.Component{
   }
 
   componentDidMount() {
-    // console.log('did mount')
     this.getActivities();
   }
 
   componentDidUpdate(prevProps){
-    // console.log('did update', prevProps)
     if(this.props.params !== prevProps.params){
       this.getActivities();
     }
@@ -50,8 +48,6 @@ class DayActivities extends React.Component{
       }
     })
     .then((response) => {
-      console.log('response.data.activities', response.data.activities)
-
       this.setState({
         activities: response.data.activities,
         filterActivities: response.data.activities,
@@ -71,7 +67,6 @@ class DayActivities extends React.Component{
   handleRefresh = () => this.getActivities();
 
   onSelect = (value) => {
-    console.log('value for calendar', value)
     this.setState({
       date: value.format('YYYY-MM-DD'),
       redirect: true,
@@ -116,7 +111,6 @@ class DayActivities extends React.Component{
   checkFirstTimeUser = () => {
 
     if(!this.state.agenda.length){
-      console.log('if loop triggered in fisttimeuser')
       this.setState({
         scheduleRedirect: true,
       })

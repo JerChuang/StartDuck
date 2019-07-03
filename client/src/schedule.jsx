@@ -8,14 +8,12 @@ class schedule extends React.Component{
 
     constructor(props) {
       super(props)
-      console.log("props", this.props)
       this.state = {
         categories: []
     }
   }
 
     componentDidMount() {
-        // console.log(this.props.params)
         axios.get('/api/categories')
         .then((response) => {
           this.setState({

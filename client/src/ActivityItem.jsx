@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const ActivityItem = (props) => {
-  console.log("dkokoskdoks", props)
     return (
         <div className="activities_activityItem">
           <span>{props.duration} m</span>
