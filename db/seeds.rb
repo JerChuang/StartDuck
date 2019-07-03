@@ -292,7 +292,7 @@ cat2.activities.create!({
   name:  'Brussels Sprouts',
   content: 'This recipe is based on [Food Network\'s publication](http://www.foodnetwork.com/recipes/fried-brussels-sprouts-with-walnuts-and-capers-recipe/index.html) of Michael Symon\'s recipe for the Brussel\'s sprouts he serves at [Lolita](http://lolitarestaurant.com/) in Cleveland, OH.
 
-  ![Deep fried Brussels sprouts](http://i.imgur.com/vc7WhP2.jpg)
+  ![Deep fried Brussels sprouts](https://keviniscooking.com/wp-content/uploads/2014/07/Honey-Balsamic-Roasted-Brussels-Sprouts-square.jpg)
 
   Pour enough oil into a medium pot so that the oil comes 3 inches up the sides. Heat the oil to 350 degrees.
 
