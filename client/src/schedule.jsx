@@ -44,7 +44,7 @@ class schedule extends React.Component{
           render={({ onToggle, setCollapsibleElement}) => (
             <div className="my-collapsible">
               <button className="my-collapsible__toggle" onClick={onToggle}>
-                Change Categories
+                Select Categories
               </button>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
                 <div className="my-collapsible__content-inner">
