@@ -14,23 +14,19 @@ class DayActivities extends React.Component{
       categories: [],
       filterActivities:[],
       email: this.props.cookies.get('email'),
-      date: '',
+      date: moment(),
       redirect: false,
       scheduleRedirect: false,
       agenda: [],
       shown: true,
-
     }
-
   }
 
   componentDidMount() {
-    // console.log('did mount')
     this.getActivities();
   }
 
   componentDidUpdate(prevProps){
-    // console.log('did update', prevProps)
     if(this.props.params !== prevProps.params){
       this.getActivities();
     }
@@ -50,8 +46,6 @@ class DayActivities extends React.Component{
       }
     })
     .then((response) => {
-      console.log('response.data.activities', response.data.activities)
-
       this.setState({
         activities: response.data.activities,
         filterActivities: response.data.activities,
@@ -71,9 +65,8 @@ class DayActivities extends React.Component{
   handleRefresh = () => this.getActivities();
 
   onSelect = (value) => {
-    console.log('value for calendar', value)
     this.setState({
-      date: value.format('YYYY-MM-DD'),
+      date: value,
       redirect: true,
     });
   }
@@ -116,7 +109,6 @@ class DayActivities extends React.Component{
   checkFirstTimeUser = () => {
 
     if(!this.state.agenda.length){
-      console.log('if loop triggered in fisttimeuser')
       this.setState({
         scheduleRedirect: true,
       })
@@ -127,7 +119,7 @@ class DayActivities extends React.Component{
   render(){
     if(this.state.redirect){ //redirect to selected days on calendar
       return (
-          <Redirect to={`/${this.state.date}/activities`}/>
+          <Redirect to={`/${this.state.date.format('YYYY-MM-DD')}/activities`}/>
       )
     }
     if(this.state.scheduleRedirect){ //redirect to schedule page if no agenda
@@ -144,7 +136,7 @@ class DayActivities extends React.Component{
       return (
         <section className="activities">
           <div className="activities_left">
-            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <h3>{this.state.date.format('dddd, MMMM Do YYYY')}</h3>
             <div  className="activities_calendar" >
               <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
             </div>
@@ -165,7 +157,7 @@ class DayActivities extends React.Component{
       return (
         <section className="activities">
           <div className="activities_left">
-            <h2>{moment().format('dddd, MMMM Do YYYY')}</h2>
+            <h3>{this.state.date.format('dddd, MMMM Do YYYY')}</h3>
             <div className="activities_calendar" >
               <Calendar value={moment(this.props.params.day)} onSelect={this.onSelect} dateFullCellRender={this.onFullRender} fullscreen={false}/>
             </div>

@@ -78,7 +78,8 @@ class TodayActivity extends Component {
                 activity.completeness = !this.state.activity.completeness
                 this.setState({
                     activity:activity,
-                });
+                })
+                this.fetchActivity()
             })
     }
     

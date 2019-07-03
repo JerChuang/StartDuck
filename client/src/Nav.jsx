@@ -26,7 +26,6 @@ class Nav extends Component {
 
   logout = (e) =>{
     e.preventDefault();
-    console.log('this.props.cookies from nav bar', this.props)
     this.props.cookies.remove('email',  { path: '/' })
     this.props.setUser('')
     this.setState({redirect:true})

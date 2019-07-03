@@ -18,7 +18,6 @@ class AdminActivity extends Component {
     fetchActivity = () => {
         axios.get(`/api/admin/activities/${this.props.params.id}`, {})
             .then((response) => {
-                console.log('responsedata',response.data)
                 this.props.form.setFieldsValue({
                     content:response.data.activity.content,
                     activityName:response.data.activity.name,
@@ -40,7 +39,6 @@ class AdminActivity extends Component {
         const self = this;
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 axios.patch(`/api/admin/activities/${this.props.params.id}`, {
                     name: values.activityName,
                     content: values.content,

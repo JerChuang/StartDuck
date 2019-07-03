@@ -11,7 +11,6 @@ class ActivitiesList extends Component {
   }
 
   onDelete = (event) => {
-        console.log("event.currentTarget.id", event.currentTarget.id)
         axios.delete(`/api/user_activities/${event.currentTarget.id}`, {
         id: event.currentTarget.id
       })
@@ -28,9 +27,7 @@ class ActivitiesList extends Component {
       display: this.props.shown ? "none" : "block"
     }
 
-    console.log('this.props from activities list:', this.props)
     const activities = this.props.activities.map(activity => {
-      console.log("activityyyyyyyyyyysjidjiajdoisj", activity)
       return <div className="dayActivities_listBlock">
              <div className="dayActivities_deleteButton">
               <Icon id={activity.user_activities_id} onClick = {this.onDelete} style={ hidden } type="minus-circle" />

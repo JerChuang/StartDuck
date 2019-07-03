@@ -8,14 +8,12 @@ class schedule extends React.Component{
 
     constructor(props) {
       super(props)
-      console.log("props", this.props)
       this.state = {
         categories: []
     }
   }
 
     componentDidMount() {
-        // console.log(this.props.params)
         axios.get('/api/categories')
         .then((response) => {
           this.setState({
@@ -46,7 +44,7 @@ class schedule extends React.Component{
           render={({ onToggle, setCollapsibleElement}) => (
             <div className="my-collapsible">
               <button className="my-collapsible__toggle" onClick={onToggle}>
-                Change Categories
+                Select Categories
               </button>
               <div className="my-collapsible__content" ref={setCollapsibleElement}>
                 <div className="my-collapsible__content-inner">

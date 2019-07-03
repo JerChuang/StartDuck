@@ -26,7 +26,6 @@ class AdminActivities extends Component {
     fetchCategories = () => {
         axios.get('/api/admin/categories', {})
             .then((response) => {
-                console.log('responsedata', response.data.categories)
                 this.setState({
                     categories: response.data.categories
                 })
@@ -39,7 +38,6 @@ class AdminActivities extends Component {
     fetchActivities = () => {
         axios.get('/api/admin/activities', {})
             .then((response) => {
-                console.log('responsedata', response.data)
                 this.setState({
                     activities: response.data.activities
                 })
@@ -67,7 +65,6 @@ class AdminActivities extends Component {
         const self = this;
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 axios.post('/api/admin/activities', {
                     name: values.activityName,
                     content: values.content,
@@ -90,7 +87,6 @@ class AdminActivities extends Component {
     }
 
     render() {
-        console.log('thestate', this.state)
         const { getFieldDecorator } = this.props.form;
         const activities = this.state.activities.map(activity => {
             return <ul className="activitiesList"><span className="activityTitle">

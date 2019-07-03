@@ -28,7 +28,6 @@ class AdminCategories extends Component {
     fetchCategories = () => {
         axios.get('/api/admin/categories', {})
             .then((response) => {
-                console.log('responsedata', response.data.categories)
                 this.setState({
                     categories: response.data.categories
                 })
@@ -58,8 +57,6 @@ class AdminCategories extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 axios.post('/api/admin/categories', { name: values.category })
-                    // console.log('this is values',values.category)
-                    // console.log('is this reading??')
                     .then((response) => {
                         this.fetchCategories();
                         this.props.form.resetFields();
