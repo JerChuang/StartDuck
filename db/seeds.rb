@@ -50,7 +50,11 @@ Activity.destroy_all
 
 activitybaking = cat2.activities.create!({
   name:  'Buffalo Chicken Sandwiches',
-  content: "Prep time - 10 minutes
+  content: "
+  ![Buffalo Chicken Sandwiches](  https://www.thecookierookie.com/wp-content/uploads/2015/09/buffalo-chicken-sandwiches-with-ranch-fried-pickles-6-of-11-500x375.jpg
+  )
+
+  Prep time - 10 minutes
 
   Cook time - 20 minutes
 
@@ -90,8 +94,10 @@ activitybaking = cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Chipotle Black Bean and Rice Stew',
-  content: '[Likely origin](http://www.grouprecipes.com/427/chipotle-black-bean-and-rice-stew.html)
+  content: '
+  ![Chipotle Black Bean and Rice Stew](https://www.camelliabrand.com/static/wp-content/uploads/2015/07/ccc-chipotle-black-bean-soup-720x400.jpg)
 
+  [Likely origin](http://www.grouprecipes.com/427/chipotle-black-bean-and-rice-stew.html)
 
   ## Ingredients
 
@@ -131,7 +137,11 @@ cat2.activities.create!({
 
 cat2.activities.create!({
   name:  'Chorizo Meatloaf',
-  content: '## Meatloaf
+  content: '
+  ![Chorizo Meatloaf](http://muybuenocookbook.com/wp-content/uploads/2014/01/Chorizo-and-Chipotle-Meatloaf1.jpg
+  )
+  
+  ## Meatloaf
 
    - ~1 lb ground beef
    - ~0.5 lb chorizo out of casing
@@ -292,7 +302,7 @@ cat2.activities.create!({
   name:  'Brussels Sprouts',
   content: 'This recipe is based on [Food Network\'s publication](http://www.foodnetwork.com/recipes/fried-brussels-sprouts-with-walnuts-and-capers-recipe/index.html) of Michael Symon\'s recipe for the Brussel\'s sprouts he serves at [Lolita](http://lolitarestaurant.com/) in Cleveland, OH.
 
-  ![Deep fried Brussels sprouts](http://i.imgur.com/vc7WhP2.jpg)
+  ![Deep fried Brussels sprouts](https://www.jessicagavin.com/wp-content/uploads/2014/11/brussels-sprouts-with-bacon-recipe-5-1200-500x500.jpg)
 
   Pour enough oil into a medium pot so that the oil comes 3 inches up the sides. Heat the oil to 350 degrees.
 
@@ -372,6 +382,8 @@ cat2.activities.create!({
 cat2.activities.create!({
   name:  'Chicken and dumplings',
   content: '
+  ![Chicken and dumplings](https://spicysouthernkitchen.com/wp-content/uploads/chicken-and-dumplings-3.jpg)
+  
   Season and dredge both sides:
 
   - 4 chicken thighs
