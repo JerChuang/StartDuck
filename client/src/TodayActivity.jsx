@@ -17,6 +17,7 @@ class TodayActivity extends Component {
             categories: [],
             email: this.props.cookies.get('email'),
             agenda: [],
+            date: this.props.params.day,
         };
     }
 
@@ -76,9 +77,17 @@ class TodayActivity extends Component {
             .then((response) => {         
                 let activity = {...this.state.activity}
                 activity.completeness = !this.state.activity.completeness
-                this.setState({
-                    activity:activity,
-                })
+                if(activity.completeness){
+                    this.setState({
+                        activity:activity,
+                        redirect:true,
+                    })
+                }   else {
+                    this.setState({
+                        activity:activity,
+                    })
+                }
+                
                 this.fetchActivity()
             })
     }
@@ -103,6 +112,8 @@ class TodayActivity extends Component {
       }
 
     render() {
+
+        console.log('this.props', this.props)
         if(this.state.redirect){
             return (
                 <Redirect to={`/${this.state.date}/activities`}/>

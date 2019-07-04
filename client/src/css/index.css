@@ -35,7 +35,7 @@ code {
   color: white;
   letter-spacing: 0.05em;
   font-weight: bold;
-  background: #10E9FF;
+  background: #157774;
 }
 
 .main-container{
@@ -48,7 +48,7 @@ code {
 
 .my-collapsible__toggle {
   font-size: 1rem;
-  color: white;
+  color: black;
   font-weight: bold;
   box-shadow: 0px 2px 2px gray;
   background: #F9B50F;
@@ -85,8 +85,8 @@ code {
 }
 
 button.ant-btn.datePicker_button {
-    background-color: #10E9FF;
-    border-color: #10E9FF;
+    background-color: #157774;
+    border-color: #157774;
     color: white;
     font-weight: bold;
     width: 100px;
