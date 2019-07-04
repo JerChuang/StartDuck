@@ -87,7 +87,7 @@ class AdminActivity extends Component {
                             })(<Input.TextArea style={{width: '350px'}} onChange={this.changeContent} rows={10}/>)}    
                         </Form.Item>
                         <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-                        <Button type="primary" htmlType="submit">
+                        <Button className="createButton" htmlType="submit">
                             Submit
                         </Button>
                     </Form.Item>
