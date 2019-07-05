@@ -1,24 +1,8 @@
-# README
+# StartDuck
+StartDuck is a productivity app that generates activities based on user's choice of category and input hours. Full-stack web application built with React, React Router, Ant Design UI Framework for front-end, and Ruby on Rails for back-end, and PostgresSQL for database.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Final Product
 
-Things you may want to cover:
+# Dependencies
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Authors
