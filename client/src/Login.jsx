@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ReactComponent as MainImage } from './images/main.svg';
-// import main from './images/main.png'
+// import { ReactComponent as MainImage } from './images/main.svg';
+import main from './images/main.png'
 import { Form, Icon, Input, Button} from 'antd';
 import {Redirect} from "react-router-dom";
 import * as moment from 'moment';
@@ -39,8 +39,8 @@ class Login extends Component {
     return (
       <section className="login-page">
         <div>
-          <MainImage className="main_image" />
-          {/* <img src={main} alt ="Main-page"className="main_image" /> */}
+          {/* <MainImage className="main_image" /> */}
+          <img src={main} alt ="Main-page"className="main_image" />
         </div>
         <Form onSubmit={this.handleSubmit} className="login-form">
         <h1>Manage your time with us!</h1>
