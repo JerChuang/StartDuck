@@ -2,19 +2,25 @@
 StartDuck is a productivity app that generates activities based on user's choice of category and input hours. Full-stack web application built with React, React Router, Ant Design UI Framework for front-end, and Ruby on Rails for back-end, and PostgreSQL for database.
 
 ## Final Product
-Landing Page:
+#### Landing Page:
 !["Screenshot of StartDuck Landing Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/loginpage.png?raw=true)
-Select Category Page:
+
+#### Select Category Page:
 !["Screenshot of StartDuck Select Category Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/selectCategory.gif?raw=true)
-Home Page:
+
+#### Home Page:
 !["Screenshot of StartDuck Home Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/homePage.gif?raw=true)
-Activity Page:
+
+#### Activity Page:
 !["Screenshot of StartDuck Activity Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/activityPage.gif?raw=true)
-Admin Category Page:
+
+#### Admin Category Page:
 !["Screenshot of StartDuck Admin Category Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/admincategories.png?raw=true)
-Admin Activities Page:
+
+#### Admin Activities Page:
 !["Screenshot of StartDuck Admin Activities Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/adminActivity.gif?raw=true)
-Admin Activity Page:
+
+#### Admin Activity Page:
 !["Screenshot of StartDuck Admin Activity Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/adminEditPage.gif?raw=true)
 
 
