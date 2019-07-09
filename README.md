@@ -1,13 +1,20 @@
 # StartDuck
-StartDuck is a productivity app that generates activities based on user's choice of category and input hours. Full-stack web application built with React, React Router, Ant Design UI Framework for front-end, and Ruby on Rails for back-end, and PostgresSQL for database.
+StartDuck is a productivity app that generates activities based on user's choice of category and input hours. Full-stack web application built with React, React Router, Ant Design UI Framework for front-end, and Ruby on Rails for back-end, and PostgreSQL for database.
 
 ## Final Product
+Landing Page:
 !["Screenshot of StartDuck Landing Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/loginpage.png?raw=true)
+Select Category Page:
 !["Screenshot of StartDuck Select Category Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/selectCategory.gif?raw=true)
+Home Page:
 !["Screenshot of StartDuck Home Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/homePage.gif?raw=true)
+Activity Page:
 !["Screenshot of StartDuck Activity Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/activityPage.gif?raw=true)
+Admin Category Page:
 !["Screenshot of StartDuck Admin Category Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/admincategories.png?raw=true)
+Admin Activities Page:
 !["Screenshot of StartDuck Admin Activities Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/adminActivity.gif?raw=true)
+Admin Activity Page:
 !["Screenshot of StartDuck Admin Activity Page"](https://github.com/JerChuang/StartDuck/blob/master/docs/adminEditPage.gif?raw=true)
 
 
@@ -24,7 +31,7 @@ StartDuck is a productivity app that generates activities based on user's choice
 ## Dependencies
 - Ruby 2.6.x or above
 - Rails 5.2.2 or above
-- Pg
+- PostgreSQL
 - Puma
 - Byebug
 - React
@@ -32,7 +39,7 @@ StartDuck is a productivity app that generates activities based on user's choice
 - Axois
 - React-router
 - Universal-cookie
-- Postgres SQL
+
 
 ## Authors
 
